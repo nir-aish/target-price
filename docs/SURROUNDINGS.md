@@ -8,9 +8,9 @@ catalog exactly: 84 subsidized + 21 free-market ✅.)
 
 | Direction from 201 | Neighbour | Effect on view |
 |---|---|---|
-| **East** | open **green space / park** | **open view — the good side** |
-| **South** | מגרש 200 — 8-floor rental bldg (יזם רייסדור, 70 דירות), abuts us | blocked view |
-| **West** | מגרש 101 — 8-floor public school | blocked view |
+| **East** | **green buffer**, then מגרש 110 — future **8-floor public institution** (חינוך/מוסדות ציבור, use TBD), set back, surrounded by green | **most open aspect**: green foreground + a setback, low-key, landscaped institution. Not a permanent park, but far better than an abutting wall. |
+| **South** | מגרש 200 — 8-floor rental bldg (יזם רייסדור, 70 דירות), **abuts us** | blocked view |
+| **West** | מגרש 101 — 8-floor public school, abuts us | blocked view |
 | **North** | מגרש 104 — 8-floor residential+public (100 דירות) | blocked view |
 
 All neighbours are **~8 floors**, same height as ours — so a unit facing a neighbour
@@ -45,8 +45,11 @@ school and the rental building) are the weakest regardless of floor.
 
 ## Open questions (confirm before finalising)
 
-- **Is the eastern green permanent?** If מגרש 110 (further east) becomes a tall building,
-  the open-view premium for east units shrinks. Worth checking its zoning.
+- **Eastern green — RESOLVED (partially):** מגרש 110 to the east is a future **8-floor
+  public institution** (school/מוסדות ציבור) set back beyond a **green buffer**, not a
+  permanent open park. East units keep a green foreground and a low-key, setback,
+  landscaped institution in the middle distance — still the best aspect, just not pristine
+  open. (A school also brings daytime activity/noise but quiet evenings & weekends.)
 - **Floor count:** project page says 8 floors; our drawings showed plans to "9" + roof —
   reconcile the numbering (affects which floor is the true top).
 - **Per-apartment facing** is still the missing key to apply this per unit — see below.
