@@ -9,6 +9,32 @@ estimated_market_value = market_₪/m²(area, floor) × area
 resale_score = profit_% × liquidity      (rewards quick-selling, in-demand sizes)
 ```
 
+## Purchase-cost model (official price, overrides the spreadsheet)
+
+The spreadsheet reverse-engineers **exactly** to `(15,022 × area − 133,230) × 1.17`
+— i.e. the buyer's stated base of **15,022 ₪/m²** at **17% VAT**. We recompute cost
+from the official base with current terms:
+
+```
+gross   = (15,022 × area − 133,230) × INDEXATION × (1 + VAT)
+discount = min(20% × gross, 300,000 ₪)          # מחיר מטרה benefit
+purchase_price = gross − discount
+```
+
+- **VAT = 18%** (current, since 1 Jan 2025).
+- **INDEXATION = 1.06** — an *estimate* of מדד תשומות הבנייה from the tender base to
+  the assumed first-payment date **1 Jul 2026** (project has no היתר בנייה yet).
+  ⚠️ Needs the tender **base-index date** to firm up. Sensitivity: profit% moves
+  ~±15 pts across ×1.00–1.12 but the **ranking order is unchanged**.
+- **Discount** modelled as 20% capped at 300k (whichever is smaller) — confirm this
+  interpretation. Effect: units with gross < 1.5M get the full 20%; larger units are
+  capped at 300k (a smaller %), which favours smaller units on profit%.
+- `133,230` constant: reproduces the sheet exactly; its official meaning is
+  unconfirmed (treated as a fixed deduction).
+
+Output fields per apartment: `gross_price`, `target_discount`, `purchase_price`,
+plus `sheet_price_ref` (original spreadsheet figure) for comparison.
+
 Tools: `tools/rank.py` → `data/parsed/ranking.json` + `ranking.csv`.
 
 ## Why we can estimate market value well here
