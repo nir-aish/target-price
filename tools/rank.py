@@ -83,22 +83,21 @@ def exposure_score(facing):
 
 # Per-unit facade direction, keyed by (building, stack). INFERRED from the rendered plans
 # (best-effort — NOT from the מפרט). Flagged in the app/docs for review.
-# ORIENTATION (corrected from the floor-plan NORTH ARROW, triple-checked):
-#   The plate's north arrow ("N" tip) points DOWN-RIGHT ⇒ page-up = South, page-left = East
-#   (the green/park, מגרש 110), page-right = West, page-down = North. Cross-checks: the sun
-#   balconies/terraces sit on the TOP (south, N-hemisphere), and the east green appears on the
-#   LEFT of the units; the marketing's showcase NE & SE facades are the two LEFT (east) corners.
-#   ⇒ Corner → facing:  top-left = SE (best: south sun + east green),  top-right = SW,
-#      bottom-left = NE,  bottom-right = NW (worst),  bottom-middle = N.
+# ORIENTATION (from the floor-plan NORTH ARROW — read by where the needle POINTS, not the
+# letter): the arrow points UP-and-to-the-LEFT (~27° west of page-up) ⇒ page-up ≈ North,
+# page-right ≈ East (the green/park, מגרש 110), page-down ≈ South, page-left ≈ West.
+# Corroborated by the site plan (green/open space on the right/east).
+#   ⇒ Corner → facing:  bottom-right = SE (best: south sun + east green),  top-right = NE,
+#      bottom-left = SW,  top-left = NW (weakest),  bottom-middle = S.
 # Stack → position (best-effort from the plates): the two largest-area stacks sit on the two
-# TOP (south) corners; the smaller stacks on the bottom (north), the middle one = mid-facade.
-# GENUINELY UNCERTAIN (flagged ⚠): left↔right within a side — i.e. SE↔SW between the two top
-# units and NE↔NW between the bottom corners — which flips a unit between best (~1.10) and
-# worst (~0.92). Confirm against the מפרט מכר. See docs/ORIENTATION.md.
+# TOP (north) corners; the smaller stacks on the bottom (south), the middle one = mid-facade (S).
+# GENUINELY UNCERTAIN (flagged ⚠): left↔right within a side — i.e. NE↔NW between the two top
+# units and SE↔SW between the bottom corners — which flips a unit between best (~1.10) and
+# weak (~0.92). Confirm against the מפרט מכר. See docs/ORIENTATION.md.
 STACK_FACING = {
-    (1, 1): "SW", (1, 2): "N",  (1, 3): "SE", (1, 4): "NE", (1, 5): "NW",
-    (2, 1): "SE", (2, 2): "SW", (2, 3): "N",  (2, 4): "NE", (2, 5): "NW",
-    (3, 1): "SW", (3, 2): "SE", (3, 3): "N",  (3, 4): "NW", (3, 5): "NE",
+    (1, 1): "NE", (1, 2): "S",  (1, 3): "NW", (1, 4): "SW", (1, 5): "SE",
+    (2, 1): "NW", (2, 2): "NE", (2, 3): "S",  (2, 4): "SW", (2, 5): "SE",
+    (3, 1): "NE", (3, 2): "NW", (3, 3): "S",  (3, 4): "SW", (3, 5): "SE",
 }
 FACING_INFERRED = True   # surfaced in the app so the mapping is reviewed, not trusted blindly
 def facing_of(apt):

@@ -20,81 +20,62 @@ Rendered the plans (`tools/render.py`, sheet 2) and read them directly. Confirms
 **reviewable visually**. Per-building plate is the right granularity — typical floors repeat,
 so every unit in a stack shares the layout.
 
-### ⚠️ ORIENTATION CORRECTED via the floor-plan NORTH ARROW (was flipped 180°)
+### ORIENTATION from the floor-plan NORTH ARROW (read by the arrow's point)
 
-The per-plate legend box ("תוכנית קומה N · קנ"מ 1:100") carries a **north arrow**. Read at max
-zoom, its **solid needle + "N" label point DOWN-and-to-the-RIGHT** (~27° right of straight
-down). So the earlier "north ≈ 26° up-left" reading was **inverted**. Corrected mapping:
+The per-plate legend box ("תוכנית קומה N · קנ"מ 1:100") carries a **north arrow**. Read by where
+the **needle POINTS** (the long fine tip — *not* the "N" letter at the opposite, solid end): it
+points **UP-and-to-the-LEFT** (~27° west of page-up). So **page-up ≈ North**.
+
+> ⚠️ Note: an intermediate pass mistakenly used the letter "N" (at the solid tail) and flipped
+> this 180°. Corrected back per the arrow's point and the site-plan check below.
 
 | Page direction | Bearing | Cardinal |
 |---|---|---|
-| up    | ~207° | **South** |
-| left  | ~117° | **East** (the green/park, מגרש 110) |
-| right | ~297° | **West** (school 101) |
-| down  | ~27°  | **North** (מגרש 104) |
+| up    | ~27°  | **North** (מגרש 104) |
+| right | ~117° | **East** (the green/park, מגרש 110) |
+| down  | ~207° | **South** (מגרש 200) |
+| left  | ~297° | **West** (school 101) |
 
-**Three independent cross-checks all agree** (and contradict the old reading):
-- **Sun balconies/terraces** (loungers) are drawn on the **TOP** of every plate → south-facing
-  (N-hemisphere) → **top = south**.
-- The **green tree** beside building 1's **top-left** unit sits on the **LEFT** → **east/green
-  = page-left**.
-- The marketing's showcase **"מבט צפון-מזרח" / "דרום-מזרח"** facades are the two **LEFT (east)**
-  corners — the side onto the green.
+**Cross-check:** the detailed site/landscape plan shows the **green/open space on the right
+(east)** side, matching page-right = East. The marketing's showcase NE & SE facades are the
+**east-facing (page-right)** corners onto the green.
 
 ### Inferred facing — APPLIED to the score (best-effort, review-flagged)
 
-Corner → facing (corrected): **top-left = SE (best: south sun + east green)**, top-right = SW,
-**bottom-left = NE**, bottom-right = NW (worst), bottom-middle = N. Stack → position
-(best-effort from plates): the two largest stacks take the top (south) corners; the smaller
-stacks the bottom (north), with the middle one as the mid-facade.
+Corner → facing: **bottom-right = SE (best: south sun + east green)**, top-right = NE,
+bottom-left = SW, **top-left = NW (weakest)**, bottom-middle = S. Stack → position (best-effort
+from plates): the two largest stacks take the top (north) corners; the smaller stacks the
+bottom (south), with the middle one as the mid-facade (S).
 
 Resulting map (building, stack → facing):
 
 | Bld | s1 | s2 | s3 | s4 | s5 |
 |----|----|----|----|----|----|
-| 1 | SW | N | **SE** | NE | NW |
-| 2 | **SE** | SW | N | NE | NW |
-| 3 | SW | **SE** | N | NW | NE |
+| 1 | NE | S | NW | SW | **SE** |
+| 2 | NW | NE | S | SW | **SE** |
+| 3 | NE | NW | S | SW | **SE** |
 
-**Confidence & soft spots (flagged ⚠ in the app):** the **orientation/corner framework is now
-high-confidence**; the genuinely uncertain part is **left↔right within a side** — SE↔SW between
-the two top (south) units and NE↔NW between the bottom corners — which flips a unit between best
-(~1.10) and worst (~0.92). The exact **stack→corner** still wants the **מפרט מכר כיוונים** to
-confirm. Each unit's app panel shows its plate + the inferred direction for review.
-
-## North direction — corrected (read off the plan's own north arrow)
-
-> ⚠️ **Supersedes an earlier error.** A first pass parsed the XPS arrow-glyph transform as
-> −26.2° and called it "up-and-to-the-left" (north). Reading the **actual rendered north
-> arrow** (the legend box on each plate, "N" at the solid tip) shows it points **DOWN-and-to-
-> the-RIGHT** — i.e. the previous reading was **inverted 180°**. The marketing "NE/SE" cross-
-> check is still satisfied (those facades exist), but they're the **left (east)** corners, not
-> the right. The three checks in the section above (north arrow, south-facing sun terraces on
-> top, east-green tree on the left) are mutually consistent and authoritative.
-
-Corrected cardinal mapping (bearing of each page direction):
-
-| Page direction | Compass bearing | ≈ |
-|---|---|---|
-| up      | ~207° | **South** |
-| right   | ~297° | **West** |
-| down    | ~27°  | **North** |
-| left    | ~117° | **East** |
+**Confidence & soft spots (flagged ⚠ in the app):** the **orientation/corner framework is
+high-confidence** (arrow + green-on-right agree); the genuinely uncertain part is **left↔right
+within a side** — NE↔NW between the two top units and SE↔SW between the bottom corners — which
+flips a unit between best (~1.10) and weak (~0.92). The exact **stack→corner** still wants the
+**מפרט מכר כיוונים** to confirm. Each unit's app panel shows its plate for review.
 
 ## Building structure — ROBUST ✅
 
 Each floor sheet shows **all 3 buildings** (`בנין 1/2/3`). Each building is a roughly
 **square footprint with 4 corner apartments + 1 mid-facade unit (= the 5 price-list stacks)**
 around a central stair/lift core; each corner apartment's **balcony sits at the outer corner**
-(two exterior facades — "דירת 2 כיוונים", valued in Israel). Corner → overall facing:
+(two exterior facades — "דירת 2 כיוונים", valued in Israel). Corner → overall facing
+(page-up = North, page-right = East/green):
 
 | Corner on plan | Faces | Overall | Resale |
 |---|---|---|---|
-| **top-left**  | South + East | **SE** | **best (south sun + east green)** |
-| bottom-left   | North + East | **NE** | good (open east/green; morning sun) |
-| top-right     | South + West | **SW** | ok (south sun; faces school 101) |
-| bottom-right  | North + West | **NW** | weakest (no sun; faces neighbours) |
-| bottom-middle | North        | **N**  | weak (faces מגרש 104) |
+| **bottom-right** | South + East | **SE** | **best (south sun + east green)** |
+| top-right        | North + East | **NE** | good (open east/green; morning sun) |
+| bottom-left      | South + West | **SW** | ok (south sun; faces school 101) |
+| top-left         | North + West | **NW** | weakest (no sun; faces neighbours) |
+| bottom-middle    | South        | **S**  | south sun (faces מגרש 200) |
 
 ## Per-apartment facing — now inferred (best-effort), with one residual unknown ⚠️
 

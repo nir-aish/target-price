@@ -57,12 +57,12 @@ python3 tools/build_app.py                                             # refresh
 
 ## Known open items (for next iteration)
 
-- **Orientation per apartment** — `exposure_score()` is **active**. Orientation was read off
-  the plan's **north arrow** (points down-right ⇒ up=South, **left=East/green**), triple-checked
-  by the south-facing sun terraces and the east-green tree; corner map: top-left=**SE (best)**,
-  bottom-left=NE, top-right=SW, bottom-right=NW, mid=N. Per-unit **stack→corner is best-effort
-  (left↔right flagged ⚠)** — each unit shows its building floor-plate; confirm against the
-  מפרט מכר before acting. See `docs/ORIENTATION.md`.
+- **Orientation per apartment** — `exposure_score()` is **active**. Orientation read off the
+  plan's **north arrow** (the needle points up-left ⇒ up≈North, **right=East/green**), confirmed
+  by the site plan (green on the right); corner map: bottom-right=**SE (best)**, top-right=NE,
+  bottom-left=SW, top-left=NW, mid=S. Per-unit **stack→corner is best-effort (left↔right flagged
+  ⚠)** — each unit shows its building floor-plate; confirm against the מפרט מכר before acting.
+  See `docs/ORIENTATION.md`.
 - **Embedded discount %** — the −133,230 benefit (~8–12%) is smaller than the headline
   14–19%-off-appraisal; confirm the constant against the contract.
 - **Floor numbering** — list (ground→8) vs marketing/drawings ("9 קומות"); confirm with sales office.
