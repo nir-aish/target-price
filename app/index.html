@@ -155,7 +155,7 @@ function showDetail(rank){
     <div class="kv"><span>ציון מכירה חוזרת</span><b>${a.resale_score}</b></div>
     <div class="kv"><span>כיוון חזית${a.facing_inferred?' (משוער מהתכנית)':''}</span><b>${a.facing&&a.facing!=="—"?a.facing+(a.facing_inferred?' ⚠':''):'—'}</b> <span class="muted">×${a.exposure_factor} חשיפה</span></div>
     <h3>תכנית הקומה (בניין ${a.building})</h3>
-    <div class="muted" style="margin-bottom:4px">צפון ↖ (שמאל-מעלה, ~26°) · <b>הפארק/הירוק במזרח = הצד הימני בתכנית</b> — דירות בצד ימין (SE/NE) נהנות מנוף פתוח ושמש. הכיוון לעיל <b>משוער מהתכנית</b> (קוטג' ${a.stack}) ומשוקלל בציון; לאימות מול מפרט המכר.</div>
+    <div class="muted" style="margin-bottom:4px">לפי חץ הצפון בתכנית: <b>צפון ↘ (מטה-ימינה)</b> ⇐ מעלה=דרום, <b>שמאל=מזרח (הפארק/הירוק)</b>, ימין=מערב. הפינה <b>שמאל-עליון = SE</b> (שמש דרום + ירוק מזרח) הטובה ביותר. הכיוון לעיל <b>משוער מהתכנית</b> (קוטג' ${a.stack}) ומשוקלל בציון; ימין↔שמאל בתוך אותו צד עדיין לאימות מול מפרט המכר.</div>
     <img src="${a.plan_img}" alt="תכנית בניין ${a.building}" style="width:100%;border:1px solid #ccc;border-radius:6px" loading="lazy">
     <h3>יתרונות</h3>${(a.pros||[]).map(p=>`<span class="tag p">✔ ${p}</span>`).join("")||'<span class="muted">—</span>'}
     <h3>חסרונות</h3>${(a.cons||[]).map(c=>`<span class="tag c">✘ ${c}</span>`).join("")||'<span class="muted">—</span>'}

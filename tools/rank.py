@@ -82,24 +82,23 @@ def exposure_score(facing):
     return EXPOSURE.get(facing, 1.0)
 
 # Per-unit facade direction, keyed by (building, stack). INFERRED from the rendered plans
-# (best-effort — NOT from the מפרט). Confidence is moderate; flagged in the app/docs for
-# review. Inference rules (see docs/ORIENTATION.md "Inferred facing"):
-#   • Plate geometry + north (~26° up-left): top-left=NW, top-right=NE, bottom-left=SW,
-#     bottom-right=SE, bottom-middle=S. Page-right = east = the green/park (premium).
-#   • The plates show two large units across the top (→ NE/NW) and three smaller along the
-#     bottom; the middle of those three is the mid-facade unit (→ S).
-#   • The developer reserved stacks 4 & 5 for free-market sale (top-floor penthouses,
-#     126–185 m²) in ALL buildings → those are the premium corners. The larger penthouse
-#     stack (5) = the best corner SE; stack 4 = SW. (So a subsidized buyer on stack 5 gets
-#     the SE/green corner — the pick.)
-#   • Among stacks 1–3, the two largest take the top corners (larger → east/NE), the
-#     smallest is the mid-facade (S).
-# Genuinely uncertain links (left/right within a side): NE↔NW between the two large top
-# units, and SE↔SW between stacks 5/4. Resolve against the מפרט מכר when available.
+# (best-effort — NOT from the מפרט). Flagged in the app/docs for review.
+# ORIENTATION (corrected from the floor-plan NORTH ARROW, triple-checked):
+#   The plate's north arrow ("N" tip) points DOWN-RIGHT ⇒ page-up = South, page-left = East
+#   (the green/park, מגרש 110), page-right = West, page-down = North. Cross-checks: the sun
+#   balconies/terraces sit on the TOP (south, N-hemisphere), and the east green appears on the
+#   LEFT of the units; the marketing's showcase NE & SE facades are the two LEFT (east) corners.
+#   ⇒ Corner → facing:  top-left = SE (best: south sun + east green),  top-right = SW,
+#      bottom-left = NE,  bottom-right = NW (worst),  bottom-middle = N.
+# Stack → position (best-effort from the plates): the two largest-area stacks sit on the two
+# TOP (south) corners; the smaller stacks on the bottom (north), the middle one = mid-facade.
+# GENUINELY UNCERTAIN (flagged ⚠): left↔right within a side — i.e. SE↔SW between the two top
+# units and NE↔NW between the bottom corners — which flips a unit between best (~1.10) and
+# worst (~0.92). Confirm against the מפרט מכר. See docs/ORIENTATION.md.
 STACK_FACING = {
-    (1, 1): "NE", (1, 2): "S",  (1, 3): "NW", (1, 4): "SW", (1, 5): "SE",
-    (2, 1): "NW", (2, 2): "NE", (2, 3): "S",  (2, 4): "SW", (2, 5): "SE",
-    (3, 1): "NE", (3, 2): "NW", (3, 3): "S",  (3, 4): "SW", (3, 5): "SE",
+    (1, 1): "SW", (1, 2): "N",  (1, 3): "SE", (1, 4): "NE", (1, 5): "NW",
+    (2, 1): "SE", (2, 2): "SW", (2, 3): "N",  (2, 4): "NE", (2, 5): "NW",
+    (3, 1): "SW", (3, 2): "SE", (3, 3): "N",  (3, 4): "NW", (3, 5): "NE",
 }
 FACING_INFERRED = True   # surfaced in the app so the mapping is reviewed, not trusted blindly
 def facing_of(apt):

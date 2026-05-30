@@ -20,84 +20,90 @@ Rendered the plans (`tools/render.py`, sheet 2) and read them directly. Confirms
 **reviewable visually**. Per-building plate is the right granularity — typical floors repeat,
 so every unit in a stack shares the layout.
 
-### Inferred facing — now APPLIED to the score (best-effort, review-flagged)
+### ⚠️ ORIENTATION CORRECTED via the floor-plan NORTH ARROW (was flipped 180°)
 
-`STACK_FACING` is now populated by **inference from the rendered plans** (not the מפרט), and
-`exposure_score()` is **live in the ranking**. Inference rules:
+The per-plate legend box ("תוכנית קומה N · קנ"מ 1:100") carries a **north arrow**. Read at max
+zoom, its **solid needle + "N" label point DOWN-and-to-the-RIGHT** (~27° right of straight
+down). So the earlier "north ≈ 26° up-left" reading was **inverted**. Corrected mapping:
 
-1. **Plate geometry + north (~26° up-left):** top-left = **NW**, top-right = **NE**,
-   bottom-left = **SW**, bottom-right = **SE**, bottom-middle = **S**. Page-right = east =
-   the green/park ⇒ **SE/NE are the premium (green-facing) corners**.
-2. **Plates show** two large units across the top (→ NE/NW) and three smaller along the
-   bottom; the middle of those three is the **mid-facade unit (→ S)**.
-3. **Free-market signal:** the developer reserved **stacks 4 & 5** for free-market sale
-   (top-floor penthouses, 126–185 m²) in **all three buildings** → those are the **premium
-   corners**. The larger penthouse stack (**5**) = best corner **SE**; stack **4** = **SW**.
-4. Among stacks 1–3, the **two largest** take the top corners (larger → east/**NE**), the
-   **smallest** is the **mid-facade (S)**.
+| Page direction | Bearing | Cardinal |
+|---|---|---|
+| up    | ~207° | **South** |
+| left  | ~117° | **East** (the green/park, מגרש 110) |
+| right | ~297° | **West** (school 101) |
+| down  | ~27°  | **North** (מגרש 104) |
+
+**Three independent cross-checks all agree** (and contradict the old reading):
+- **Sun balconies/terraces** (loungers) are drawn on the **TOP** of every plate → south-facing
+  (N-hemisphere) → **top = south**.
+- The **green tree** beside building 1's **top-left** unit sits on the **LEFT** → **east/green
+  = page-left**.
+- The marketing's showcase **"מבט צפון-מזרח" / "דרום-מזרח"** facades are the two **LEFT (east)**
+  corners — the side onto the green.
+
+### Inferred facing — APPLIED to the score (best-effort, review-flagged)
+
+Corner → facing (corrected): **top-left = SE (best: south sun + east green)**, top-right = SW,
+**bottom-left = NE**, bottom-right = NW (worst), bottom-middle = N. Stack → position
+(best-effort from plates): the two largest stacks take the top (south) corners; the smaller
+stacks the bottom (north), with the middle one as the mid-facade.
 
 Resulting map (building, stack → facing):
 
 | Bld | s1 | s2 | s3 | s4 | s5 |
 |----|----|----|----|----|----|
-| 1 | NE | S | NW | SW | **SE** |
-| 2 | NW | NE | S | SW | **SE** |
-| 3 | NE | NW | S | SW | **SE** |
+| 1 | SW | N | **SE** | NE | NW |
+| 2 | **SE** | SW | N | NE | NW |
+| 3 | SW | **SE** | N | NW | NE |
 
-**Confidence & known soft spots (flagged in the app with ⚠):** the **east/west split is the
-high-confidence part**; the genuinely uncertain links are **left↔right within a side** — NE↔NW
-between the two large top units, and SE↔SW between stacks 5/4 (areas 76↔79 are visually
-indistinguishable). These flip a unit between premium (~1.10) and weak (~0.92), so **verify
-against the מפרט מכר** before treating the top SE picks as final. Each unit's app panel shows
-its plate + the inferred direction so the mapping is reviewed, not trusted blindly.
+**Confidence & soft spots (flagged ⚠ in the app):** the **orientation/corner framework is now
+high-confidence**; the genuinely uncertain part is **left↔right within a side** — SE↔SW between
+the two top (south) units and NE↔NW between the bottom corners — which flips a unit between best
+(~1.10) and worst (~0.92). The exact **stack→corner** still wants the **מפרט מכר כיוונים** to
+confirm. Each unit's app panel shows its plate + the inferred direction for review.
 
-## North direction — ROBUST ✅ (independently validated)
+## North direction — corrected (read off the plan's own north arrow)
 
-Every floor sheet carries a north arrow (`N`, 10 of them). Parsing the XPS Canvas
-transforms gives a **consistent rotation of −26.2°** on all of them, and a render of
-the arrow confirms it points **up-and-to-the-left**. Therefore:
+> ⚠️ **Supersedes an earlier error.** A first pass parsed the XPS arrow-glyph transform as
+> −26.2° and called it "up-and-to-the-left" (north). Reading the **actual rendered north
+> arrow** (the legend box on each plate, "N" at the solid tip) shows it points **DOWN-and-to-
+> the-RIGHT** — i.e. the previous reading was **inverted 180°**. The marketing "NE/SE" cross-
+> check is still satisfied (those facades exist), but they're the **left (east)** corners, not
+> the right. The three checks in the section above (north arrow, south-facing sun terraces on
+> top, east-green tree on the left) are mutually consistent and authoritative.
 
-- **True north ≈ 26° west of "page up".**
-
-**Independent cross-check:** the project's marketing 3D renders are captioned
-**"מבט מכוון צפון מזרח" (view facing NE)** and **"מבט מכוון דרום מזרח" (view facing SE)**.
-A building whose showcase facades are NE and SE matches the −26.2° derivation exactly
-(a square rotated ~26°, with facades toward NE/SE/SW/NW). Two independent sources agree.
-
-- Cardinal mapping on the plans (bearing of each page direction):
+Corrected cardinal mapping (bearing of each page direction):
 
 | Page direction | Compass bearing | ≈ |
 |---|---|---|
-| up      | 26°  | NNE |
-| right   | 116° | ESE |
-| down    | 206° | SSW |
-| left    | 296° | WNW |
+| up      | ~207° | **South** |
+| right   | ~297° | **West** |
+| down    | ~27°  | **North** |
+| left    | ~117° | **East** |
 
 ## Building structure — ROBUST ✅
 
 Each floor sheet shows **all 3 buildings** (`בנין 1/2/3`). Each building is a roughly
-**square footprint with 4 apartments — one per corner — around a central stair/lift
-core**, and each apartment's **balcony sits at the building's outer corner**.
+**square footprint with 4 corner apartments + 1 mid-facade unit (= the 5 price-list stacks)**
+around a central stair/lift core; each corner apartment's **balcony sits at the outer corner**
+(two exterior facades — "דירת 2 כיוונים", valued in Israel). Corner → overall facing:
 
-Each corner apartment has **two exterior facades** (good cross-ventilation — "דירת
-2 כיוונים", valued in Israel). Corner → overall facing (sun premium in **bold**):
-
-| Corner on plan | Two facades | Overall | Resale |
+| Corner on plan | Faces | Overall | Resale |
 |---|---|---|---|
-| bottom-right | ESE + SSW | **SSE ≈ South** | **best (sun + showcase SE facade)** |
-| bottom-left  | SSW + WNW | **WSW**         | **good (afternoon sun)** |
-| top-right    | NNE + ESE | ENE             | ok (morning sun; showcase NE facade) |
-| top-left     | WNW + NNE | NNW             | weakest (least sun) |
+| **top-left**  | South + East | **SE** | **best (south sun + east green)** |
+| bottom-left   | North + East | **NE** | good (open east/green; morning sun) |
+| top-right     | South + West | **SW** | ok (south sun; faces school 101) |
+| bottom-right  | North + West | **NW** | weakest (no sun; faces neighbours) |
+| bottom-middle | North        | **N**  | weak (faces מגרש 104) |
 
-## What we CANNOT reliably extract ⚠️
+## Per-apartment facing — now inferred (best-effort), with one residual unknown ⚠️
 
-- **Per-apartment facing for all 84 units.** Detailed room labels exist on only a few
-  representative apartments (≈11 living-room labels on the whole sheet), and the
-  per-unit **apartment numbers on the building plans are below OCR resolution** at any
-  render we can produce. So we cannot auto-map each price-list apartment (building +
-  floor + stack 1–5) to a specific corner/facing from the CAD alone.
-- Note: the price list has up to **5 stacks** per building but the plan shows **4
-  corners**, so at least one unit is a non-corner (mid-facade) — mapping is not 1:1.
+The corner→facing map above is solid. The remaining gap is **which price-list stack (1–5) sits
+at which corner** — specifically **left↔right within a side**. The plate's apartment-number tags
+(101/102/105/108) don't key to stacks 1–5, and the 5th (mid-facade) stack can't be pinned from
+the CAD. Best-effort positions are inferred (largest stacks → top/south corners; smaller →
+bottom/north) and applied to the score, flagged ⚠ in the app — but **verify the exact
+stack→corner against the מפרט מכר כיוונים** before treating individual picks as final.
 
 ## How to complete orientation (recommended)
 
