@@ -9,33 +9,32 @@ estimated_market_value = market_₪/m²(area, floor) × area
 resale_score = profit_% × liquidity      (rewards quick-selling, in-demand sizes)
 ```
 
-## Purchase-cost model (official מחיר מטרה contract price)
+## Purchase-cost model (דירה בהנחה / מחיר מטרה)
 
-The price list **is** the contractual מחיר מטרה price. It reverse-engineers **exactly**
-to `(15,022 × area − 133,230) × 1.17` — base **15,022 ₪/m²**, a fixed **133,230 ₪**
-benefit (the *embedded* מחיר מטרה discount), at the then-current **17% VAT** and the
-tender base index. We update it to current terms:
+The buyer's price is built explicitly in three steps:
 
 ```
-full     = 15,022 × area × INDEXATION × (1 + VAT)      # before the מטרה benefit
-benefit  = 133,230 × INDEXATION × (1 + VAT)            # embedded discount (the −133,230 term)
-purchase_price = full − benefit
-               = (15,022 × area − 133,230) × INDEXATION × (1 + VAT)
+displayed (מחיר מוצג) = 15,022 × area × (1 + VAT) × INDEXATION   # incl VAT, indexed to payment
+discount              = min(20% × displayed, ₪300,000)          # דירה בהנחה subsidy, lower of the two
+purchase_price        = displayed − discount                    # what the buyer pays
 ```
 
-- **VAT = 18%** (current, since 1 Jan 2025; the list was at 17%).
-- **⚠️ Correction vs. earlier model.** The discount is **already inside the price list**
-  (the −133,230 term). The previous model subtracted a *further* `min(20%, 300k)` cut on
-  top — a **double-count** that understated cost by ~300k/unit and inflated profit% (top
-  unit fell from ~124% → ~79% after the fix). There is now a **single** discount: the
-  embedded benefit.
-- **Validated discount terms (web).** מחיר מטרה / דירה בהנחה is marketed as **14–19% off
-  the appraisal (שומה), capped at 300,000 ₪ below market**. Our embedded benefit
-  (133,230 × VAT × idx ≈ **₪163k**, i.e. **~8–12%** of the base full-price, well under the
-  300k cap) is *smaller* than the headline 14–19%. Two reconcilable reasons: the 14–19%
-  is measured off the **appraisal** (higher than the base-formula "full" price), and the
-  `133,230` constant's exact official meaning is still unconfirmed. **Net for us: the cap
-  never binds at these unit sizes; verify the constant against the contract.**
+- **Base rate = 15,022 ₪/m²** (pre-VAT) — the מחיר מטרה rate for this plot.
+- **VAT = 18%** (current, since 1 Jan 2025).
+- **Subsidy discount = the LOWER of 20% of the displayed (incl-VAT) price or ₪300,000.**
+  The ₪300k cap binds from **~89 m² upward** (where 20% of displayed exceeds 300k); below
+  that the full 20% applies. Net ₪/m² ≈ **15,000–16,100** (small→large).
+- **⚠️ Change vs. earlier model.** Earlier versions reverse-engineered the price list to a
+  fixed `(15,022 × area − 133,230) × VAT` form and treated the **−133,230** as the whole
+  subsidy (~₪156k, flat). That is **dropped** here: the subsidy is the explicit **20% / 300k**
+  rule, which is **larger and price-dependent**. Consequence: the model now diverges from the
+  price-list figure by roughly the dropped −133,230 term (see reconciliation note below).
+- **⚠️ Open reconciliation.** The price list ("מחיר מכירה כולל מע"מ") sits **below** our new
+  *displayed* price by ≈ 133,230 × VAT × idx. So either the listed figure already embeds a
+  reduction (and the true מחיר מוצג is our clean 15,022 × area), or the listed figure *is* the
+  מחיר מוצג (and the −133,230 should stay). Resolve against the contract / מפרט מכר. The one
+  ground-floor garden unit (sheet ₪1,290,604) is also priced from area only, understating its
+  cost by ~₪148k.
 - **INDEXATION = 1.06** — bounded estimate of מדד תשומות הבנייה, tender base → payment.
   Validated mechanism (replaces the old "≈Jul-2026" hand-wave):
   - The index rises ~5%/yr (**2023 +2.0%, 2024 +2.9%, 2025 +5.1%**, 2026 forecast +5–7%).
@@ -48,9 +47,9 @@ purchase_price = full − benefit
   - ⇒ Effective ≈ **×1.04–1.10**; we keep **1.06** as the central estimate. Profit% moves
     ~±10 pts across ×1.00–1.12 but the **ranking order is invariant**.
 
-Output fields per apartment: `gross_price` (full pre-benefit), `target_discount` (embedded
-benefit), `purchase_price`, plus `sheet_price_ref` (original price-list figure), `facing`
-and `exposure_factor` (see exposure model below).
+Output fields per apartment: `gross_price` (displayed/מחיר מוצג), `target_discount` (the
+20%/300k subsidy), `discount_capped` (is the ₪300k cap binding?), `purchase_price` (net),
+plus `sheet_price_ref` (original price-list figure), `facing` and `exposure_factor`.
 
 Tools: `tools/rank.py` → `data/parsed/ranking.json` + `ranking.csv`.
 

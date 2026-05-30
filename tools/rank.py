@@ -15,34 +15,37 @@ docs/RANKING_MODEL.md. Outputs are decision-support ESTIMATES, not appraisals.
 import argparse, csv, json, statistics as st
 from pathlib import Path
 
-# --- Purchase-cost model (official מחיר מטרה contract price) ----------------------
-# The price list IS the contractual מחיר מטרה price. It reverse-engineers EXACTLY to
-#   price_ils = (15022 × area − 133230) × 1.17
-# i.e. a base of 15,022 ₪/m² less a fixed 133,230 ₪ benefit (the embedded מחיר מטרה
-# discount), at the then-current 17% VAT and the tender base index. We update it to
-# today's terms:
-#   • VAT 17% → 18% (since 1 Jan 2025).
-#   • indexation of מדד תשומות הבנייה from the tender base to payment (bounded; see below).
-# The discount is ALREADY inside this price (the −133,230 term). We do NOT subtract an
-# additional benefit. (A prior model wrongly applied a further 20% / 300k cut on top —
-# a double-count; corrected here.)
-OFFICIAL_BASE_PPM = 15022        # ₪/m², before the embedded benefit, VAT and indexation
-PREVAT_BENEFIT    = 133230       # ₪, embedded מחיר מטרה discount (fixed pre-VAT deduction)
-VAT               = 0.18         # current Israeli VAT (since 1 Jan 2025); list was at 17%
+# --- Purchase-cost model (דירה בהנחה / מחיר מטרה) --------------------------------
+# The buyer's price is built in three steps:
+#   1. displayed price (מחיר מוצג) = base 15,022 ₪/m² × area, + VAT, indexed to payment.
+#   2. subsidy discount = the LOWER of 20% of the displayed (incl-VAT) price OR ₪300,000.
+#   3. purchase price the buyer pays = displayed − discount.
+# Base rate 15,022 ₪/m² (pre-VAT) is the מחיר מטרה rate for this plot (user-confirmed).
+# NOTE: this supersedes the earlier reverse-engineered "(15022×area − 133,230)×VAT"
+# formula — the fixed −133,230 term is dropped in favour of the explicit 20%/300k subsidy.
+OFFICIAL_BASE_PPM = 15022        # ₪/m² before VAT (מחיר מטרה base rate for the plot)
+VAT               = 0.18         # current Israeli VAT (since 1 Jan 2025)
+DISCOUNT_RATE     = 0.20         # subsidy = 20% of the displayed (incl-VAT) price …
+DISCOUNT_CAP      = 300000       # … capped at ₪300,000 (the lower of the two applies)
 INDEXATION        = 1.06         # מדד תשומות הבנייה, tender base → payment. BOUNDED estimate:
                                  # the index rises ~5%/yr (2023 +2.0%, 2024 +2.9%, 2025 +5.1%),
                                  # BUT (a) Amendment 9 to חוק המכר caps the indexed portion at
                                  # 40% of price, (b) a בג"ץ compromise splits the differential
                                  # in thirds (buyer's add-on ≈ 4,043–8,206 ₪), and (c) indexation
                                  # accrues only from the LATER of contract-signing / full היתר
-                                 # בנייה — and this project has no היתר yet. Effective ≈ ×1.04–1.10;
-                                 # the RANKING ORDER is invariant to it. See docs/RANKING_MODEL.md.
+                                 # בנייה — and this project has no היתר yet. Effective ≈ ×1.04–1.10.
+                                 # Set to 1.0 to price at the un-indexed contract terms.
 
 def purchase_cost(area):
-    """Returns (full_price, embedded_benefit, net_purchase_price) at current terms."""
-    full    = OFFICIAL_BASE_PPM * area * (1 + VAT) * INDEXATION   # before the מטרה benefit
-    benefit = PREVAT_BENEFIT * (1 + VAT) * INDEXATION             # embedded discount
-    return round(full), round(benefit), round(full - benefit)
+    """Returns (displayed_price, subsidy_discount, net_purchase_price) at current terms.
+
+    displayed = 15,022 ₪/m² × area × (1+VAT) × INDEXATION   (מחיר מוצג, incl VAT, indexed)
+    discount  = min(20% × displayed, ₪300,000)              (דירה בהנחה subsidy)
+    net       = displayed − discount                        (what the buyer pays)
+    """
+    displayed = OFFICIAL_BASE_PPM * area * (1 + VAT) * INDEXATION
+    discount  = min(DISCOUNT_RATE * displayed, DISCOUNT_CAP)
+    return round(displayed), round(discount), round(displayed - discount)
 
 # --- Market model, calibrated to this project's free-market residential units -----
 # Observed in-project free-market ₪/m² by floor (large units): f5≈26.2k, f6≈26.3k,
@@ -156,15 +159,16 @@ def rank(apartments):
     out = []
     for a in sub:
         facing = facing_of(a)
-        full, benefit, net_cost = purchase_cost(a["area_m2"])
+        displayed, discount, net_cost = purchase_cost(a["area_m2"])
         ppm = market_ppm(a["area_m2"], a["floor"], facing)
         mkt = round(ppm * a["area_m2"])
         profit = mkt - net_cost
         rec = dict(a)
         rec["sheet_price_ref"] = a["price_ils"]          # original price-list figure (17% VAT, base idx)
-        rec["gross_price"] = full                         # full price before the מטרה benefit (18% VAT + idx)
-        rec["target_discount"] = benefit                  # embedded מחיר מטרה benefit (the −133,230 term)
-        rec["purchase_price"] = net_cost                  # what you actually pay
+        rec["gross_price"] = displayed                    # מחיר מוצג: 15,022 ₪/m² × area × VAT × idx
+        rec["target_discount"] = discount                 # דירה בהנחה subsidy: min(20%×displayed, ₪300k)
+        rec["discount_capped"] = discount >= DISCOUNT_CAP  # True when the ₪300k cap binds
+        rec["purchase_price"] = net_cost                  # what you actually pay (displayed − discount)
         rec["facing"] = facing or "—"                     # per-unit facade (inferred; informational)
         rec["facing_inferred"] = bool(facing) and FACING_INFERRED
         rec["exposure_applied"] = INCLUDE_EXPOSURE          # is facing factored into the score?
@@ -207,8 +211,8 @@ if __name__ == "__main__":
                         r["purchase_price"], r["est_market_value"], r["est_profit_ils"],
                         r["est_profit_pct"], r["liquidity"], r["resale_score"]])
     print(f"ranked {len(ranked)} subsidized apartments -> {a.out} (+ .csv)")
-    print(f"cost model: base {OFFICIAL_BASE_PPM} ₪/m² × idx {INDEXATION} × VAT {1+VAT} "
-          f"− embedded benefit {PREVAT_BENEFIT:,} (no extra discount)")
+    print(f"cost model: displayed = {OFFICIAL_BASE_PPM} ₪/m² × area × VAT {1+VAT} × idx {INDEXATION}; "
+          f"discount = min({DISCOUNT_RATE:.0%} × displayed, ₪{DISCOUNT_CAP:,}); buyer pays displayed − discount")
     known = sum(1 for r in ranked if r["facing"] != "—")
     print(f"per-unit facing inferred: {known}/{len(ranked)} — "
           f"{'EXPOSURE IN SCORE' if INCLUDE_EXPOSURE else 'EXCLUDED from score (unverified; informational only)'}")
