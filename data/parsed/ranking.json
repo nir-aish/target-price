@@ -1,0 +1,1815 @@
+[
+  {
+    "building": 1,
+    "floor": 7,
+    "stack": 2,
+    "area_m2": 89.0,
+    "price_ils": 1408362,
+    "price_per_m2": 15824,
+    "tier": "subsidized",
+    "est_market_ppm": 30334,
+    "est_market_value": 2699770,
+    "est_profit_ils": 1291408,
+    "est_profit_pct": 91.7,
+    "liquidity": 1.0,
+    "resale_score": 91.7,
+    "pros": [
+      "גבוהה (קומה 6+): אור, נוף, שקט מהרחוב",
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת"
+    ],
+    "cons": [],
+    "rank": 1
+  },
+  {
+    "building": 1,
+    "floor": 6,
+    "stack": 4,
+    "area_m2": 76.0,
+    "price_ils": 1179877,
+    "price_per_m2": 15525,
+    "tier": "subsidized",
+    "est_market_ppm": 29484,
+    "est_market_value": 2240784,
+    "est_profit_ils": 1060907,
+    "est_profit_pct": 89.9,
+    "liquidity": 1.0,
+    "resale_score": 89.9,
+    "pros": [
+      "גבוהה (קומה 6+): אור, נוף, שקט מהרחוב",
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת",
+      "מחיר כניסה נמוך מאוד למ\"ר"
+    ],
+    "cons": [],
+    "rank": 2
+  },
+  {
+    "building": 1,
+    "floor": 6,
+    "stack": 5,
+    "area_m2": 79.0,
+    "price_ils": 1232605,
+    "price_per_m2": 15603,
+    "tier": "subsidized",
+    "est_market_ppm": 29484,
+    "est_market_value": 2329236,
+    "est_profit_ils": 1096631,
+    "est_profit_pct": 89.0,
+    "liquidity": 1.0,
+    "resale_score": 89.0,
+    "pros": [
+      "גבוהה (קומה 6+): אור, נוף, שקט מהרחוב",
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת",
+      "מחיר כניסה נמוך מאוד למ\"ר"
+    ],
+    "cons": [],
+    "rank": 3
+  },
+  {
+    "building": 1,
+    "floor": 6,
+    "stack": 2,
+    "area_m2": 89.0,
+    "price_ils": 1408362,
+    "price_per_m2": 15824,
+    "tier": "subsidized",
+    "est_market_ppm": 29484,
+    "est_market_value": 2624076,
+    "est_profit_ils": 1215714,
+    "est_profit_pct": 86.3,
+    "liquidity": 1.0,
+    "resale_score": 86.3,
+    "pros": [
+      "גבוהה (קומה 6+): אור, נוף, שקט מהרחוב",
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת"
+    ],
+    "cons": [],
+    "rank": 4
+  },
+  {
+    "building": 2,
+    "floor": 6,
+    "stack": 1,
+    "area_m2": 89.0,
+    "price_ils": 1408362,
+    "price_per_m2": 15824,
+    "tier": "subsidized",
+    "est_market_ppm": 29484,
+    "est_market_value": 2624076,
+    "est_profit_ils": 1215714,
+    "est_profit_pct": 86.3,
+    "liquidity": 1.0,
+    "resale_score": 86.3,
+    "pros": [
+      "גבוהה (קומה 6+): אור, נוף, שקט מהרחוב",
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת"
+    ],
+    "cons": [],
+    "rank": 5
+  },
+  {
+    "building": 1,
+    "floor": 5,
+    "stack": 4,
+    "area_m2": 76.0,
+    "price_ils": 1179877,
+    "price_per_m2": 15525,
+    "tier": "subsidized",
+    "est_market_ppm": 28917,
+    "est_market_value": 2197692,
+    "est_profit_ils": 1017815,
+    "est_profit_pct": 86.3,
+    "liquidity": 1.0,
+    "resale_score": 86.3,
+    "pros": [
+      "קומה אמצעית (5): ביקוש יציב",
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת",
+      "מחיר כניסה נמוך מאוד למ\"ר"
+    ],
+    "cons": [],
+    "rank": 6
+  },
+  {
+    "building": 3,
+    "floor": 5,
+    "stack": 4,
+    "area_m2": 76.0,
+    "price_ils": 1179877,
+    "price_per_m2": 15525,
+    "tier": "subsidized",
+    "est_market_ppm": 28917,
+    "est_market_value": 2197692,
+    "est_profit_ils": 1017815,
+    "est_profit_pct": 86.3,
+    "liquidity": 1.0,
+    "resale_score": 86.3,
+    "pros": [
+      "קומה אמצעית (5): ביקוש יציב",
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת",
+      "מחיר כניסה נמוך מאוד למ\"ר"
+    ],
+    "cons": [],
+    "rank": 7
+  },
+  {
+    "building": 1,
+    "floor": 5,
+    "stack": 5,
+    "area_m2": 79.0,
+    "price_ils": 1232605,
+    "price_per_m2": 15603,
+    "tier": "subsidized",
+    "est_market_ppm": 28917,
+    "est_market_value": 2284443,
+    "est_profit_ils": 1051838,
+    "est_profit_pct": 85.3,
+    "liquidity": 1.0,
+    "resale_score": 85.3,
+    "pros": [
+      "קומה אמצעית (5): ביקוש יציב",
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת",
+      "מחיר כניסה נמוך מאוד למ\"ר"
+    ],
+    "cons": [],
+    "rank": 8
+  },
+  {
+    "building": 3,
+    "floor": 5,
+    "stack": 3,
+    "area_m2": 79.0,
+    "price_ils": 1232605,
+    "price_per_m2": 15603,
+    "tier": "subsidized",
+    "est_market_ppm": 28917,
+    "est_market_value": 2284443,
+    "est_profit_ils": 1051838,
+    "est_profit_pct": 85.3,
+    "liquidity": 1.0,
+    "resale_score": 85.3,
+    "pros": [
+      "קומה אמצעית (5): ביקוש יציב",
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת",
+      "מחיר כניסה נמוך מאוד למ\"ר"
+    ],
+    "cons": [],
+    "rank": 9
+  },
+  {
+    "building": 1,
+    "floor": 5,
+    "stack": 2,
+    "area_m2": 89.0,
+    "price_ils": 1408362,
+    "price_per_m2": 15824,
+    "tier": "subsidized",
+    "est_market_ppm": 28917,
+    "est_market_value": 2573613,
+    "est_profit_ils": 1165251,
+    "est_profit_pct": 82.7,
+    "liquidity": 1.0,
+    "resale_score": 82.7,
+    "pros": [
+      "קומה אמצעית (5): ביקוש יציב",
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת"
+    ],
+    "cons": [],
+    "rank": 10
+  },
+  {
+    "building": 2,
+    "floor": 5,
+    "stack": 1,
+    "area_m2": 89.0,
+    "price_ils": 1408362,
+    "price_per_m2": 15824,
+    "tier": "subsidized",
+    "est_market_ppm": 28917,
+    "est_market_value": 2573613,
+    "est_profit_ils": 1165251,
+    "est_profit_pct": 82.7,
+    "liquidity": 1.0,
+    "resale_score": 82.7,
+    "pros": [
+      "קומה אמצעית (5): ביקוש יציב",
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת"
+    ],
+    "cons": [],
+    "rank": 11
+  },
+  {
+    "building": 1,
+    "floor": 4,
+    "stack": 4,
+    "area_m2": 76.0,
+    "price_ils": 1179877,
+    "price_per_m2": 15525,
+    "tier": "subsidized",
+    "est_market_ppm": 28350,
+    "est_market_value": 2154600,
+    "est_profit_ils": 974723,
+    "est_profit_pct": 82.6,
+    "liquidity": 1.0,
+    "resale_score": 82.6,
+    "pros": [
+      "קומה אמצעית (4): ביקוש יציב",
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת",
+      "מחיר כניסה נמוך מאוד למ\"ר"
+    ],
+    "cons": [],
+    "rank": 12
+  },
+  {
+    "building": 2,
+    "floor": 4,
+    "stack": 4,
+    "area_m2": 76.0,
+    "price_ils": 1179877,
+    "price_per_m2": 15525,
+    "tier": "subsidized",
+    "est_market_ppm": 28350,
+    "est_market_value": 2154600,
+    "est_profit_ils": 974723,
+    "est_profit_pct": 82.6,
+    "liquidity": 1.0,
+    "resale_score": 82.6,
+    "pros": [
+      "קומה אמצעית (4): ביקוש יציב",
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת",
+      "מחיר כניסה נמוך מאוד למ\"ר"
+    ],
+    "cons": [],
+    "rank": 13
+  },
+  {
+    "building": 3,
+    "floor": 4,
+    "stack": 4,
+    "area_m2": 76.0,
+    "price_ils": 1179877,
+    "price_per_m2": 15525,
+    "tier": "subsidized",
+    "est_market_ppm": 28350,
+    "est_market_value": 2154600,
+    "est_profit_ils": 974723,
+    "est_profit_pct": 82.6,
+    "liquidity": 1.0,
+    "resale_score": 82.6,
+    "pros": [
+      "קומה אמצעית (4): ביקוש יציב",
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת",
+      "מחיר כניסה נמוך מאוד למ\"ר"
+    ],
+    "cons": [],
+    "rank": 14
+  },
+  {
+    "building": 1,
+    "floor": 4,
+    "stack": 5,
+    "area_m2": 79.0,
+    "price_ils": 1232605,
+    "price_per_m2": 15603,
+    "tier": "subsidized",
+    "est_market_ppm": 28350,
+    "est_market_value": 2239650,
+    "est_profit_ils": 1007045,
+    "est_profit_pct": 81.7,
+    "liquidity": 1.0,
+    "resale_score": 81.7,
+    "pros": [
+      "קומה אמצעית (4): ביקוש יציב",
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת",
+      "מחיר כניסה נמוך מאוד למ\"ר"
+    ],
+    "cons": [],
+    "rank": 15
+  },
+  {
+    "building": 2,
+    "floor": 4,
+    "stack": 3,
+    "area_m2": 79.0,
+    "price_ils": 1232605,
+    "price_per_m2": 15603,
+    "tier": "subsidized",
+    "est_market_ppm": 28350,
+    "est_market_value": 2239650,
+    "est_profit_ils": 1007045,
+    "est_profit_pct": 81.7,
+    "liquidity": 1.0,
+    "resale_score": 81.7,
+    "pros": [
+      "קומה אמצעית (4): ביקוש יציב",
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת",
+      "מחיר כניסה נמוך מאוד למ\"ר"
+    ],
+    "cons": [],
+    "rank": 16
+  },
+  {
+    "building": 3,
+    "floor": 4,
+    "stack": 3,
+    "area_m2": 79.0,
+    "price_ils": 1232605,
+    "price_per_m2": 15603,
+    "tier": "subsidized",
+    "est_market_ppm": 28350,
+    "est_market_value": 2239650,
+    "est_profit_ils": 1007045,
+    "est_profit_pct": 81.7,
+    "liquidity": 1.0,
+    "resale_score": 81.7,
+    "pros": [
+      "קומה אמצעית (4): ביקוש יציב",
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת",
+      "מחיר כניסה נמוך מאוד למ\"ר"
+    ],
+    "cons": [],
+    "rank": 17
+  },
+  {
+    "building": 1,
+    "floor": 3,
+    "stack": 4,
+    "area_m2": 76.0,
+    "price_ils": 1179877,
+    "price_per_m2": 15525,
+    "tier": "subsidized",
+    "est_market_ppm": 28066,
+    "est_market_value": 2133054,
+    "est_profit_ils": 953177,
+    "est_profit_pct": 80.8,
+    "liquidity": 1.0,
+    "resale_score": 80.8,
+    "pros": [
+      "קומה אמצעית (3): ביקוש יציב",
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת",
+      "מחיר כניסה נמוך מאוד למ\"ר"
+    ],
+    "cons": [],
+    "rank": 18
+  },
+  {
+    "building": 2,
+    "floor": 3,
+    "stack": 4,
+    "area_m2": 76.0,
+    "price_ils": 1179877,
+    "price_per_m2": 15525,
+    "tier": "subsidized",
+    "est_market_ppm": 28066,
+    "est_market_value": 2133054,
+    "est_profit_ils": 953177,
+    "est_profit_pct": 80.8,
+    "liquidity": 1.0,
+    "resale_score": 80.8,
+    "pros": [
+      "קומה אמצעית (3): ביקוש יציב",
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת",
+      "מחיר כניסה נמוך מאוד למ\"ר"
+    ],
+    "cons": [],
+    "rank": 19
+  },
+  {
+    "building": 3,
+    "floor": 3,
+    "stack": 4,
+    "area_m2": 76.0,
+    "price_ils": 1179877,
+    "price_per_m2": 15525,
+    "tier": "subsidized",
+    "est_market_ppm": 28066,
+    "est_market_value": 2133054,
+    "est_profit_ils": 953177,
+    "est_profit_pct": 80.8,
+    "liquidity": 1.0,
+    "resale_score": 80.8,
+    "pros": [
+      "קומה אמצעית (3): ביקוש יציב",
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת",
+      "מחיר כניסה נמוך מאוד למ\"ר"
+    ],
+    "cons": [],
+    "rank": 20
+  },
+  {
+    "building": 1,
+    "floor": 3,
+    "stack": 5,
+    "area_m2": 79.0,
+    "price_ils": 1232605,
+    "price_per_m2": 15603,
+    "tier": "subsidized",
+    "est_market_ppm": 28066,
+    "est_market_value": 2217254,
+    "est_profit_ils": 984649,
+    "est_profit_pct": 79.9,
+    "liquidity": 1.0,
+    "resale_score": 79.9,
+    "pros": [
+      "קומה אמצעית (3): ביקוש יציב",
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת",
+      "מחיר כניסה נמוך מאוד למ\"ר"
+    ],
+    "cons": [],
+    "rank": 21
+  },
+  {
+    "building": 2,
+    "floor": 3,
+    "stack": 3,
+    "area_m2": 79.0,
+    "price_ils": 1232605,
+    "price_per_m2": 15603,
+    "tier": "subsidized",
+    "est_market_ppm": 28066,
+    "est_market_value": 2217254,
+    "est_profit_ils": 984649,
+    "est_profit_pct": 79.9,
+    "liquidity": 1.0,
+    "resale_score": 79.9,
+    "pros": [
+      "קומה אמצעית (3): ביקוש יציב",
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת",
+      "מחיר כניסה נמוך מאוד למ\"ר"
+    ],
+    "cons": [],
+    "rank": 22
+  },
+  {
+    "building": 3,
+    "floor": 3,
+    "stack": 3,
+    "area_m2": 79.0,
+    "price_ils": 1232605,
+    "price_per_m2": 15603,
+    "tier": "subsidized",
+    "est_market_ppm": 28066,
+    "est_market_value": 2217254,
+    "est_profit_ils": 984649,
+    "est_profit_pct": 79.9,
+    "liquidity": 1.0,
+    "resale_score": 79.9,
+    "pros": [
+      "קומה אמצעית (3): ביקוש יציב",
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת",
+      "מחיר כניסה נמוך מאוד למ\"ר"
+    ],
+    "cons": [],
+    "rank": 23
+  },
+  {
+    "building": 1,
+    "floor": 4,
+    "stack": 2,
+    "area_m2": 89.0,
+    "price_ils": 1408362,
+    "price_per_m2": 15824,
+    "tier": "subsidized",
+    "est_market_ppm": 28350,
+    "est_market_value": 2523150,
+    "est_profit_ils": 1114788,
+    "est_profit_pct": 79.2,
+    "liquidity": 1.0,
+    "resale_score": 79.2,
+    "pros": [
+      "קומה אמצעית (4): ביקוש יציב",
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת"
+    ],
+    "cons": [],
+    "rank": 24
+  },
+  {
+    "building": 2,
+    "floor": 4,
+    "stack": 1,
+    "area_m2": 89.0,
+    "price_ils": 1408362,
+    "price_per_m2": 15824,
+    "tier": "subsidized",
+    "est_market_ppm": 28350,
+    "est_market_value": 2523150,
+    "est_profit_ils": 1114788,
+    "est_profit_pct": 79.2,
+    "liquidity": 1.0,
+    "resale_score": 79.2,
+    "pros": [
+      "קומה אמצעית (4): ביקוש יציב",
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת"
+    ],
+    "cons": [],
+    "rank": 25
+  },
+  {
+    "building": 1,
+    "floor": 3,
+    "stack": 2,
+    "area_m2": 89.0,
+    "price_ils": 1408362,
+    "price_per_m2": 15824,
+    "tier": "subsidized",
+    "est_market_ppm": 28066,
+    "est_market_value": 2497918,
+    "est_profit_ils": 1089556,
+    "est_profit_pct": 77.4,
+    "liquidity": 1.0,
+    "resale_score": 77.4,
+    "pros": [
+      "קומה אמצעית (3): ביקוש יציב",
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת"
+    ],
+    "cons": [],
+    "rank": 26
+  },
+  {
+    "building": 2,
+    "floor": 3,
+    "stack": 1,
+    "area_m2": 89.0,
+    "price_ils": 1408362,
+    "price_per_m2": 15824,
+    "tier": "subsidized",
+    "est_market_ppm": 28066,
+    "est_market_value": 2497918,
+    "est_profit_ils": 1089556,
+    "est_profit_pct": 77.4,
+    "liquidity": 1.0,
+    "resale_score": 77.4,
+    "pros": [
+      "קומה אמצעית (3): ביקוש יציב",
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת"
+    ],
+    "cons": [],
+    "rank": 27
+  },
+  {
+    "building": 1,
+    "floor": 2,
+    "stack": 4,
+    "area_m2": 76.0,
+    "price_ils": 1179877,
+    "price_per_m2": 15525,
+    "tier": "subsidized",
+    "est_market_ppm": 27500,
+    "est_market_value": 2089962,
+    "est_profit_ils": 910085,
+    "est_profit_pct": 77.1,
+    "liquidity": 1.0,
+    "resale_score": 77.1,
+    "pros": [
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת",
+      "מחיר כניסה נמוך מאוד למ\"ר"
+    ],
+    "cons": [
+      "קומה נמוכה (2): פרמיית קומה נמוכה"
+    ],
+    "rank": 28
+  },
+  {
+    "building": 2,
+    "floor": 2,
+    "stack": 4,
+    "area_m2": 76.0,
+    "price_ils": 1179877,
+    "price_per_m2": 15525,
+    "tier": "subsidized",
+    "est_market_ppm": 27500,
+    "est_market_value": 2089962,
+    "est_profit_ils": 910085,
+    "est_profit_pct": 77.1,
+    "liquidity": 1.0,
+    "resale_score": 77.1,
+    "pros": [
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת",
+      "מחיר כניסה נמוך מאוד למ\"ר"
+    ],
+    "cons": [
+      "קומה נמוכה (2): פרמיית קומה נמוכה"
+    ],
+    "rank": 29
+  },
+  {
+    "building": 3,
+    "floor": 2,
+    "stack": 4,
+    "area_m2": 76.0,
+    "price_ils": 1179877,
+    "price_per_m2": 15525,
+    "tier": "subsidized",
+    "est_market_ppm": 27500,
+    "est_market_value": 2089962,
+    "est_profit_ils": 910085,
+    "est_profit_pct": 77.1,
+    "liquidity": 1.0,
+    "resale_score": 77.1,
+    "pros": [
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת",
+      "מחיר כניסה נמוך מאוד למ\"ר"
+    ],
+    "cons": [
+      "קומה נמוכה (2): פרמיית קומה נמוכה"
+    ],
+    "rank": 30
+  },
+  {
+    "building": 1,
+    "floor": 2,
+    "stack": 5,
+    "area_m2": 79.0,
+    "price_ils": 1232605,
+    "price_per_m2": 15603,
+    "tier": "subsidized",
+    "est_market_ppm": 27500,
+    "est_market_value": 2172460,
+    "est_profit_ils": 939855,
+    "est_profit_pct": 76.2,
+    "liquidity": 1.0,
+    "resale_score": 76.2,
+    "pros": [
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת",
+      "מחיר כניסה נמוך מאוד למ\"ר"
+    ],
+    "cons": [
+      "קומה נמוכה (2): פרמיית קומה נמוכה"
+    ],
+    "rank": 31
+  },
+  {
+    "building": 2,
+    "floor": 2,
+    "stack": 3,
+    "area_m2": 79.0,
+    "price_ils": 1232605,
+    "price_per_m2": 15603,
+    "tier": "subsidized",
+    "est_market_ppm": 27500,
+    "est_market_value": 2172460,
+    "est_profit_ils": 939855,
+    "est_profit_pct": 76.2,
+    "liquidity": 1.0,
+    "resale_score": 76.2,
+    "pros": [
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת",
+      "מחיר כניסה נמוך מאוד למ\"ר"
+    ],
+    "cons": [
+      "קומה נמוכה (2): פרמיית קומה נמוכה"
+    ],
+    "rank": 32
+  },
+  {
+    "building": 3,
+    "floor": 2,
+    "stack": 3,
+    "area_m2": 79.0,
+    "price_ils": 1232605,
+    "price_per_m2": 15603,
+    "tier": "subsidized",
+    "est_market_ppm": 27500,
+    "est_market_value": 2172460,
+    "est_profit_ils": 939855,
+    "est_profit_pct": 76.2,
+    "liquidity": 1.0,
+    "resale_score": 76.2,
+    "pros": [
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת",
+      "מחיר כניסה נמוך מאוד למ\"ר"
+    ],
+    "cons": [
+      "קומה נמוכה (2): פרמיית קומה נמוכה"
+    ],
+    "rank": 33
+  },
+  {
+    "building": 1,
+    "floor": 7,
+    "stack": 1,
+    "area_m2": 109.0,
+    "price_ils": 1759877,
+    "price_per_m2": 16146,
+    "tier": "subsidized",
+    "est_market_ppm": 28890,
+    "est_market_value": 3149010,
+    "est_profit_ils": 1389133,
+    "est_profit_pct": 78.9,
+    "liquidity": 0.95,
+    "resale_score": 75.0,
+    "pros": [
+      "גבוהה (קומה 6+): אור, נוף, שקט מהרחוב"
+    ],
+    "cons": [
+      "דירה גדולה: מחיר גבוה → קהל קונים קטן יותר"
+    ],
+    "rank": 34
+  },
+  {
+    "building": 1,
+    "floor": 2,
+    "stack": 2,
+    "area_m2": 89.0,
+    "price_ils": 1408362,
+    "price_per_m2": 15824,
+    "tier": "subsidized",
+    "est_market_ppm": 27500,
+    "est_market_value": 2447456,
+    "est_profit_ils": 1039094,
+    "est_profit_pct": 73.8,
+    "liquidity": 1.0,
+    "resale_score": 73.8,
+    "pros": [
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת"
+    ],
+    "cons": [
+      "קומה נמוכה (2): פרמיית קומה נמוכה"
+    ],
+    "rank": 35
+  },
+  {
+    "building": 2,
+    "floor": 2,
+    "stack": 1,
+    "area_m2": 89.0,
+    "price_ils": 1408362,
+    "price_per_m2": 15824,
+    "tier": "subsidized",
+    "est_market_ppm": 27500,
+    "est_market_value": 2447456,
+    "est_profit_ils": 1039094,
+    "est_profit_pct": 73.8,
+    "liquidity": 1.0,
+    "resale_score": 73.8,
+    "pros": [
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת"
+    ],
+    "cons": [
+      "קומה נמוכה (2): פרמיית קומה נמוכה"
+    ],
+    "rank": 36
+  },
+  {
+    "building": 1,
+    "floor": 1,
+    "stack": 4,
+    "area_m2": 76.0,
+    "price_ils": 1179877,
+    "price_per_m2": 15525,
+    "tier": "subsidized",
+    "est_market_ppm": 26932,
+    "est_market_value": 2046870,
+    "est_profit_ils": 866993,
+    "est_profit_pct": 73.5,
+    "liquidity": 1.0,
+    "resale_score": 73.5,
+    "pros": [
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת",
+      "מחיר כניסה נמוך מאוד למ\"ר"
+    ],
+    "cons": [
+      "קומה נמוכה (1): פרמיית קומה נמוכה"
+    ],
+    "rank": 37
+  },
+  {
+    "building": 2,
+    "floor": 1,
+    "stack": 4,
+    "area_m2": 76.0,
+    "price_ils": 1179877,
+    "price_per_m2": 15525,
+    "tier": "subsidized",
+    "est_market_ppm": 26932,
+    "est_market_value": 2046870,
+    "est_profit_ils": 866993,
+    "est_profit_pct": 73.5,
+    "liquidity": 1.0,
+    "resale_score": 73.5,
+    "pros": [
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת",
+      "מחיר כניסה נמוך מאוד למ\"ר"
+    ],
+    "cons": [
+      "קומה נמוכה (1): פרמיית קומה נמוכה"
+    ],
+    "rank": 38
+  },
+  {
+    "building": 3,
+    "floor": 1,
+    "stack": 4,
+    "area_m2": 76.0,
+    "price_ils": 1179877,
+    "price_per_m2": 15525,
+    "tier": "subsidized",
+    "est_market_ppm": 26932,
+    "est_market_value": 2046870,
+    "est_profit_ils": 866993,
+    "est_profit_pct": 73.5,
+    "liquidity": 1.0,
+    "resale_score": 73.5,
+    "pros": [
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת",
+      "מחיר כניסה נמוך מאוד למ\"ר"
+    ],
+    "cons": [
+      "קומה נמוכה (1): פרמיית קומה נמוכה"
+    ],
+    "rank": 39
+  },
+  {
+    "building": 1,
+    "floor": 1,
+    "stack": 5,
+    "area_m2": 79.0,
+    "price_ils": 1232605,
+    "price_per_m2": 15603,
+    "tier": "subsidized",
+    "est_market_ppm": 26932,
+    "est_market_value": 2127668,
+    "est_profit_ils": 895063,
+    "est_profit_pct": 72.6,
+    "liquidity": 1.0,
+    "resale_score": 72.6,
+    "pros": [
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת",
+      "מחיר כניסה נמוך מאוד למ\"ר"
+    ],
+    "cons": [
+      "קומה נמוכה (1): פרמיית קומה נמוכה"
+    ],
+    "rank": 40
+  },
+  {
+    "building": 2,
+    "floor": 1,
+    "stack": 3,
+    "area_m2": 79.0,
+    "price_ils": 1232605,
+    "price_per_m2": 15603,
+    "tier": "subsidized",
+    "est_market_ppm": 26932,
+    "est_market_value": 2127668,
+    "est_profit_ils": 895063,
+    "est_profit_pct": 72.6,
+    "liquidity": 1.0,
+    "resale_score": 72.6,
+    "pros": [
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת",
+      "מחיר כניסה נמוך מאוד למ\"ר"
+    ],
+    "cons": [
+      "קומה נמוכה (1): פרמיית קומה נמוכה"
+    ],
+    "rank": 41
+  },
+  {
+    "building": 3,
+    "floor": 1,
+    "stack": 3,
+    "area_m2": 79.0,
+    "price_ils": 1232605,
+    "price_per_m2": 15603,
+    "tier": "subsidized",
+    "est_market_ppm": 26932,
+    "est_market_value": 2127668,
+    "est_profit_ils": 895063,
+    "est_profit_pct": 72.6,
+    "liquidity": 1.0,
+    "resale_score": 72.6,
+    "pros": [
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת",
+      "מחיר כניסה נמוך מאוד למ\"ר"
+    ],
+    "cons": [
+      "קומה נמוכה (1): פרמיית קומה נמוכה"
+    ],
+    "rank": 42
+  },
+  {
+    "building": 1,
+    "floor": 6,
+    "stack": 3,
+    "area_m2": 105.4,
+    "price_ils": 1697307,
+    "price_per_m2": 16103,
+    "tier": "subsidized",
+    "est_market_ppm": 28080,
+    "est_market_value": 2959632,
+    "est_profit_ils": 1262325,
+    "est_profit_pct": 74.4,
+    "liquidity": 0.95,
+    "resale_score": 70.7,
+    "pros": [
+      "גבוהה (קומה 6+): אור, נוף, שקט מהרחוב"
+    ],
+    "cons": [],
+    "rank": 43
+  },
+  {
+    "building": 1,
+    "floor": 6,
+    "stack": 1,
+    "area_m2": 109.0,
+    "price_ils": 1759877,
+    "price_per_m2": 16146,
+    "tier": "subsidized",
+    "est_market_ppm": 28080,
+    "est_market_value": 3060720,
+    "est_profit_ils": 1300843,
+    "est_profit_pct": 73.9,
+    "liquidity": 0.95,
+    "resale_score": 70.2,
+    "pros": [
+      "גבוהה (קומה 6+): אור, נוף, שקט מהרחוב"
+    ],
+    "cons": [
+      "דירה גדולה: מחיר גבוה → קהל קונים קטן יותר"
+    ],
+    "rank": 44
+  },
+  {
+    "building": 2,
+    "floor": 6,
+    "stack": 2,
+    "area_m2": 109.0,
+    "price_ils": 1759877,
+    "price_per_m2": 16146,
+    "tier": "subsidized",
+    "est_market_ppm": 28080,
+    "est_market_value": 3060720,
+    "est_profit_ils": 1300843,
+    "est_profit_pct": 73.9,
+    "liquidity": 0.95,
+    "resale_score": 70.2,
+    "pros": [
+      "גבוהה (קומה 6+): אור, נוף, שקט מהרחוב"
+    ],
+    "cons": [
+      "דירה גדולה: מחיר גבוה → קהל קונים קטן יותר"
+    ],
+    "rank": 45
+  },
+  {
+    "building": 1,
+    "floor": 1,
+    "stack": 2,
+    "area_m2": 89.0,
+    "price_ils": 1408362,
+    "price_per_m2": 15824,
+    "tier": "subsidized",
+    "est_market_ppm": 26932,
+    "est_market_value": 2396992,
+    "est_profit_ils": 988630,
+    "est_profit_pct": 70.2,
+    "liquidity": 1.0,
+    "resale_score": 70.2,
+    "pros": [
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת"
+    ],
+    "cons": [
+      "קומה נמוכה (1): פרמיית קומה נמוכה"
+    ],
+    "rank": 46
+  },
+  {
+    "building": 2,
+    "floor": 1,
+    "stack": 1,
+    "area_m2": 89.0,
+    "price_ils": 1408362,
+    "price_per_m2": 15824,
+    "tier": "subsidized",
+    "est_market_ppm": 26932,
+    "est_market_value": 2396992,
+    "est_profit_ils": 988630,
+    "est_profit_pct": 70.2,
+    "liquidity": 1.0,
+    "resale_score": 70.2,
+    "pros": [
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת"
+    ],
+    "cons": [
+      "קומה נמוכה (1): פרמיית קומה נמוכה"
+    ],
+    "rank": 47
+  },
+  {
+    "building": 3,
+    "floor": 6,
+    "stack": 2,
+    "area_m2": 109.5,
+    "price_ils": 1768665,
+    "price_per_m2": 16152,
+    "tier": "subsidized",
+    "est_market_ppm": 28080,
+    "est_market_value": 3074760,
+    "est_profit_ils": 1306095,
+    "est_profit_pct": 73.8,
+    "liquidity": 0.95,
+    "resale_score": 70.1,
+    "pros": [
+      "גבוהה (קומה 6+): אור, נוף, שקט מהרחוב"
+    ],
+    "cons": [
+      "דירה גדולה: מחיר גבוה → קהל קונים קטן יותר"
+    ],
+    "rank": 48
+  },
+  {
+    "building": 3,
+    "floor": 6,
+    "stack": 1,
+    "area_m2": 110.5,
+    "price_ils": 1786240,
+    "price_per_m2": 16165,
+    "tier": "subsidized",
+    "est_market_ppm": 28080,
+    "est_market_value": 3102840,
+    "est_profit_ils": 1316600,
+    "est_profit_pct": 73.7,
+    "liquidity": 0.95,
+    "resale_score": 70.0,
+    "pros": [
+      "גבוהה (קומה 6+): אור, נוף, שקט מהרחוב"
+    ],
+    "cons": [
+      "דירה גדולה: מחיר גבוה → קהל קונים קטן יותר"
+    ],
+    "rank": 49
+  },
+  {
+    "building": 1,
+    "floor": 5,
+    "stack": 3,
+    "area_m2": 105.4,
+    "price_ils": 1697307,
+    "price_per_m2": 16103,
+    "tier": "subsidized",
+    "est_market_ppm": 27540,
+    "est_market_value": 2902716,
+    "est_profit_ils": 1205409,
+    "est_profit_pct": 71.0,
+    "liquidity": 0.95,
+    "resale_score": 67.5,
+    "pros": [
+      "קומה אמצעית (5): ביקוש יציב"
+    ],
+    "cons": [],
+    "rank": 50
+  },
+  {
+    "building": 3,
+    "floor": 5,
+    "stack": 5,
+    "area_m2": 105.4,
+    "price_ils": 1697307,
+    "price_per_m2": 16103,
+    "tier": "subsidized",
+    "est_market_ppm": 27540,
+    "est_market_value": 2902716,
+    "est_profit_ils": 1205409,
+    "est_profit_pct": 71.0,
+    "liquidity": 0.95,
+    "resale_score": 67.5,
+    "pros": [
+      "קומה אמצעית (5): ביקוש יציב"
+    ],
+    "cons": [],
+    "rank": 51
+  },
+  {
+    "building": 1,
+    "floor": 5,
+    "stack": 1,
+    "area_m2": 109.0,
+    "price_ils": 1759877,
+    "price_per_m2": 16146,
+    "tier": "subsidized",
+    "est_market_ppm": 27540,
+    "est_market_value": 3001860,
+    "est_profit_ils": 1241983,
+    "est_profit_pct": 70.6,
+    "liquidity": 0.95,
+    "resale_score": 67.1,
+    "pros": [
+      "קומה אמצעית (5): ביקוש יציב"
+    ],
+    "cons": [
+      "דירה גדולה: מחיר גבוה → קהל קונים קטן יותר"
+    ],
+    "rank": 52
+  },
+  {
+    "building": 2,
+    "floor": 5,
+    "stack": 2,
+    "area_m2": 109.0,
+    "price_ils": 1759877,
+    "price_per_m2": 16146,
+    "tier": "subsidized",
+    "est_market_ppm": 27540,
+    "est_market_value": 3001860,
+    "est_profit_ils": 1241983,
+    "est_profit_pct": 70.6,
+    "liquidity": 0.95,
+    "resale_score": 67.1,
+    "pros": [
+      "קומה אמצעית (5): ביקוש יציב"
+    ],
+    "cons": [
+      "דירה גדולה: מחיר גבוה → קהל קונים קטן יותר"
+    ],
+    "rank": 53
+  },
+  {
+    "building": 3,
+    "floor": 5,
+    "stack": 2,
+    "area_m2": 109.5,
+    "price_ils": 1768665,
+    "price_per_m2": 16152,
+    "tier": "subsidized",
+    "est_market_ppm": 27540,
+    "est_market_value": 3015630,
+    "est_profit_ils": 1246965,
+    "est_profit_pct": 70.5,
+    "liquidity": 0.95,
+    "resale_score": 67.0,
+    "pros": [
+      "קומה אמצעית (5): ביקוש יציב"
+    ],
+    "cons": [
+      "דירה גדולה: מחיר גבוה → קהל קונים קטן יותר"
+    ],
+    "rank": 54
+  },
+  {
+    "building": 3,
+    "floor": 5,
+    "stack": 1,
+    "area_m2": 110.5,
+    "price_ils": 1786240,
+    "price_per_m2": 16165,
+    "tier": "subsidized",
+    "est_market_ppm": 27540,
+    "est_market_value": 3043170,
+    "est_profit_ils": 1256930,
+    "est_profit_pct": 70.4,
+    "liquidity": 0.95,
+    "resale_score": 66.9,
+    "pros": [
+      "קומה אמצעית (5): ביקוש יציב"
+    ],
+    "cons": [
+      "דירה גדולה: מחיר גבוה → קהל קונים קטן יותר"
+    ],
+    "rank": 55
+  },
+  {
+    "building": 1,
+    "floor": 4,
+    "stack": 3,
+    "area_m2": 105.4,
+    "price_ils": 1697307,
+    "price_per_m2": 16103,
+    "tier": "subsidized",
+    "est_market_ppm": 27000,
+    "est_market_value": 2845800,
+    "est_profit_ils": 1148493,
+    "est_profit_pct": 67.7,
+    "liquidity": 0.95,
+    "resale_score": 64.3,
+    "pros": [
+      "קומה אמצעית (4): ביקוש יציב"
+    ],
+    "cons": [],
+    "rank": 56
+  },
+  {
+    "building": 2,
+    "floor": 4,
+    "stack": 5,
+    "area_m2": 105.4,
+    "price_ils": 1697307,
+    "price_per_m2": 16103,
+    "tier": "subsidized",
+    "est_market_ppm": 27000,
+    "est_market_value": 2845800,
+    "est_profit_ils": 1148493,
+    "est_profit_pct": 67.7,
+    "liquidity": 0.95,
+    "resale_score": 64.3,
+    "pros": [
+      "קומה אמצעית (4): ביקוש יציב"
+    ],
+    "cons": [],
+    "rank": 57
+  },
+  {
+    "building": 3,
+    "floor": 4,
+    "stack": 5,
+    "area_m2": 105.4,
+    "price_ils": 1697307,
+    "price_per_m2": 16103,
+    "tier": "subsidized",
+    "est_market_ppm": 27000,
+    "est_market_value": 2845800,
+    "est_profit_ils": 1148493,
+    "est_profit_pct": 67.7,
+    "liquidity": 0.95,
+    "resale_score": 64.3,
+    "pros": [
+      "קומה אמצעית (4): ביקוש יציב"
+    ],
+    "cons": [],
+    "rank": 58
+  },
+  {
+    "building": 3,
+    "floor": 4,
+    "stack": 2,
+    "area_m2": 109.5,
+    "price_ils": 1768665,
+    "price_per_m2": 16152,
+    "tier": "subsidized",
+    "est_market_ppm": 27000,
+    "est_market_value": 2956500,
+    "est_profit_ils": 1187835,
+    "est_profit_pct": 67.2,
+    "liquidity": 0.95,
+    "resale_score": 63.8,
+    "pros": [
+      "קומה אמצעית (4): ביקוש יציב"
+    ],
+    "cons": [
+      "דירה גדולה: מחיר גבוה → קהל קונים קטן יותר"
+    ],
+    "rank": 59
+  },
+  {
+    "building": 1,
+    "floor": 4,
+    "stack": 1,
+    "area_m2": 109.0,
+    "price_ils": 1759877,
+    "price_per_m2": 16146,
+    "tier": "subsidized",
+    "est_market_ppm": 27000,
+    "est_market_value": 2943000,
+    "est_profit_ils": 1183123,
+    "est_profit_pct": 67.2,
+    "liquidity": 0.95,
+    "resale_score": 63.8,
+    "pros": [
+      "קומה אמצעית (4): ביקוש יציב"
+    ],
+    "cons": [
+      "דירה גדולה: מחיר גבוה → קהל קונים קטן יותר"
+    ],
+    "rank": 60
+  },
+  {
+    "building": 2,
+    "floor": 4,
+    "stack": 2,
+    "area_m2": 109.0,
+    "price_ils": 1759877,
+    "price_per_m2": 16146,
+    "tier": "subsidized",
+    "est_market_ppm": 27000,
+    "est_market_value": 2943000,
+    "est_profit_ils": 1183123,
+    "est_profit_pct": 67.2,
+    "liquidity": 0.95,
+    "resale_score": 63.8,
+    "pros": [
+      "קומה אמצעית (4): ביקוש יציב"
+    ],
+    "cons": [
+      "דירה גדולה: מחיר גבוה → קהל קונים קטן יותר"
+    ],
+    "rank": 61
+  },
+  {
+    "building": 3,
+    "floor": 4,
+    "stack": 1,
+    "area_m2": 110.5,
+    "price_ils": 1786240,
+    "price_per_m2": 16165,
+    "tier": "subsidized",
+    "est_market_ppm": 27000,
+    "est_market_value": 2983500,
+    "est_profit_ils": 1197260,
+    "est_profit_pct": 67.0,
+    "liquidity": 0.95,
+    "resale_score": 63.6,
+    "pros": [
+      "קומה אמצעית (4): ביקוש יציב"
+    ],
+    "cons": [
+      "דירה גדולה: מחיר גבוה → קהל קונים קטן יותר"
+    ],
+    "rank": 62
+  },
+  {
+    "building": 1,
+    "floor": 3,
+    "stack": 3,
+    "area_m2": 105.4,
+    "price_ils": 1697307,
+    "price_per_m2": 16103,
+    "tier": "subsidized",
+    "est_market_ppm": 26730,
+    "est_market_value": 2817342,
+    "est_profit_ils": 1120035,
+    "est_profit_pct": 66.0,
+    "liquidity": 0.95,
+    "resale_score": 62.7,
+    "pros": [
+      "קומה אמצעית (3): ביקוש יציב"
+    ],
+    "cons": [],
+    "rank": 63
+  },
+  {
+    "building": 2,
+    "floor": 3,
+    "stack": 5,
+    "area_m2": 105.4,
+    "price_ils": 1697307,
+    "price_per_m2": 16103,
+    "tier": "subsidized",
+    "est_market_ppm": 26730,
+    "est_market_value": 2817342,
+    "est_profit_ils": 1120035,
+    "est_profit_pct": 66.0,
+    "liquidity": 0.95,
+    "resale_score": 62.7,
+    "pros": [
+      "קומה אמצעית (3): ביקוש יציב"
+    ],
+    "cons": [],
+    "rank": 64
+  },
+  {
+    "building": 3,
+    "floor": 3,
+    "stack": 5,
+    "area_m2": 105.4,
+    "price_ils": 1697307,
+    "price_per_m2": 16103,
+    "tier": "subsidized",
+    "est_market_ppm": 26730,
+    "est_market_value": 2817342,
+    "est_profit_ils": 1120035,
+    "est_profit_pct": 66.0,
+    "liquidity": 0.95,
+    "resale_score": 62.7,
+    "pros": [
+      "קומה אמצעית (3): ביקוש יציב"
+    ],
+    "cons": [],
+    "rank": 65
+  },
+  {
+    "building": 1,
+    "floor": 3,
+    "stack": 1,
+    "area_m2": 109.0,
+    "price_ils": 1759877,
+    "price_per_m2": 16146,
+    "tier": "subsidized",
+    "est_market_ppm": 26730,
+    "est_market_value": 2913570,
+    "est_profit_ils": 1153693,
+    "est_profit_pct": 65.6,
+    "liquidity": 0.95,
+    "resale_score": 62.3,
+    "pros": [
+      "קומה אמצעית (3): ביקוש יציב"
+    ],
+    "cons": [
+      "דירה גדולה: מחיר גבוה → קהל קונים קטן יותר"
+    ],
+    "rank": 66
+  },
+  {
+    "building": 2,
+    "floor": 3,
+    "stack": 2,
+    "area_m2": 109.0,
+    "price_ils": 1759877,
+    "price_per_m2": 16146,
+    "tier": "subsidized",
+    "est_market_ppm": 26730,
+    "est_market_value": 2913570,
+    "est_profit_ils": 1153693,
+    "est_profit_pct": 65.6,
+    "liquidity": 0.95,
+    "resale_score": 62.3,
+    "pros": [
+      "קומה אמצעית (3): ביקוש יציב"
+    ],
+    "cons": [
+      "דירה גדולה: מחיר גבוה → קהל קונים קטן יותר"
+    ],
+    "rank": 67
+  },
+  {
+    "building": 3,
+    "floor": 3,
+    "stack": 2,
+    "area_m2": 109.5,
+    "price_ils": 1768665,
+    "price_per_m2": 16152,
+    "tier": "subsidized",
+    "est_market_ppm": 26730,
+    "est_market_value": 2926935,
+    "est_profit_ils": 1158270,
+    "est_profit_pct": 65.5,
+    "liquidity": 0.95,
+    "resale_score": 62.2,
+    "pros": [
+      "קומה אמצעית (3): ביקוש יציב"
+    ],
+    "cons": [
+      "דירה גדולה: מחיר גבוה → קהל קונים קטן יותר"
+    ],
+    "rank": 68
+  },
+  {
+    "building": 3,
+    "floor": 3,
+    "stack": 1,
+    "area_m2": 110.5,
+    "price_ils": 1786240,
+    "price_per_m2": 16165,
+    "tier": "subsidized",
+    "est_market_ppm": 26730,
+    "est_market_value": 2953665,
+    "est_profit_ils": 1167425,
+    "est_profit_pct": 65.4,
+    "liquidity": 0.95,
+    "resale_score": 62.1,
+    "pros": [
+      "קומה אמצעית (3): ביקוש יציב"
+    ],
+    "cons": [
+      "דירה גדולה: מחיר גבוה → קהל קונים קטן יותר"
+    ],
+    "rank": 69
+  },
+  {
+    "building": 1,
+    "floor": 2,
+    "stack": 3,
+    "area_m2": 105.4,
+    "price_ils": 1697307,
+    "price_per_m2": 16103,
+    "tier": "subsidized",
+    "est_market_ppm": 26190,
+    "est_market_value": 2760426,
+    "est_profit_ils": 1063119,
+    "est_profit_pct": 62.6,
+    "liquidity": 0.95,
+    "resale_score": 59.5,
+    "pros": [],
+    "cons": [
+      "קומה נמוכה (2): פרמיית קומה נמוכה"
+    ],
+    "rank": 70
+  },
+  {
+    "building": 2,
+    "floor": 2,
+    "stack": 5,
+    "area_m2": 105.4,
+    "price_ils": 1697307,
+    "price_per_m2": 16103,
+    "tier": "subsidized",
+    "est_market_ppm": 26190,
+    "est_market_value": 2760426,
+    "est_profit_ils": 1063119,
+    "est_profit_pct": 62.6,
+    "liquidity": 0.95,
+    "resale_score": 59.5,
+    "pros": [],
+    "cons": [
+      "קומה נמוכה (2): פרמיית קומה נמוכה"
+    ],
+    "rank": 71
+  },
+  {
+    "building": 3,
+    "floor": 2,
+    "stack": 5,
+    "area_m2": 105.4,
+    "price_ils": 1697307,
+    "price_per_m2": 16103,
+    "tier": "subsidized",
+    "est_market_ppm": 26190,
+    "est_market_value": 2760426,
+    "est_profit_ils": 1063119,
+    "est_profit_pct": 62.6,
+    "liquidity": 0.95,
+    "resale_score": 59.5,
+    "pros": [],
+    "cons": [
+      "קומה נמוכה (2): פרמיית קומה נמוכה"
+    ],
+    "rank": 72
+  },
+  {
+    "building": 1,
+    "floor": 2,
+    "stack": 1,
+    "area_m2": 109.0,
+    "price_ils": 1759877,
+    "price_per_m2": 16146,
+    "tier": "subsidized",
+    "est_market_ppm": 26190,
+    "est_market_value": 2854710,
+    "est_profit_ils": 1094833,
+    "est_profit_pct": 62.2,
+    "liquidity": 0.95,
+    "resale_score": 59.1,
+    "pros": [],
+    "cons": [
+      "קומה נמוכה (2): פרמיית קומה נמוכה",
+      "דירה גדולה: מחיר גבוה → קהל קונים קטן יותר"
+    ],
+    "rank": 73
+  },
+  {
+    "building": 2,
+    "floor": 2,
+    "stack": 2,
+    "area_m2": 109.0,
+    "price_ils": 1759877,
+    "price_per_m2": 16146,
+    "tier": "subsidized",
+    "est_market_ppm": 26190,
+    "est_market_value": 2854710,
+    "est_profit_ils": 1094833,
+    "est_profit_pct": 62.2,
+    "liquidity": 0.95,
+    "resale_score": 59.1,
+    "pros": [],
+    "cons": [
+      "קומה נמוכה (2): פרמיית קומה נמוכה",
+      "דירה גדולה: מחיר גבוה → קהל קונים קטן יותר"
+    ],
+    "rank": 74
+  },
+  {
+    "building": 3,
+    "floor": 2,
+    "stack": 2,
+    "area_m2": 109.5,
+    "price_ils": 1768665,
+    "price_per_m2": 16152,
+    "tier": "subsidized",
+    "est_market_ppm": 26190,
+    "est_market_value": 2867805,
+    "est_profit_ils": 1099140,
+    "est_profit_pct": 62.1,
+    "liquidity": 0.95,
+    "resale_score": 59.0,
+    "pros": [],
+    "cons": [
+      "קומה נמוכה (2): פרמיית קומה נמוכה",
+      "דירה גדולה: מחיר גבוה → קהל קונים קטן יותר"
+    ],
+    "rank": 75
+  },
+  {
+    "building": 3,
+    "floor": 2,
+    "stack": 1,
+    "area_m2": 110.5,
+    "price_ils": 1786240,
+    "price_per_m2": 16165,
+    "tier": "subsidized",
+    "est_market_ppm": 26190,
+    "est_market_value": 2893995,
+    "est_profit_ils": 1107755,
+    "est_profit_pct": 62.0,
+    "liquidity": 0.95,
+    "resale_score": 58.9,
+    "pros": [],
+    "cons": [
+      "קומה נמוכה (2): פרמיית קומה נמוכה",
+      "דירה גדולה: מחיר גבוה → קהל קונים קטן יותר"
+    ],
+    "rank": 76
+  },
+  {
+    "building": 1,
+    "floor": 1,
+    "stack": 3,
+    "area_m2": 105.4,
+    "price_ils": 1697307,
+    "price_per_m2": 16103,
+    "tier": "subsidized",
+    "est_market_ppm": 25650,
+    "est_market_value": 2703510,
+    "est_profit_ils": 1006203,
+    "est_profit_pct": 59.3,
+    "liquidity": 0.95,
+    "resale_score": 56.3,
+    "pros": [],
+    "cons": [
+      "קומה נמוכה (1): פרמיית קומה נמוכה"
+    ],
+    "rank": 77
+  },
+  {
+    "building": 2,
+    "floor": 1,
+    "stack": 5,
+    "area_m2": 105.4,
+    "price_ils": 1697307,
+    "price_per_m2": 16103,
+    "tier": "subsidized",
+    "est_market_ppm": 25650,
+    "est_market_value": 2703510,
+    "est_profit_ils": 1006203,
+    "est_profit_pct": 59.3,
+    "liquidity": 0.95,
+    "resale_score": 56.3,
+    "pros": [],
+    "cons": [
+      "קומה נמוכה (1): פרמיית קומה נמוכה"
+    ],
+    "rank": 78
+  },
+  {
+    "building": 3,
+    "floor": 1,
+    "stack": 5,
+    "area_m2": 105.4,
+    "price_ils": 1697307,
+    "price_per_m2": 16103,
+    "tier": "subsidized",
+    "est_market_ppm": 25650,
+    "est_market_value": 2703510,
+    "est_profit_ils": 1006203,
+    "est_profit_pct": 59.3,
+    "liquidity": 0.95,
+    "resale_score": 56.3,
+    "pros": [],
+    "cons": [
+      "קומה נמוכה (1): פרמיית קומה נמוכה"
+    ],
+    "rank": 79
+  },
+  {
+    "building": 1,
+    "floor": 1,
+    "stack": 1,
+    "area_m2": 109.0,
+    "price_ils": 1759877,
+    "price_per_m2": 16146,
+    "tier": "subsidized",
+    "est_market_ppm": 25650,
+    "est_market_value": 2795850,
+    "est_profit_ils": 1035973,
+    "est_profit_pct": 58.9,
+    "liquidity": 0.95,
+    "resale_score": 56.0,
+    "pros": [],
+    "cons": [
+      "קומה נמוכה (1): פרמיית קומה נמוכה",
+      "דירה גדולה: מחיר גבוה → קהל קונים קטן יותר"
+    ],
+    "rank": 80
+  },
+  {
+    "building": 2,
+    "floor": 1,
+    "stack": 2,
+    "area_m2": 109.0,
+    "price_ils": 1759877,
+    "price_per_m2": 16146,
+    "tier": "subsidized",
+    "est_market_ppm": 25650,
+    "est_market_value": 2795850,
+    "est_profit_ils": 1035973,
+    "est_profit_pct": 58.9,
+    "liquidity": 0.95,
+    "resale_score": 56.0,
+    "pros": [],
+    "cons": [
+      "קומה נמוכה (1): פרמיית קומה נמוכה",
+      "דירה גדולה: מחיר גבוה → קהל קונים קטן יותר"
+    ],
+    "rank": 81
+  },
+  {
+    "building": 3,
+    "floor": 1,
+    "stack": 2,
+    "area_m2": 109.5,
+    "price_ils": 1768665,
+    "price_per_m2": 16152,
+    "tier": "subsidized",
+    "est_market_ppm": 25650,
+    "est_market_value": 2808675,
+    "est_profit_ils": 1040010,
+    "est_profit_pct": 58.8,
+    "liquidity": 0.95,
+    "resale_score": 55.9,
+    "pros": [],
+    "cons": [
+      "קומה נמוכה (1): פרמיית קומה נמוכה",
+      "דירה גדולה: מחיר גבוה → קהל קונים קטן יותר"
+    ],
+    "rank": 82
+  },
+  {
+    "building": 3,
+    "floor": 1,
+    "stack": 1,
+    "area_m2": 110.5,
+    "price_ils": 1786240,
+    "price_per_m2": 16165,
+    "tier": "subsidized",
+    "est_market_ppm": 25650,
+    "est_market_value": 2834325,
+    "est_profit_ils": 1048085,
+    "est_profit_pct": 58.7,
+    "liquidity": 0.95,
+    "resale_score": 55.8,
+    "pros": [],
+    "cons": [
+      "קומה נמוכה (1): פרמיית קומה נמוכה",
+      "דירה גדולה: מחיר גבוה → קהל קונים קטן יותר"
+    ],
+    "rank": 83
+  },
+  {
+    "building": 3,
+    "floor": 0,
+    "stack": 4,
+    "area_m2": 76.0,
+    "price_ils": 1290604,
+    "price_per_m2": 16982,
+    "tier": "subsidized",
+    "est_market_ppm": 26082,
+    "est_market_value": 1982232,
+    "est_profit_ils": 691628,
+    "est_profit_pct": 53.6,
+    "liquidity": 1.0,
+    "resale_score": 53.6,
+    "pros": [
+      "גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת"
+    ],
+    "cons": [
+      "קומת קרקע: פחות אטרקטיבית למכירה, פחות אור/נוף"
+    ],
+    "rank": 84
+  }
+]
