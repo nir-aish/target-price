@@ -4,3 +4,8 @@ Thumbs.db
 *.swp
 .idea/
 .vscode/
+
+# rendered output
+/out/
+*.png
+!data/**/*.png
