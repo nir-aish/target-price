@@ -3,6 +3,29 @@
 Orientation strongly affects resale value (sun = premium). Here's what we can and
 cannot extract from the DWFx.
 
+## Rendered-plan review — north & green direction visually CONFIRMED ✅
+
+Rendered the plans (`tools/render.py`, sheet 2) and read them directly. Confirms:
+- The building footprints are **square with 4 corner apartments + 1 mid-facade unit per
+  floor** around a central stair/lift core (matches the price list's **5 stacks** vs the
+  **4 corners** — the 5th is the mid-facade unit, seen as the middle of the 3 smaller units
+  along the south/bottom facade).
+- The **detailed site/landscape plan** shows **green/gardens wrapping the north (top) and
+  east (right) edges** — consistent with the eastern park (מגרש 110) lying to **page-right**.
+- With **north ≈ 26° up-and-left**, **page-right ≈ east** ⇒ **the right-hand apartments of
+  each plate face the eastern green (premium); the left-hand apartments face the neighbours.**
+
+**Now in the app:** each apartment's detail panel shows its **building floor-plate PNG**
+(`app/plans/building{1,2,3}.png`) + the site plan, with an orientation legend, so units are
+**reviewable visually**. Per-building plate is the right granularity — typical floors repeat,
+so every unit in a stack shares the layout.
+
+**Still pending for per-unit facing in the *score*:** the exact **stack → corner** link. The
+plate's apartment-number tags (101/102/105/108 — only 4, in circles) don't key to price-list
+stacks 1–5, and which of the 5 stacks is the mid-facade unit can't be read unambiguously from
+the CAD. So `STACK_FACING` stays empty (exposure neutral) until the מפרט מכר כיוונים table —
+or a quick guided confirmation off these now-embedded plate images — resolves it.
+
 ## North direction — ROBUST ✅ (independently validated)
 
 Every floor sheet carries a north arrow (`N`, 10 of them). Parsing the XPS Canvas

@@ -9,6 +9,8 @@ Thumbs.db
 /out/
 *.png
 !data/**/*.png
+# committed apartment floor-plan images shown in the app
+!app/plans/*.png
 
 # app data is generated but committed for one-click open
 !app/data.js

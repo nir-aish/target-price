@@ -149,6 +149,7 @@ def rank(apartments):
         rec["purchase_price"] = net_cost                  # what you actually pay
         rec["facing"] = facing or "—"                     # per-unit facade (— = pending brochure)
         rec["exposure_factor"] = round(exposure_score(facing), 3)
+        rec["plan_img"] = f"plans/building{a['building']}.png"  # typical-floor plate for this building
         rec["est_market_ppm"] = round(ppm)
         rec["est_market_value"] = mkt
         rec["est_profit_ils"] = profit
