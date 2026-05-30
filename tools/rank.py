@@ -71,6 +71,13 @@ def liquidity(area):
 # North=bldg 104. All neighbours ~8 floors (same height) → facing a building is blocked
 # at every floor. Combines Israeli sun preference (S best, N worst) with open-view (east
 # green). Developer markets the project as "בצמוד לפארק" and showcases the NE/SE facades.
+# INCLUDE_EXPOSURE — direction is currently EXCLUDED from the score.
+# Why: the per-unit facing is INFERRED from the plates (not read off the מפרט), and the
+# left↔right call within a side (SE↔SW, NE↔NW) is genuinely uncertain. A sensitivity test
+# shows this single input DOMINATES the order: flipping that ambiguity reshuffles the entire
+# top-10 (0/10 overlap). Until the facing is confirmed against the מפרט מכר / brochure, we do
+# NOT let an unverified guess decide the #1 pick. Flip back to True once facings are confirmed.
+INCLUDE_EXPOSURE = False
 EXPOSURE = {            # facade facing -> desirability multiplier (1.0 = neutral)
     "SE": 1.10, "E": 1.08, "NE": 1.06,     # toward the eastern green / park / sun — best
     "S": 1.00,                              # great sun but faces bldg 200
@@ -78,7 +85,9 @@ EXPOSURE = {            # facade facing -> desirability multiplier (1.0 = neutra
     "N": 0.93,
 }
 def exposure_score(facing):
-    """Multiplier for a unit's facade direction. Returns 1.0 if facing unknown."""
+    """Multiplier for a unit's facade direction. Returns 1.0 when excluded or facing unknown."""
+    if not INCLUDE_EXPOSURE:
+        return 1.0
     return EXPOSURE.get(facing, 1.0)
 
 # Per-unit facade direction, keyed by (building, stack). INFERRED from the rendered plans
@@ -156,9 +165,10 @@ def rank(apartments):
         rec["gross_price"] = full                         # full price before the מטרה benefit (18% VAT + idx)
         rec["target_discount"] = benefit                  # embedded מחיר מטרה benefit (the −133,230 term)
         rec["purchase_price"] = net_cost                  # what you actually pay
-        rec["facing"] = facing or "—"                     # per-unit facade (inferred from plans)
+        rec["facing"] = facing or "—"                     # per-unit facade (inferred; informational)
         rec["facing_inferred"] = bool(facing) and FACING_INFERRED
-        rec["exposure_factor"] = round(exposure_score(facing), 3)
+        rec["exposure_applied"] = INCLUDE_EXPOSURE          # is facing factored into the score?
+        rec["exposure_factor"] = round(exposure_score(facing), 3)   # 1.0 while excluded
         rec["plan_img"] = f"plans/building{a['building']}.png"  # typical-floor plate for this building
         rec["est_market_ppm"] = round(ppm)
         rec["est_market_value"] = mkt
@@ -167,7 +177,7 @@ def rank(apartments):
         rec["liquidity"] = liquidity(a["area_m2"])
         # composite resale score: % return weighted by how easily it sells
         rec["resale_score"] = round(rec["est_profit_pct"] * rec["liquidity"], 1)
-        rec["pros"], rec["cons"] = pros_cons(a, facing)
+        rec["pros"], rec["cons"] = pros_cons(a, facing if INCLUDE_EXPOSURE else None)
         out.append(rec)
     out.sort(key=lambda r: (-r["resale_score"], -r["est_profit_ils"]))
     for i, r in enumerate(out, 1):
@@ -200,8 +210,8 @@ if __name__ == "__main__":
     print(f"cost model: base {OFFICIAL_BASE_PPM} ₪/m² × idx {INDEXATION} × VAT {1+VAT} "
           f"− embedded benefit {PREVAT_BENEFIT:,} (no extra discount)")
     known = sum(1 for r in ranked if r["facing"] != "—")
-    print(f"per-unit facing populated: {known}/{len(ranked)} "
-          f"({'exposure active' if known else 'exposure neutral — awaiting brochure/מפרט'})")
+    print(f"per-unit facing inferred: {known}/{len(ranked)} — "
+          f"{'EXPOSURE IN SCORE' if INCLUDE_EXPOSURE else 'EXCLUDED from score (unverified; informational only)'}")
     print("\nTOP 10 by resale score:")
     print(f"{'#':>2} {'bld':>3} {'flr':>3} {'m²':>6} {'buy':>9} {'mkt val':>9} "
           f"{'profit':>9} {'%':>5} {'score':>5}")

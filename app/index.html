@@ -78,17 +78,16 @@
 
 <div class="note">
   ⚠️ המספרים הם <b>הערכות</b> לצורך החלטה (לא שמאות). שווי השוק מבוסס על מחירי השוק
-  החופשי באותו פרויקט, ויש <b>תקופת חסימה למכירה</b> (כ-2030). <b>כיוון/חשיפה כבר משוקלל
-  בציון</b> (×חשיפה), אך הכיוון לכל דירה <b>משוער מהתכנית</b> (ימין↔שמאל לאימות מול מפרט
-  המכר). התכנית המוצגת היא <b>תכנית קומה טיפוסית לבניין</b> — תכנית פרטנית לכל דירה תיכנס
-  עם שיפור פענוח ה-DWFx. ראו docs/ למתודולוגיה.
+  החופשי באותו פרויקט, ויש <b>תקופת חסימה למכירה</b> (כ-2030). <b>כיוון הדירה הוצא
+  מהדירוג</b> — הוא משוער מהתכנית ולא ודאי (ימין↔שמאל), והוא משפיע מאוד על הסדר; הדירוג
+  מתבסס כעת רק על <b>עלות מאומתת, קומה, גודל ונזילות</b>. הכיוון מוצג כמידע בלבד עד אימות
+  מול מפרט המכר. התכנית המוצגת היא <b>תכנית קומה טיפוסית לבניין</b>. ראו docs/ למתודולוגיה.
 </div>
 
 <div class="controls">
   <span><label>בניין</label><select id="fBld"><option value="">הכל</option><option>1</option><option>2</option><option>3</option></select></span>
   <span><label>קומה מינ'</label><select id="fFloor"></select></span>
   <span><label>חדרים</label><select id="fRooms"><option value="">הכל</option><option value="3">~3</option><option value="4">~4</option><option value="4–5">~4–5</option></select></span>
-  <span><label>כיוון</label><select id="fFace"><option value="">הכל</option></select></span>
   <span><label>מיון</label><select id="fSort">
     <option value="resale_score">ציון מכירה חוזרת</option>
     <option value="est_profit_ils">רווח (₪)</option>
@@ -107,7 +106,7 @@
       <thead><tr>
         <th></th>
         <th data-k="rank">#</th><th data-k="building">בניין</th><th data-k="floor">קומה</th>
-        <th data-k="area_m2">מ"ר</th><th data-k="rooms">חד'</th><th data-k="facing">כיוון</th>
+        <th data-k="area_m2">מ"ר</th><th data-k="rooms">חד'</th>
         <th data-k="purchase_price">קנייה</th><th data-k="est_market_value">שווי שוק</th>
         <th data-k="est_profit_ils">רווח ₪</th><th data-k="est_profit_pct">רווח %</th>
         <th data-k="resale_score">ציון</th>
@@ -142,9 +141,6 @@ document.getElementById("proj").textContent = D.project + "  ·  עודכן " + 
 const floors=[...new Set(A.map(a=>a.floor))].sort((x,y)=>x-y);
 const ff=document.getElementById("fFloor");
 ff.innerHTML='<option value="">הכל</option>'+floors.map(f=>`<option value="${f}">${f}+</option>`).join("");
-// facing filter options (from data)
-const faces=[...new Set(A.map(a=>a.facing).filter(f=>f&&f!=="—"))].sort();
-fFace.innerHTML='<option value="">הכל</option>'+faces.map(f=>`<option value="${f}">${f}</option>`).join("");
 
 function stats(list){
   const el=document.getElementById("stats");
@@ -161,9 +157,8 @@ function stats(list){
 }
 
 function filtered(){
-  const b=fBld.value, fl=fFloor.value, rm=fRooms.value, fc=fFace.value;
-  return A.filter(a=> (!b||a.building==b) && (!fl||a.floor>=+fl) && (!rm||a.rooms===rm)
-                   && (!fc||a.facing===fc));
+  const b=fBld.value, fl=fFloor.value, rm=fRooms.value;
+  return A.filter(a=> (!b||a.building==b) && (!fl||a.floor>=+fl) && (!rm||a.rooms===rm));
 }
 
 function render(){
@@ -174,11 +169,11 @@ function render(){
   rows.innerHTML = list.map(a=>`<tr data-r="${a.rank}" class="${selected===a.rank?'sel':''}">
     <td><span class="pin ${pinned.has(a.rank)?'on':''}" data-pin="${a.rank}" title="הוספה להשוואה">${pinned.has(a.rank)?'★':'☆'}</span></td>
     <td class="rank">${a.rank}</td><td>${a.building}</td><td>${a.floor}</td>
-    <td>${a.area_m2}</td><td>${a.rooms}</td><td>${face(a)}</td>
+    <td>${a.area_m2}</td><td>${a.rooms}</td>
     <td>${ils(a.purchase_price)}</td><td>${ils(a.est_market_value)}</td>
     <td class="pos">${ils(a.est_profit_ils)}</td>
     <td class="pct pos">+${a.est_profit_pct}%</td><td>${a.resale_score}</td></tr>`).join("")
-    || `<tr><td colspan="12" class="empty">אין דירות התואמות לסינון</td></tr>`;
+    || `<tr><td colspan="11" class="empty">אין דירות התואמות לסינון</td></tr>`;
   [...rows.querySelectorAll("tr[data-r]")].forEach(tr=>tr.onclick=e=>{
     if(e.target.dataset.pin)return; showDetail(+tr.dataset.r);
   });
@@ -205,9 +200,9 @@ function showDetail(rank){
     <div class="kv"><span>שווי שוק מוערך</span><b>${ils(a.est_market_value)}</b></div>
     <div class="kv"><span>רווח מוערך</span><b class="pos">${ils(a.est_profit_ils)} (+${a.est_profit_pct}%)</b></div>
     <div class="kv"><span>ציון מכירה חוזרת</span><b>${a.resale_score}</b></div>
-    <div class="kv"><span>כיוון חזית${a.facing_inferred?' (משוער מהתכנית)':''}</span><b>${face(a)}</b> <span class="muted">×${a.exposure_factor} חשיפה</span></div>
+    <div class="kv"><span>כיוון משוער <span class="muted">(לא בדירוג)</span></span><b>${face(a)}</b></div>
     <h3>תכנית הקומה (בניין ${a.building})</h3>
-    <div class="planhint">לפי חץ הצפון בתכנית (הראש מצביע שמאלה-מעלה): <b>צפון ↖</b> ⇐ מעלה≈צפון, <b>ימין=מזרח (הפארק/הירוק)</b>, מטה=דרום, שמאל=מערב. הפינה <b>ימין-תחתון = SE</b> (שמש דרום + ירוק מזרח) הטובה ביותר. הכיוון לעיל <b>משוער מהתכנית</b> (קוטג' ${a.stack}) ומשוקלל בציון; ימין↔שמאל בתוך אותו צד עדיין לאימות מול מפרט המכר. <b>זוהי תכנית קומה טיפוסית</b> — תכנית פרטנית לדירה תיכנס עם שיפור הפענוח.</div>
+    <div class="planhint"><b>הכיוון הוצא מהדירוג</b> — הוא משוער מהתכנית (קוטג' ${a.stack}) ולא אומת מול מפרט המכר; ימין↔שמאל בתוך אותו צד הופך דירה מ-SE ל-SW ומשנה את כל הסדר. מוצג כמידע בלבד. <b>זוהי תכנית קומה טיפוסית לבניין</b>.</div>
     <img src="${a.plan_img}" alt="תכנית בניין ${a.building}" style="width:100%;border:1px solid #ccc;border-radius:6px" loading="lazy"
          onerror="this.style.display='none';this.insertAdjacentHTML('afterend','<div class=planhint>תכנית לא זמינה עדיין</div>')">
     <h3>יתרונות</h3>${(a.pros||[]).map(p=>`<span class="tag p">✔ ${p}</span>`).join("")||'<span class="muted">—</span>'}
@@ -225,7 +220,7 @@ function openCompare(){
     ["מיקום", items.map(a=>`בניין ${a.building} · ק' ${a.floor} · קוטג' ${a.stack}`), null],
     ["שטח (מ\"ר)", items.map(a=>a.area_m2), num(items.map(a=>a.area_m2),true)],
     ["חדרים", items.map(a=>"~"+a.rooms), null],
-    ["כיוון", items.map(a=>face(a)), null],
+    ["כיוון (משוער, לא בדירוג)", items.map(a=>face(a)), null],
     ["מחיר קנייה", items.map(a=>ils(a.purchase_price)), num(items.map(a=>a.purchase_price),false)],
     ["שווי שוק מוערך", items.map(a=>ils(a.est_market_value)), num(items.map(a=>a.est_market_value),true)],
     ["רווח מוערך ₪", items.map(a=>ils(a.est_profit_ils)), num(items.map(a=>a.est_profit_ils),true)],
@@ -244,7 +239,7 @@ cmpBtn.onclick=openCompare;
 cmpClose.onclick=()=>cmpOverlay.classList.remove("open");
 cmpOverlay.onclick=e=>{ if(e.target===cmpOverlay) cmpOverlay.classList.remove("open"); };
 
-[fBld,fFloor,fRooms,fFace].forEach(e=>e.onchange=render);
+[fBld,fFloor,fRooms].forEach(e=>e.onchange=render);
 fSort.onchange=()=>{sortKey=fSort.value; sortDir=(sortKey==="purchase_price"||sortKey==="floor")?1:-1; render();};
 [...document.querySelectorAll("th[data-k]")].forEach(th=>th.onclick=()=>{
   const k=th.dataset.k; if(k==="rooms")return;

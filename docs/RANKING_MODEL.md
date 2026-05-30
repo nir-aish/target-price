@@ -95,13 +95,32 @@ to the 27k anchor**; the in-project free-market units remain the cleanest comp.
   higher ₪/m²).
 - **Liquidity**: 76–95 m² (3–4 rooms) = 1.00 (most in-demand), 95–112 = 0.95,
   larger = 0.88 — reflects how fast/easily a unit resells.
-- **Exposure** `exposure_score(facing)`: SE 1.10 / E 1.08 / NE 1.06 (toward the eastern
-  green/park) … SW 0.96 / W 0.94 / NW 0.92 / N 0.93 (face neighbouring buildings). **Now
-  wired into `market_ppm` AND active**: `STACK_FACING` is populated by **inference from the
-  rendered plans** (best-effort, not the מפרט). This re-orders the top of the list toward the
-  **SE-facing small/liquid units** (e.g. building-1 stack-5 79 m²). The east/west split is
-  high-confidence; left↔right within a side (NE↔NW, SE↔SW) is flagged ⚠ for review. Full
-  rules, the map, and confidence: `docs/ORIENTATION.md`.
+- **Exposure** `exposure_score(facing)` — **currently EXCLUDED from the score**
+  (`INCLUDE_EXPOSURE = False`). The multipliers exist (SE 1.10 / E 1.08 / NE 1.06 toward the
+  eastern green/park … SW 0.96 / W 0.94 / NW 0.92 / N 0.93 facing neighbours) and per-unit
+  facing is still inferred and shown as **information only**, but it does **not** affect
+  ranking. **Why excluded:** a sensitivity test shows facing is the *dominant* driver of the
+  top order, and it is the *least certain* input — `STACK_FACING` is inferred from the plates
+  (not the מפרט), and the left↔right call within a side (SE↔SW, NE↔NW) is genuinely ambiguous.
+  Flipping just that ambiguity reshuffles the **entire top-10 (0/10 overlap)** and changes #1.
+  We refuse to let an unverified guess decide the pick. **Re-activate** (set `INCLUDE_EXPOSURE
+  = True`) once facings are confirmed against the מפרט מכר / brochure. See `docs/ORIENTATION.md`.
+
+## Sensitivity / confidence (what the ranking actually rests on)
+
+Stress-testing the top-10 against each uncertain assumption:
+
+| Perturbation | Top-10 stability | Verdict |
+|---|---|---|
+| Indexation ×1.00 ↔ ×1.12 | **10/10 unchanged** | order invariant — safe |
+| size_factor off | 8/10 | minor |
+| liquidity off | 9/10 | minor |
+| exposure on/off | 5/10, #1 changes | large — hence excluded |
+| **flip inferred L↔R facing** | **0/10, #1 changes** | dominant **and** unverified → excluded |
+
+⇒ With exposure excluded, the ranking depends only on **validated cost + floor + size +
+liquidity**, all of which are stable. Confidence in the *order* is now high; confidence in
+absolute ₪ depends on the market anchor (conservative) and the unmodelled ~2030 appreciation.
 
 ## Important caveats — read before acting
 
@@ -119,8 +138,9 @@ to the 27k anchor**; the in-project free-market units remain the cleanest comp.
 2. These are **estimates**, not appraisals. Market prices move; finishing level,
    exact view, and demand at sale time all matter. (By the ~2030 window, ~5 more years of
    PT appreciation at ~6%/yr is plausible upside not modelled here.)
-3. **Orientation / sun / view** is now *wired* but **neutral** — needs the per-unit
-   כיוונים from the brochure/מפרט to activate (east/green = premium). See exposure note above.
+3. **Orientation / sun / view** is **deliberately excluded from the score** (unverified and
+   dominant — see the exposure note and sensitivity table above). Facing is shown as
+   information only. Activate once the per-unit כיוונים are confirmed from the brochure/מפרט.
 4. **Floor numbering** (price list ground→8 vs drawings/marketing "9 קומות"; official dira
    = 8 floors) still to confirm with the sales office; affects the floor premium for edge floors.
 5. Absolute ₪ profit favours larger/higher units; `resale_score` favours % return ×
