@@ -3,35 +3,42 @@
 Goal: crop each apartment's plan from the floor-plans sheet, match it to a row in
 `data/parsed/apartments.json` (building/floor/stack), and infer its facing.
 
-Decisions (agreed): match floors by **area-fingerprint** (vision-free); emit **one
-crop per apartments.json row** (105 rows — repeated typical floors reuse the same
-source plate, so their pixels are identical); deliver **crops + a matching JSON**
-(app wiring is a later step).
+Decisions (agreed): emit **one crop per apartments.json row** (105 rows — repeated
+typical floors share a source plate, so their pixels are identical); deliver
+**crops + a matching JSON** (app wiring is a later step).
 
-## Validated, vision-free facts
+## Validated facts
 
 **Scale:** the vector `<Path>` coordinates are **real millimetres** (red mamad
-≈12 m², footprint ≈23 m). Area in m² = pixel count × (mm_per_px/1000)².
+≈12 m², footprint ≈23 m). Area in m² = filled-pixel count × (mm_per_px/1000)².
 
-**Sheet layout = a left→right sequence of COMPOSITE floor plans (CORRECTED).**
+**Sheet layout = a left→right sequence of COMPOSITE floor plans.**
 Each drawn plate is a *whole-site composite* showing **all three buildings at one
-floor level** — בנין 1 & 2 on the top row and בנין 3 below, in an L — with a north
-arrow and a `תכנית קומה N` title. The sequence runs left→right: basement/ground
-(sparse), residential floors, the green landscaped site plan, then the roof/amenity
-plate (`תכנית קומה ... 4 דירות`). So a "plate" is a **floor**, not a building.
-Confirmed visually on the plates that rendered (3 building footprints + floor
-titles per plate). This matches the user's note that floors are *similar but not
-identical*: each floor is drawn separately, with small per-floor differences
-(e.g. upper floors merge two units into a larger free-market apartment).
+floor level** — בנין 1 & 2 on the top row and בנין 3 below, in an L — each with a
+north arrow and a `תכנית קומה N` title. The sequence runs left→right: basement/
+ground (sparse) → residential floors → the green landscaped site plan → roof/
+amenity (`תכנית קומה … 4 דירות`). So a "plate" = a **floor**, not a building.
+This matches the note that floors are *similar but not identical*: each floor is
+drawn separately (e.g. upper floors merge two units into a larger free-market apt).
 
-**Area-fingerprints** (vision-free): the 105 rows collapse to **7 distinct
-sorted-area fingerprints** (see table below) — useful to label a plate's floor
-once the plate is located, but matching must be done per building because **stack
-numbering is per-building** (B1 s1=109, B2 s1=89, B3 s1=110.5).
+**Floor titles are READABLE (vision) — floor identification is solved.** Read this
+session from each composite's title block (living-room anchor index → floor):
 
-**Granularity that works:** composite (=floor) → 3 separable building squares →
-5 cells each. So matching is: locate the composite's floor, then within each of its
-3 building footprints match the 5 cells to that **(building,floor)** area set below.
+| anchor i | living-x | floor title |
+|---|---|---|
+| 0 | 272197 | קומה 6 |
+| 1 | 319268 | קומה 5 |
+| 3 | 368720 | קומה 4 |
+| 5 | 419303 | קומה 3 (top-row square = בנין 2) |
+| 6 | 445834 | קומה 1 |
+| 7 | 467193 | קומה 0 (ground) |
+| 9 | 514437 | קומה -1 |
+
+(Anchors 2,4,8,10 read the same way; floor digits do NOT come out as text — the
+glyphs lack `UnicodeString` — so titles require vision.)
+
+**Stack numbering is per-building** (NOT a physical position):
+`B1 s1=109, B2 s1=89, B3 s1=110.5`. Match cells to stacks *within* a building.
 
 **Per-(building,floor) area sets** (sorted m², for matching cells inside a square):
 
@@ -44,50 +51,57 @@ numbering is per-building** (B1 s1=109, B2 s1=89, B3 s1=110.5).
 | 76,79,105.4,109.5,110.5 | B3F1–5 |
 | 76,79,106 | B3F0 |
 
-Building order is fixed by the **3 `בנין` title markers** + their L-layout
-(בנין 1 & 2 top row, בנין 3 below) within each composite.
-
-**Composite anchors:** the 11 room-labelled living rooms sit at content-x
-≈ 272197, 319268, 345787, 368720, 395238, 419303, 445834, 467193, 493724,
-514437, 540968 — one or two labelled units per composite; usable as seed points.
-
-**Drawing-band x-ranges** (content mm, from black-geometry density) — candidate plates:
-`216718–225756, 272552–300632, 320555–329211, 363804–371439, 415472–419975,
-460921–469422, 508954–517546, 556607–565379, 608960–618908, …` (10–12 bands).
+Building order within a composite is fixed by the **3 `בנין` title markers** + the
+L-layout (בנין 1 & 2 top row, בנין 3 below).
 
 **Colour legend:** black=walls/dims, **blue #007FFF/#0080FF = apartment boundary**,
 **red #FF0000 = mamad + kitchen cabinetry**, greens=landscaping.
 
-## Pipeline (to run in a session with working image display)
+> ⚠️ **TWO COORDINATE SYSTEMS — do not mix.** The flat regex path-extraction and
+> the `mutool` render (`p2.png`, `CONTENT_X_MAX≈691204`, living rooms at x≈272197…)
+> share one space. `tools/xps_reader.py` applies the page's 0.08 canvas transform,
+> so its coords are **0.08×** (living rooms at x≈21776…). Geometry that must line up
+> with the render MUST use the flat space. Mixing them is why the first
+> `segment_units` pass found 0 squares.
 
-1. **Plates:** split the sheet into floor plates via black-geometry x-bands; read
-   each plate's `בנין X / קומה Y` title (vision) OR assign by band order + the area
-   fingerprint below. (Floor digits do NOT extract as text — glyphs lack
-   `UnicodeString` — so titles need vision; fingerprint is the vision-free fallback.)
-2. **Segment apartments per plate.** The blue boundary is the right signal but is
-   **dashed**, so raw raster flood-fill is unreliable (undercounts area ~10–30%,
-   misses units). Options, best first: (a) trace/stitch blue polylines into closed
-   loops → shoelace area; (b) raster flood-fill with tuned closing + **vision check**;
-   (c) vision segmentation per plate.
-3. **Match:** within each plate, assign each cell to a stack by nearest area in that
-   building/floor's fingerprint. Disambiguate identical-fingerprint plates (B1 vs B2
-   typical; the penthouse) by building boundary + plate order.
-4. **Crop** each cell (`tools/crop_plan.py`, content-space bbox) → save
-   `app/plans/units/B{b}_F{f}_S{s}.png`; reuse the source crop for floors that
-   share a plate.
-5. **Facing:** cell centroid vs plate centre → corner → facing via
-   `docs/ORIENTATION.md` (page-up=N, right=E: bottom-right=SE best, etc.).
-6. Emit `data/parsed/unit_plans.json`: row → {image, measured_area, fingerprint_area,
-   facing, plate}.
+## What works / what's hard
+
+- **Locating a building square works** (`black`-footprint bbox → a clean ~20×15 m
+  plate showing the 5 blue-outlined apartments around the core). Cropping a whole
+  square is reliable today.
+- **Rasterising the linework as continuous segments works** (95k segments → dense
+  mask). The cached `geo_*.npy` are path *vertices only*, so filling those leaks —
+  you must draw the **segments** between consecutive vertices.
+- **Per-cell area via flood-fill is the hard part and is NOT solved yet.** Even with
+  a dense segment mask, apartments connect to the core/corridor through **door
+  openings**, so an interior region floods out to the exterior → 0 clean cells.
+  This is the standard floor-plan-vectorisation problem. Viable approaches:
+  1. **Vectorise the blue boundary**: snap/stitch the dashed blue polylines into
+     closed loops (bridge gaps ≤ threshold), then shoelace each loop → area. The
+     blue layer is *meant* to delimit each apartment, so this is the most faithful.
+  2. **Close door gaps before filling**: detect short wall gaps (door swings) and
+     bridge them, or seed-fill from each apartment interior with a strong
+     `binary_closing`, validating against the expected 5-area set.
+  3. **Vision-assisted**: for each square crop, identify the 5 cells visually and
+     read each unit's labelled/penthouse area; use geometry only for the crop bbox.
 
 ## Tools in place
-- `tools/xps_reader.py` — transform-aware glyph/path reader (absolute coords;
-  needed to read title-block text that lives in nested canvases).
-- `tools/extract_geometry.py` — path geometry by colour (mm); area helper.
-- `tools/crop_plan.py` — crop any content-space bbox to PNG.
+- `tools/xps_reader.py` — transform-aware glyph/path reader (0.08× space; reads
+  title-block text in nested canvases — used to read room labels & `בנין`/`קומה`).
+- `tools/extract_geometry.py` — path geometry by colour (flat mm); bbox/area helper.
+- `tools/crop_plan.py` — crop any content-space (flat) bbox to PNG.
 - `tools/extract_text.py` — flat glyph reader (room labels, raw coords).
+- `tools/segment_units.py` — segmentation skeleton; **needs fixing**: use the flat
+  coordinate space (not xps_reader's 0.08×) and rasterise segments, then adopt the
+  blue-loop or door-gap-closing method above for per-cell areas.
 
-## Status / blocker
-Foundations, scale, structure and the matching method are validated numerically.
-Remaining work (plate titles, apartment segmentation, crop verification) needs
-**image display**, which failed mid-session on this run. Resume in a fresh session.
+## Status (end of this session)
+**Solved:** structural model (composite=floor); scale=mm; the 2-coord pitfall;
+**floor identification by title (vision)**; per-(building,floor) area sets;
+single-square cropping; the facing rule (corner vs square centre, up=N/right=E).
+
+**Not solved / next step:** robust per-cell **segmentation+area** (door openings
+defeat naive flood-fill). Once a square yields its 5 cell polygons/areas, the rest
+is mechanical: match area→stack within the building, crop each cell, infer facing,
+write `data/parsed/unit_plans.json`. No output file is committed until it carries
+real matched data (the earlier empty `unit_plans.json` was removed).
