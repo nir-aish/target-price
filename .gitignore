@@ -9,3 +9,6 @@ Thumbs.db
 /out/
 *.png
 !data/**/*.png
+
+# app data is generated but committed for one-click open
+!app/data.js

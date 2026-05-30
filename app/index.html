@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>בחירת דירה — מחיר למשתכן</title>
+<style>
+  :root{--bg:#0f1419;--card:#1a2230;--line:#2b3647;--txt:#e6edf3;--mut:#9aa7b8;
+        --good:#3fb950;--mid:#d29922;--accent:#4493f8;--bad:#f85149;}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:"Segoe UI",Arial,Helvetica,sans-serif;background:var(--bg);
+       color:var(--txt);font-size:14px}
+  header{padding:16px 20px;border-bottom:1px solid var(--line);background:var(--card)}
+  h1{margin:0 0 4px;font-size:20px}
+  .sub{color:var(--mut);font-size:13px}
+  .stats{display:flex;gap:18px;flex-wrap:wrap;margin-top:10px}
+  .stat{background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 12px}
+  .stat b{font-size:18px;display:block}
+  .stat span{color:var(--mut);font-size:12px}
+  .note{background:#2a210c;border:1px solid #5c4612;color:#e8d9a8;padding:8px 12px;
+        border-radius:8px;margin:12px 20px;font-size:12.5px}
+  .wrap{display:flex;gap:16px;padding:16px 20px;align-items:flex-start}
+  .controls{display:flex;gap:10px;flex-wrap:wrap;align-items:center;padding:0 20px 4px}
+  .controls label{color:var(--mut);font-size:12px;margin-inline-end:4px}
+  select,input{background:var(--card);color:var(--txt);border:1px solid var(--line);
+        border-radius:6px;padding:5px 8px;font-size:13px}
+  table{border-collapse:collapse;width:100%;background:var(--card);border-radius:10px;overflow:hidden}
+  th,td{padding:8px 10px;text-align:right;border-bottom:1px solid var(--line);white-space:nowrap}
+  th{cursor:pointer;color:var(--mut);font-weight:600;user-select:none;position:sticky;top:0;background:var(--card)}
+  th:hover{color:var(--txt)}
+  tbody tr{cursor:pointer}
+  tbody tr:hover{background:#222c3d}
+  tbody tr.sel{background:#1d3a5f}
+  .rank{color:var(--mut)}
+  .pos{color:var(--good);font-weight:600}
+  .pct{font-weight:700}
+  .tablecol{flex:1;min-width:0;overflow:auto;max-height:78vh;border-radius:10px}
+  .detail{width:340px;flex:none;background:var(--card);border:1px solid var(--line);
+          border-radius:10px;padding:16px;position:sticky;top:16px}
+  .detail h2{margin:0 0 2px;font-size:18px}
+  .detail .muted{color:var(--mut);font-size:12.5px;margin-bottom:10px}
+  .kv{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px dashed var(--line)}
+  .kv span{color:var(--mut)}
+  .tag{display:block;padding:5px 9px;border-radius:6px;margin:5px 0;font-size:12.5px;line-height:1.35}
+  .tag.p{background:#0f2b16;border:1px solid #1f5130;color:#a7e3b6}
+  .tag.c{background:#2b1314;border:1px solid #5a2326;color:#f0b3b4}
+  .empty{color:var(--mut);padding:30px;text-align:center}
+  h3{margin:14px 0 4px;font-size:13px;color:var(--mut)}
+</style>
+</head>
+<body>
+<header>
+  <h1>בחירת דירה — מחיר למשתכן</h1>
+  <div class="sub" id="proj"></div>
+  <div class="stats" id="stats"></div>
+</header>
+
+<div class="note">
+  ⚠️ המספרים הם <b>הערכות</b> לצורך החלטה (לא שמאות). שווי השוק מבוסס על מחירי השוק
+  החופשי באותו פרויקט. יש לזכור <b>תקופת חסימה למכירה</b> במחיר למשתכן, וכן ש<b>כיווני
+  הדירה טרם שולבו</b> בציון (ממתין למפרט/מיפוי). ראו docs/ למתודולוגיה.
+</div>
+
+<div class="controls">
+  <span><label>בניין</label><select id="fBld"><option value="">הכל</option><option>1</option><option>2</option><option>3</option></select></span>
+  <span><label>קומה מינ'</label><select id="fFloor"></select></span>
+  <span><label>חדרים</label><select id="fRooms"><option value="">הכל</option><option value="3">~3</option><option value="4">~4</option><option value="4–5">~4–5</option></select></span>
+  <span><label>מיון</label><select id="fSort">
+    <option value="resale_score">ציון מכירה חוזרת</option>
+    <option value="est_profit_ils">רווח (₪)</option>
+    <option value="est_profit_pct">רווח (%)</option>
+    <option value="purchase_price">מחיר קנייה</option>
+    <option value="floor">קומה</option>
+    <option value="area_m2">שטח</option>
+  </select></span>
+  <span id="count" class="sub"></span>
+</div>
+
+<div class="wrap">
+  <div class="tablecol">
+    <table>
+      <thead><tr>
+        <th data-k="rank">#</th><th data-k="building">בניין</th><th data-k="floor">קומה</th>
+        <th data-k="area_m2">מ"ר</th><th data-k="rooms">חד'</th>
+        <th data-k="purchase_price">קנייה</th><th data-k="est_market_value">שווי שוק</th>
+        <th data-k="est_profit_ils">רווח ₪</th><th data-k="est_profit_pct">רווח %</th>
+        <th data-k="resale_score">ציון</th>
+      </tr></thead>
+      <tbody id="rows"></tbody>
+    </table>
+  </div>
+  <div class="detail" id="detail"><div class="empty">בחרו דירה מהטבלה לפרטים</div></div>
+</div>
+
+<script src="data.js"></script>
+<script>
+const D = window.APP_DATA;
+const A = D.ranked.map(a => ({...a, rooms: a.area_m2<=82?"3":a.area_m2<=100?"4":"4–5"}));
+const ils = n => n==null?"—":"₪"+Math.round(n).toLocaleString("en-US");
+const M = n => n==null?"—":(n/1e6).toFixed(2)+"M";
+let sortKey="resale_score", sortDir=-1, selected=null;
+
+document.getElementById("proj").textContent = D.project + "  ·  עודכן " + D.generated;
+
+// floor filter options
+const floors=[...new Set(A.map(a=>a.floor))].sort((x,y)=>x-y);
+const ff=document.getElementById("fFloor");
+ff.innerHTML='<option value="">הכל</option>'+floors.map(f=>`<option value="${f}">${f}+</option>`).join("");
+
+function stats(list){
+  const el=document.getElementById("stats");
+  if(!list.length){el.innerHTML='<div class="stat"><b>0</b><span>אין תוצאות</span></div>';return;}
+  const prof=list.map(a=>a.est_profit_ils), pct=list.map(a=>a.est_profit_pct);
+  const avg=a=>a.length?Math.round(a.reduce((s,x)=>s+x,0)/a.length):0;
+  el.innerHTML = [
+    [`${list.length}`,"דירות מסובסדות"],
+    [`${D.free_market_count}`,"שוק חופשי (לא זמין)"],
+    [M(Math.min(...list.map(a=>a.purchase_price)))+"–"+M(Math.max(...list.map(a=>a.purchase_price))),"טווח מחיר קנייה ₪"],
+    [avg(pct)+"%","רווח ממוצע (מוערך)"],
+    [M(Math.max(...prof)),"רווח מקס' (מוערך)"],
+  ].map(([b,s])=>`<div class="stat"><b>${b}</b><span>${s}</span></div>`).join("");
+}
+
+function filtered(){
+  const b=fBld.value, fl=fFloor.value, rm=fRooms.value;
+  return A.filter(a=> (!b||a.building==b) && (!fl||a.floor>=+fl) && (!rm||a.rooms===rm));
+}
+
+function render(){
+  let list=filtered();
+  list.sort((x,y)=>{const d=(x[sortKey]>y[sortKey]?1:x[sortKey]<y[sortKey]?-1:0); return d*sortDir;});
+  document.getElementById("count").textContent = `מציג ${list.length} דירות`;
+  stats(list);
+  rows.innerHTML = list.map(a=>`<tr data-r="${a.rank}" class="${selected===a.rank?'sel':''}">
+    <td class="rank">${a.rank}</td><td>${a.building}</td><td>${a.floor}</td>
+    <td>${a.area_m2}</td><td>${a.rooms}</td>
+    <td>${ils(a.purchase_price)}</td><td>${ils(a.est_market_value)}</td>
+    <td class="pos">${ils(a.est_profit_ils)}</td>
+    <td class="pct pos">+${a.est_profit_pct}%</td><td>${a.resale_score}</td></tr>`).join("")
+    || `<tr><td colspan="10" class="empty">אין דירות התואמות לסינון</td></tr>`;
+  [...rows.querySelectorAll("tr[data-r]")].forEach(tr=>tr.onclick=()=>showDetail(+tr.dataset.r));
+}
+
+function showDetail(rank){
+  selected=rank; const a=A.find(x=>x.rank===rank);
+  render();
+  document.getElementById("detail").innerHTML = `
+    <h2>בניין ${a.building} · קומה ${a.floor} · ${a.area_m2} מ"ר</h2>
+    <div class="muted">דירוג #${a.rank} מתוך ${A.length} · ~${a.rooms} חדרים</div>
+    <div class="kv"><span>מחיר ברוטו (בסיס+מע"מ+הצמדה)</span><b>${ils(a.gross_price)}</b></div>
+    <div class="kv"><span>הנחת מחיר מטרה</span><b>−${ils(a.target_discount)}</b></div>
+    <div class="kv"><span>מחיר קנייה נטו</span><b>${ils(a.purchase_price)}</b></div>
+    <div class="kv"><span>שווי שוק מוערך</span><b>${ils(a.est_market_value)}</b></div>
+    <div class="kv"><span>רווח מוערך</span><b class="pos">${ils(a.est_profit_ils)} (+${a.est_profit_pct}%)</b></div>
+    <div class="kv"><span>ציון מכירה חוזרת</span><b>${a.resale_score}</b></div>
+    <h3>יתרונות</h3>${(a.pros||[]).map(p=>`<span class="tag p">✔ ${p}</span>`).join("")||'<span class="muted">—</span>'}
+    <h3>חסרונות</h3>${(a.cons||[]).map(c=>`<span class="tag c">✘ ${c}</span>`).join("")||'<span class="muted">—</span>'}
+  `;
+}
+
+[fBld,fFloor,fRooms].forEach(e=>e.onchange=render);
+fSort.onchange=()=>{sortKey=fSort.value; sortDir=(sortKey==="purchase_price"||sortKey==="floor")?1:-1; render();};
+[...document.querySelectorAll("th")].forEach(th=>th.onclick=()=>{
+  const k=th.dataset.k; if(k==="rooms")return;
+  sortDir=(sortKey===k)?-sortDir:-1; sortKey=k; render();
+});
+render();
+</script>
+</body>
+</html>
