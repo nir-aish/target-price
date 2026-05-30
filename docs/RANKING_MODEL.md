@@ -35,7 +35,19 @@ purchase_price        = displayed − discount                    # what the buy
   מחיר מוצג (and the −133,230 should stay). Resolve against the contract / מפרט מכר. The one
   ground-floor garden unit (sheet ₪1,290,604) is also priced from area only, understating its
   cost by ~₪148k.
-- **INDEXATION = 1.06** — bounded estimate of מדד תשומות הבנייה, tender base → payment.
+- **INDEXATION = 1.06 — VALIDATED (web, May 2026).** מדד תשומות הבנייה (residential
+  construction-inputs index), tender base → payment:
+  - **Raw index** from the early-2023 tender base ≈ **+13% to today** (2024 +2.9%, 2025
+    +5.1%, ~6% trailing in early 2025), and ≈ **+23% projected to delivery (~2028)**.
+  - **Amendment 9 to חוק המכר (דירות)** (in force **7 Jul 2022**) limits linkage: the first
+    **20%** of the price (paid at signing) is **not** indexed, and at most **50%** of each
+    later payment may be linked ⇒ **at most 40% of the price is indexed**, and only **up to
+    the delivery date** (buyers don't pay index differences for delivery delays). The reform
+    has saved the public ~₪700M to date.
+  - A **state↔contractors settlement** leaves the individual buyer an extra **≈ ₪4,043–8,206**.
+  - ⇒ Effective `= 1 + 0.40 × raw` ≈ **×1.05 (to today) … ×1.09 (to delivery)**; **1.06** is a
+    central estimate. **Ranking order is ~invariant** to it (9–10/10 of the top-10 stable across
+    ×1.00–1.10; the ₪300k discount cap adds slight non-linearity at the extremes). — bounded estimate of מדד תשומות הבנייה, tender base → payment.
   Validated mechanism (replaces the old "≈Jul-2026" hand-wave):
   - The index rises ~5%/yr (**2023 +2.0%, 2024 +2.9%, 2025 +5.1%**, 2026 forecast +5–7%).
   - **Amendment 9 to חוק המכר (in force Jul 2022)** caps the index-linked portion at **40%

@@ -27,14 +27,17 @@ OFFICIAL_BASE_PPM = 15022        # ₪/m² before VAT (מחיר מטרה base ra
 VAT               = 0.18         # current Israeli VAT (since 1 Jan 2025)
 DISCOUNT_RATE     = 0.20         # subsidy = 20% of the displayed (incl-VAT) price …
 DISCOUNT_CAP      = 300000       # … capped at ₪300,000 (the lower of the two applies)
-INDEXATION        = 1.06         # מדד תשומות הבנייה, tender base → payment. BOUNDED estimate:
-                                 # the index rises ~5%/yr (2023 +2.0%, 2024 +2.9%, 2025 +5.1%),
-                                 # BUT (a) Amendment 9 to חוק המכר caps the indexed portion at
-                                 # 40% of price, (b) a בג"ץ compromise splits the differential
-                                 # in thirds (buyer's add-on ≈ 4,043–8,206 ₪), and (c) indexation
-                                 # accrues only from the LATER of contract-signing / full היתר
-                                 # בנייה — and this project has no היתר yet. Effective ≈ ×1.04–1.10.
-                                 # Set to 1.0 to price at the un-indexed contract terms.
+INDEXATION        = 1.06         # מדד תשומות הבנייה, tender base → payment. VALIDATED (web, May-2026):
+                                 #  • Raw index from the early-2023 tender base: ≈ +13% to today
+                                 #    (2024 +2.9%, 2025 +5.1%, ~6% trailing), ≈ +23% to delivery (~2028).
+                                 #  • Amendment 9 to חוק המכר (דירות), in force 7 Jul 2022, LIMITS linkage:
+                                 #    the first 20% (paid at signing) is NOT indexed, and at most 50% of
+                                 #    each later payment may be linked ⇒ at most 40% OF THE PRICE is indexed,
+                                 #    and only up to the delivery date (no index for delivery delays).
+                                 #  • State↔contractors settlement: buyer's extra cost ≈ ₪4,043–8,206.
+                                 #  ⇒ Effective = 1 + 0.40×(raw): ≈ ×1.05 (to today) … ×1.09 (to delivery).
+                                 #    1.06 is a central estimate. Ranking order is ~invariant (9–10/10 top-10
+                                 #    stable for 1.00–1.10). Set to 1.0 for un-indexed contract terms.
 
 def purchase_cost(area):
     """Returns (displayed_price, subsidy_discount, net_purchase_price) at current terms.
