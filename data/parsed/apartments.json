@@ -1,0 +1,821 @@
+[
+  {
+    "building": 1,
+    "floor": 8,
+    "stack": 4,
+    "area_m2": 148.0,
+    "price_ils": 4410209,
+    "price_per_m2": 29799,
+    "tier": "free_market"
+  },
+  {
+    "building": 1,
+    "floor": 8,
+    "stack": 5,
+    "area_m2": 158.0,
+    "price_ils": 4837716,
+    "price_per_m2": 30618,
+    "tier": "free_market"
+  },
+  {
+    "building": 1,
+    "floor": 7,
+    "stack": 1,
+    "area_m2": 109.0,
+    "price_ils": 1759877,
+    "price_per_m2": 16146,
+    "tier": "subsidized"
+  },
+  {
+    "building": 1,
+    "floor": 7,
+    "stack": 2,
+    "area_m2": 89.0,
+    "price_ils": 1408362,
+    "price_per_m2": 15824,
+    "tier": "subsidized"
+  },
+  {
+    "building": 1,
+    "floor": 7,
+    "stack": 4,
+    "area_m2": 134.0,
+    "price_ils": 3540981,
+    "price_per_m2": 26425,
+    "tier": "free_market"
+  },
+  {
+    "building": 1,
+    "floor": 7,
+    "stack": 5,
+    "area_m2": 126.0,
+    "price_ils": 3343609,
+    "price_per_m2": 26537,
+    "tier": "free_market"
+  },
+  {
+    "building": 1,
+    "floor": 6,
+    "stack": 1,
+    "area_m2": 109.0,
+    "price_ils": 1759877,
+    "price_per_m2": 16146,
+    "tier": "subsidized"
+  },
+  {
+    "building": 1,
+    "floor": 6,
+    "stack": 2,
+    "area_m2": 89.0,
+    "price_ils": 1408362,
+    "price_per_m2": 15824,
+    "tier": "subsidized"
+  },
+  {
+    "building": 1,
+    "floor": 6,
+    "stack": 3,
+    "area_m2": 105.44,
+    "price_ils": 1697307,
+    "price_per_m2": 16097,
+    "tier": "subsidized"
+  },
+  {
+    "building": 1,
+    "floor": 6,
+    "stack": 4,
+    "area_m2": 76.0,
+    "price_ils": 1179877,
+    "price_per_m2": 15525,
+    "tier": "subsidized"
+  },
+  {
+    "building": 1,
+    "floor": 6,
+    "stack": 5,
+    "area_m2": 79.0,
+    "price_ils": 1232605,
+    "price_per_m2": 15603,
+    "tier": "subsidized"
+  },
+  {
+    "building": 1,
+    "floor": 5,
+    "stack": 1,
+    "area_m2": 109.0,
+    "price_ils": 1759877,
+    "price_per_m2": 16146,
+    "tier": "subsidized"
+  },
+  {
+    "building": 1,
+    "floor": 5,
+    "stack": 2,
+    "area_m2": 89.0,
+    "price_ils": 1408362,
+    "price_per_m2": 15824,
+    "tier": "subsidized"
+  },
+  {
+    "building": 1,
+    "floor": 5,
+    "stack": 4,
+    "area_m2": 76.0,
+    "price_ils": 1179877,
+    "price_per_m2": 15525,
+    "tier": "subsidized"
+  },
+  {
+    "building": 1,
+    "floor": 5,
+    "stack": 5,
+    "area_m2": 79.0,
+    "price_ils": 1232605,
+    "price_per_m2": 15603,
+    "tier": "subsidized"
+  },
+  {
+    "building": 1,
+    "floor": 4,
+    "stack": 1,
+    "area_m2": 109.0,
+    "price_ils": 1759877,
+    "price_per_m2": 16146,
+    "tier": "subsidized"
+  },
+  {
+    "building": 1,
+    "floor": 4,
+    "stack": 2,
+    "area_m2": 89.0,
+    "price_ils": 1408362,
+    "price_per_m2": 15824,
+    "tier": "subsidized"
+  },
+  {
+    "building": 1,
+    "floor": 4,
+    "stack": 4,
+    "area_m2": 76.0,
+    "price_ils": 1179877,
+    "price_per_m2": 15525,
+    "tier": "subsidized"
+  },
+  {
+    "building": 1,
+    "floor": 4,
+    "stack": 5,
+    "area_m2": 79.0,
+    "price_ils": 1232605,
+    "price_per_m2": 15603,
+    "tier": "subsidized"
+  },
+  {
+    "building": 1,
+    "floor": 3,
+    "stack": 1,
+    "area_m2": 109.0,
+    "price_ils": 1759877,
+    "price_per_m2": 16146,
+    "tier": "subsidized"
+  },
+  {
+    "building": 1,
+    "floor": 3,
+    "stack": 2,
+    "area_m2": 89.0,
+    "price_ils": 1408362,
+    "price_per_m2": 15824,
+    "tier": "subsidized"
+  },
+  {
+    "building": 1,
+    "floor": 3,
+    "stack": 4,
+    "area_m2": 76.0,
+    "price_ils": 1179877,
+    "price_per_m2": 15525,
+    "tier": "subsidized"
+  },
+  {
+    "building": 1,
+    "floor": 3,
+    "stack": 5,
+    "area_m2": 79.0,
+    "price_ils": 1232605,
+    "price_per_m2": 15603,
+    "tier": "subsidized"
+  },
+  {
+    "building": 1,
+    "floor": 2,
+    "stack": 1,
+    "area_m2": 109.0,
+    "price_ils": 1759877,
+    "price_per_m2": 16146,
+    "tier": "subsidized"
+  },
+  {
+    "building": 1,
+    "floor": 2,
+    "stack": 2,
+    "area_m2": 89.0,
+    "price_ils": 1408362,
+    "price_per_m2": 15824,
+    "tier": "subsidized"
+  },
+  {
+    "building": 1,
+    "floor": 2,
+    "stack": 4,
+    "area_m2": 76.0,
+    "price_ils": 1179877,
+    "price_per_m2": 15525,
+    "tier": "subsidized"
+  },
+  {
+    "building": 1,
+    "floor": 2,
+    "stack": 5,
+    "area_m2": 79.0,
+    "price_ils": 1232605,
+    "price_per_m2": 15603,
+    "tier": "subsidized"
+  },
+  {
+    "building": 1,
+    "floor": 1,
+    "stack": 1,
+    "area_m2": 109.0,
+    "price_ils": 1759877,
+    "price_per_m2": 16146,
+    "tier": "subsidized"
+  },
+  {
+    "building": 1,
+    "floor": 1,
+    "stack": 2,
+    "area_m2": 89.0,
+    "price_ils": 1408362,
+    "price_per_m2": 15824,
+    "tier": "subsidized"
+  },
+  {
+    "building": 1,
+    "floor": 1,
+    "stack": 4,
+    "area_m2": 76.0,
+    "price_ils": 1179877,
+    "price_per_m2": 15525,
+    "tier": "subsidized"
+  },
+  {
+    "building": 1,
+    "floor": 1,
+    "stack": 5,
+    "area_m2": 79.0,
+    "price_ils": 1232605,
+    "price_per_m2": 15603,
+    "tier": "subsidized"
+  },
+  {
+    "building": 1,
+    "floor": 0,
+    "stack": 5,
+    "area_m2": 185.0,
+    "price_ils": 5123112,
+    "price_per_m2": 27692,
+    "tier": "free_market"
+  },
+  {
+    "building": 2,
+    "floor": 8,
+    "stack": 4,
+    "area_m2": 148.0,
+    "price_ils": 4410209,
+    "price_per_m2": 29799,
+    "tier": "free_market"
+  },
+  {
+    "building": 2,
+    "floor": 8,
+    "stack": 5,
+    "area_m2": 158.0,
+    "price_ils": 4837716,
+    "price_per_m2": 30618,
+    "tier": "free_market"
+  },
+  {
+    "building": 2,
+    "floor": 7,
+    "stack": 4,
+    "area_m2": 148.0,
+    "price_ils": 4390209,
+    "price_per_m2": 29664,
+    "tier": "free_market"
+  },
+  {
+    "building": 2,
+    "floor": 7,
+    "stack": 5,
+    "area_m2": 158.0,
+    "price_ils": 4622812,
+    "price_per_m2": 29258,
+    "tier": "free_market"
+  },
+  {
+    "building": 2,
+    "floor": 6,
+    "stack": 1,
+    "area_m2": 89.0,
+    "price_ils": 1408362,
+    "price_per_m2": 15824,
+    "tier": "subsidized"
+  },
+  {
+    "building": 2,
+    "floor": 6,
+    "stack": 2,
+    "area_m2": 109.0,
+    "price_ils": 1759877,
+    "price_per_m2": 16146,
+    "tier": "subsidized"
+  },
+  {
+    "building": 2,
+    "floor": 6,
+    "stack": 4,
+    "area_m2": 126.0,
+    "price_ils": 3323609,
+    "price_per_m2": 26378,
+    "tier": "free_market"
+  },
+  {
+    "building": 2,
+    "floor": 6,
+    "stack": 5,
+    "area_m2": 134.0,
+    "price_ils": 3520981,
+    "price_per_m2": 26276,
+    "tier": "free_market"
+  },
+  {
+    "building": 2,
+    "floor": 5,
+    "stack": 1,
+    "area_m2": 89.0,
+    "price_ils": 1408362,
+    "price_per_m2": 15824,
+    "tier": "subsidized"
+  },
+  {
+    "building": 2,
+    "floor": 5,
+    "stack": 2,
+    "area_m2": 109.0,
+    "price_ils": 1759877,
+    "price_per_m2": 16146,
+    "tier": "subsidized"
+  },
+  {
+    "building": 2,
+    "floor": 5,
+    "stack": 4,
+    "area_m2": 126.0,
+    "price_ils": 3303609,
+    "price_per_m2": 26219,
+    "tier": "free_market"
+  },
+  {
+    "building": 2,
+    "floor": 5,
+    "stack": 5,
+    "area_m2": 134.0,
+    "price_ils": 3500981,
+    "price_per_m2": 26127,
+    "tier": "free_market"
+  },
+  {
+    "building": 2,
+    "floor": 4,
+    "stack": 1,
+    "area_m2": 89.0,
+    "price_ils": 1408362,
+    "price_per_m2": 15824,
+    "tier": "subsidized"
+  },
+  {
+    "building": 2,
+    "floor": 4,
+    "stack": 2,
+    "area_m2": 109.0,
+    "price_ils": 1759877,
+    "price_per_m2": 16146,
+    "tier": "subsidized"
+  },
+  {
+    "building": 2,
+    "floor": 4,
+    "stack": 3,
+    "area_m2": 79.0,
+    "price_ils": 1232605,
+    "price_per_m2": 15603,
+    "tier": "subsidized"
+  },
+  {
+    "building": 2,
+    "floor": 4,
+    "stack": 4,
+    "area_m2": 76.0,
+    "price_ils": 1179877,
+    "price_per_m2": 15525,
+    "tier": "subsidized"
+  },
+  {
+    "building": 2,
+    "floor": 3,
+    "stack": 1,
+    "area_m2": 89.0,
+    "price_ils": 1408362,
+    "price_per_m2": 15824,
+    "tier": "subsidized"
+  },
+  {
+    "building": 2,
+    "floor": 3,
+    "stack": 2,
+    "area_m2": 109.0,
+    "price_ils": 1759877,
+    "price_per_m2": 16146,
+    "tier": "subsidized"
+  },
+  {
+    "building": 2,
+    "floor": 3,
+    "stack": 3,
+    "area_m2": 79.0,
+    "price_ils": 1232605,
+    "price_per_m2": 15603,
+    "tier": "subsidized"
+  },
+  {
+    "building": 2,
+    "floor": 3,
+    "stack": 4,
+    "area_m2": 76.0,
+    "price_ils": 1179877,
+    "price_per_m2": 15525,
+    "tier": "subsidized"
+  },
+  {
+    "building": 2,
+    "floor": 2,
+    "stack": 1,
+    "area_m2": 89.0,
+    "price_ils": 1408362,
+    "price_per_m2": 15824,
+    "tier": "subsidized"
+  },
+  {
+    "building": 2,
+    "floor": 2,
+    "stack": 2,
+    "area_m2": 109.0,
+    "price_ils": 1759877,
+    "price_per_m2": 16146,
+    "tier": "subsidized"
+  },
+  {
+    "building": 2,
+    "floor": 2,
+    "stack": 3,
+    "area_m2": 79.0,
+    "price_ils": 1232605,
+    "price_per_m2": 15603,
+    "tier": "subsidized"
+  },
+  {
+    "building": 2,
+    "floor": 2,
+    "stack": 4,
+    "area_m2": 76.0,
+    "price_ils": 1179877,
+    "price_per_m2": 15525,
+    "tier": "subsidized"
+  },
+  {
+    "building": 2,
+    "floor": 1,
+    "stack": 1,
+    "area_m2": 89.0,
+    "price_ils": 1408362,
+    "price_per_m2": 15824,
+    "tier": "subsidized"
+  },
+  {
+    "building": 2,
+    "floor": 1,
+    "stack": 2,
+    "area_m2": 109.0,
+    "price_ils": 1759877,
+    "price_per_m2": 16146,
+    "tier": "subsidized"
+  },
+  {
+    "building": 2,
+    "floor": 1,
+    "stack": 3,
+    "area_m2": 79.0,
+    "price_ils": 1232605,
+    "price_per_m2": 15603,
+    "tier": "subsidized"
+  },
+  {
+    "building": 2,
+    "floor": 1,
+    "stack": 4,
+    "area_m2": 76.0,
+    "price_ils": 1179877,
+    "price_per_m2": 15525,
+    "tier": "subsidized"
+  },
+  {
+    "building": 3,
+    "floor": 8,
+    "stack": 4,
+    "area_m2": 148.0,
+    "price_ils": 4410209,
+    "price_per_m2": 29799,
+    "tier": "free_market"
+  },
+  {
+    "building": 3,
+    "floor": 8,
+    "stack": 5,
+    "area_m2": 158.0,
+    "price_ils": 4837716,
+    "price_per_m2": 30618,
+    "tier": "free_market"
+  },
+  {
+    "building": 3,
+    "floor": 7,
+    "stack": 4,
+    "area_m2": 148.0,
+    "price_ils": 4390209,
+    "price_per_m2": 29664,
+    "tier": "free_market"
+  },
+  {
+    "building": 3,
+    "floor": 7,
+    "stack": 5,
+    "area_m2": 158.0,
+    "price_ils": 4622812,
+    "price_per_m2": 29258,
+    "tier": "free_market"
+  },
+  {
+    "building": 3,
+    "floor": 6,
+    "stack": 1,
+    "area_m2": 110.5,
+    "price_ils": 1786240,
+    "price_per_m2": 16165,
+    "tier": "subsidized"
+  },
+  {
+    "building": 3,
+    "floor": 6,
+    "stack": 2,
+    "area_m2": 109.5,
+    "price_ils": 1768665,
+    "price_per_m2": 16152,
+    "tier": "subsidized"
+  },
+  {
+    "building": 3,
+    "floor": 6,
+    "stack": 4,
+    "area_m2": 126.0,
+    "price_ils": 3323609,
+    "price_per_m2": 26378,
+    "tier": "free_market"
+  },
+  {
+    "building": 3,
+    "floor": 6,
+    "stack": 5,
+    "area_m2": 134.0,
+    "price_ils": 3520981,
+    "price_per_m2": 26276,
+    "tier": "free_market"
+  },
+  {
+    "building": 3,
+    "floor": 5,
+    "stack": 1,
+    "area_m2": 110.5,
+    "price_ils": 1786240,
+    "price_per_m2": 16165,
+    "tier": "subsidized"
+  },
+  {
+    "building": 3,
+    "floor": 5,
+    "stack": 2,
+    "area_m2": 109.5,
+    "price_ils": 1768665,
+    "price_per_m2": 16152,
+    "tier": "subsidized"
+  },
+  {
+    "building": 3,
+    "floor": 5,
+    "stack": 3,
+    "area_m2": 79.0,
+    "price_ils": 1232605,
+    "price_per_m2": 15603,
+    "tier": "subsidized"
+  },
+  {
+    "building": 3,
+    "floor": 5,
+    "stack": 4,
+    "area_m2": 76.0,
+    "price_ils": 1179877,
+    "price_per_m2": 15525,
+    "tier": "subsidized"
+  },
+  {
+    "building": 3,
+    "floor": 4,
+    "stack": 1,
+    "area_m2": 110.5,
+    "price_ils": 1786240,
+    "price_per_m2": 16165,
+    "tier": "subsidized"
+  },
+  {
+    "building": 3,
+    "floor": 4,
+    "stack": 2,
+    "area_m2": 109.5,
+    "price_ils": 1768665,
+    "price_per_m2": 16152,
+    "tier": "subsidized"
+  },
+  {
+    "building": 3,
+    "floor": 4,
+    "stack": 3,
+    "area_m2": 79.0,
+    "price_ils": 1232605,
+    "price_per_m2": 15603,
+    "tier": "subsidized"
+  },
+  {
+    "building": 3,
+    "floor": 4,
+    "stack": 4,
+    "area_m2": 76.0,
+    "price_ils": 1179877,
+    "price_per_m2": 15525,
+    "tier": "subsidized"
+  },
+  {
+    "building": 3,
+    "floor": 3,
+    "stack": 1,
+    "area_m2": 110.5,
+    "price_ils": 1786240,
+    "price_per_m2": 16165,
+    "tier": "subsidized"
+  },
+  {
+    "building": 3,
+    "floor": 3,
+    "stack": 2,
+    "area_m2": 109.5,
+    "price_ils": 1768665,
+    "price_per_m2": 16152,
+    "tier": "subsidized"
+  },
+  {
+    "building": 3,
+    "floor": 3,
+    "stack": 3,
+    "area_m2": 79.0,
+    "price_ils": 1232605,
+    "price_per_m2": 15603,
+    "tier": "subsidized"
+  },
+  {
+    "building": 3,
+    "floor": 3,
+    "stack": 4,
+    "area_m2": 76.0,
+    "price_ils": 1179877,
+    "price_per_m2": 15525,
+    "tier": "subsidized"
+  },
+  {
+    "building": 3,
+    "floor": 2,
+    "stack": 1,
+    "area_m2": 110.5,
+    "price_ils": 1786240,
+    "price_per_m2": 16165,
+    "tier": "subsidized"
+  },
+  {
+    "building": 3,
+    "floor": 2,
+    "stack": 2,
+    "area_m2": 109.5,
+    "price_ils": 1768665,
+    "price_per_m2": 16152,
+    "tier": "subsidized"
+  },
+  {
+    "building": 3,
+    "floor": 2,
+    "stack": 3,
+    "area_m2": 79.0,
+    "price_ils": 1232605,
+    "price_per_m2": 15603,
+    "tier": "subsidized"
+  },
+  {
+    "building": 3,
+    "floor": 2,
+    "stack": 4,
+    "area_m2": 76.0,
+    "price_ils": 1179877,
+    "price_per_m2": 15525,
+    "tier": "subsidized"
+  },
+  {
+    "building": 3,
+    "floor": 1,
+    "stack": 1,
+    "area_m2": 110.5,
+    "price_ils": 1786240,
+    "price_per_m2": 16165,
+    "tier": "subsidized"
+  },
+  {
+    "building": 3,
+    "floor": 1,
+    "stack": 2,
+    "area_m2": 109.5,
+    "price_ils": 1768665,
+    "price_per_m2": 16152,
+    "tier": "subsidized"
+  },
+  {
+    "building": 3,
+    "floor": 1,
+    "stack": 3,
+    "area_m2": 79.0,
+    "price_ils": 1232605,
+    "price_per_m2": 15603,
+    "tier": "subsidized"
+  },
+  {
+    "building": 3,
+    "floor": 1,
+    "stack": 4,
+    "area_m2": 76.0,
+    "price_ils": 1179877,
+    "price_per_m2": 15525,
+    "tier": "subsidized"
+  },
+  {
+    "building": 3,
+    "floor": 0,
+    "stack": 3,
+    "area_m2": 79.0,
+    "price_ils": 2302850,
+    "price_per_m2": 29150,
+    "tier": "free_market"
+  },
+  {
+    "building": 3,
+    "floor": 0,
+    "stack": 4,
+    "area_m2": 76.0,
+    "price_ils": 1290604,
+    "price_per_m2": 16982,
+    "tier": "subsidized"
+  },
+  {
+    "building": 3,
+    "floor": 0,
+    "stack": 5,
+    "area_m2": 106.0,
+    "price_ils": 3337092,
+    "price_per_m2": 31482,
+    "tier": "free_market"
+  }
+]
