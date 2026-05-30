@@ -16,3 +16,4 @@ Thumbs.db
 
 # app data is generated but committed for one-click open
 !app/data.js
+tools/__pycache__/

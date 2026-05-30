@@ -11,29 +11,45 @@ source plate, so their pixels are identical); deliver **crops + a matching JSON*
 ## Validated, vision-free facts
 
 **Scale:** the vector `<Path>` coordinates are **real millimetres** (red mamad
-≈12 m², footprint ≈23 m). Area in m² = pixel/þ count × (mm_per_px/1000)².
+≈12 m², footprint ≈23 m). Area in m² = pixel count × (mm_per_px/1000)².
 
-**The sheet is NOT one plate per floor.** The 105 apartments collapse to **13
-distinct area-fingerprints**, i.e. ~11–13 *representative* floor plates are drawn,
-each reused by every floor that shares its apartment mix. Black-geometry density
-gives ~10–12 drawing bands and there are exactly **11 room-labelled units** — all
-consistent. So repeated typical floors will (correctly) share one source crop.
+**Sheet layout = a left→right sequence of COMPOSITE floor plans (CORRECTED).**
+Each drawn plate is a *whole-site composite* showing **all three buildings at one
+floor level** — בנין 1 & 2 on the top row and בנין 3 below, in an L — with a north
+arrow and a `תכנית קומה N` title. The sequence runs left→right: basement/ground
+(sparse), residential floors, the green landscaped site plan, then the roof/amenity
+plate (`תכנית קומה ... 4 דירות`). So a "plate" is a **floor**, not a building.
+Confirmed visually on the plates that rendered (3 building footprints + floor
+titles per plate). This matches the user's note that floors are *similar but not
+identical*: each floor is drawn separately, with small per-floor differences
+(e.g. upper floors merge two units into a larger free-market apartment).
 
-**Stack numbering is per-building** (NOT a physical position):
-`B1 s1=109, B2 s1=89, B3 s1=110.5`. So matching must be done *within* a building.
+**Area-fingerprints** (vision-free): the 105 rows collapse to **7 distinct
+sorted-area fingerprints** (see table below) — useful to label a plate's floor
+once the plate is located, but matching must be done per building because **stack
+numbering is per-building** (B1 s1=109, B2 s1=89, B3 s1=110.5).
 
-**Area-fingerprints → floors** (sorted m²):
+**Granularity that works:** composite (=floor) → 3 separable building squares →
+5 cells each. So matching is: locate the composite's floor, then within each of its
+3 building footprints match the 5 cells to that **(building,floor)** area set below.
 
-| fingerprint (m²) | building/floors |
+**Per-(building,floor) area sets** (sorted m², for matching cells inside a square):
+
+| area set (m²) | building/floors |
 |---|---|
 | 185 | B1F0 |
-| 76,79,89,105.4,109 | **B1F1–6** and **B2F1–4** (same areas — disambiguate by plate order/building) |
-| 76,89,109,126,134 | B1F7 and B2F5–6 |
-| 148,158 | B1F8, B2F7–8, B3F7–8 (penthouse plate, reused) |
+| 76,79,89,105.4,109 | B1F1–6, B2F1–4 |
+| 76,89,109,126,134 | B1F7, B2F5–6 |
+| 148,158 | B1F8, B2F7–8, B3F7–8 |
 | 76,79,105.4,109.5,110.5 | B3F1–5 |
-| 76,79,106 (+…) | B3F0 |
+| 76,79,106 | B3F0 |
 
-Building order is fixed by the **3 `בנין` title markers** + left→right plate order.
+Building order is fixed by the **3 `בנין` title markers** + their L-layout
+(בנין 1 & 2 top row, בנין 3 below) within each composite.
+
+**Composite anchors:** the 11 room-labelled living rooms sit at content-x
+≈ 272197, 319268, 345787, 368720, 395238, 419303, 445834, 467193, 493724,
+514437, 540968 — one or two labelled units per composite; usable as seed points.
 
 **Drawing-band x-ranges** (content mm, from black-geometry density) — candidate plates:
 `216718–225756, 272552–300632, 320555–329211, 363804–371439, 415472–419975,
