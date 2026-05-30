@@ -1,5 +1,13 @@
 # Data validation — price list vs. drawings
 
+> **Update (revised price list).** The price list was re-uploaded with corrected
+> values. The parser (hardened against summary rows) now yields **105 apartments —
+> 84 subsidized + 21 free-market**, and matches the file's own `יח"ד מטרה`/`שוק חופשי`
+> counts **exactly for all three buildings** (B1 32+5, B2 24+8, B3 28+8). The earlier
+> Building-3 count discrepancy is **resolved**. The floor-numbering item below still
+> stands.
+
+
 Comparing the two parsed sources for the Sirkin (סירקין) מחיר למשתכן project:
 
 - **Price list:** `data/pricelists/apartment-sizes-and-prices.xlsx` → `data/parsed/apartments.json`

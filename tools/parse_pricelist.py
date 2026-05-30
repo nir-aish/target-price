@@ -21,7 +21,9 @@ HEADER = "שטח דירות"
 def norm_floor(v):
     if isinstance(v, str):
         return 0 if "קרקע" in v else None
-    if isinstance(v, (int, float)):
+    # accept only whole-number floors in a sane range (rejects summary rows
+    # like "יח\"ד מטרה" whose count lands in the floor column, e.g. 0.9, 32)
+    if isinstance(v, (int, float)) and float(v) == int(v) and 0 <= int(v) <= 20:
         return int(v)
     return None
 
@@ -41,7 +43,10 @@ def parse(xlsx):
         for stack, (ac, pc) in enumerate(zip(AREA_COLS, PRICE_COLS), start=1):
             area = row[ac] if len(row) > ac else None
             price = row[pc] if len(row) > pc else None
-            if not isinstance(area, (int, float)):
+            # a real apartment has a sane area and a matching price
+            if not (isinstance(area, (int, float)) and 20 <= area <= 300):
+                continue
+            if not (isinstance(price, (int, float)) and 5e5 <= price <= 1e7):
                 continue
             rec = {
                 "building": building,

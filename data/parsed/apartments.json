@@ -75,9 +75,9 @@
     "building": 1,
     "floor": 6,
     "stack": 3,
-    "area_m2": 105.44,
+    "area_m2": 105.4,
     "price_ils": 1697307,
-    "price_per_m2": 16097,
+    "price_per_m2": 16103,
     "tier": "subsidized"
   },
   {
@@ -119,6 +119,15 @@
   {
     "building": 1,
     "floor": 5,
+    "stack": 3,
+    "area_m2": 105.4,
+    "price_ils": 1697307,
+    "price_per_m2": 16103,
+    "tier": "subsidized"
+  },
+  {
+    "building": 1,
+    "floor": 5,
     "stack": 4,
     "area_m2": 76.0,
     "price_ils": 1179877,
@@ -155,6 +164,15 @@
   {
     "building": 1,
     "floor": 4,
+    "stack": 3,
+    "area_m2": 105.4,
+    "price_ils": 1697307,
+    "price_per_m2": 16103,
+    "tier": "subsidized"
+  },
+  {
+    "building": 1,
+    "floor": 4,
     "stack": 4,
     "area_m2": 76.0,
     "price_ils": 1179877,
@@ -191,6 +209,15 @@
   {
     "building": 1,
     "floor": 3,
+    "stack": 3,
+    "area_m2": 105.4,
+    "price_ils": 1697307,
+    "price_per_m2": 16103,
+    "tier": "subsidized"
+  },
+  {
+    "building": 1,
+    "floor": 3,
     "stack": 4,
     "area_m2": 76.0,
     "price_ils": 1179877,
@@ -227,6 +254,15 @@
   {
     "building": 1,
     "floor": 2,
+    "stack": 3,
+    "area_m2": 105.4,
+    "price_ils": 1697307,
+    "price_per_m2": 16103,
+    "tier": "subsidized"
+  },
+  {
+    "building": 1,
+    "floor": 2,
     "stack": 4,
     "area_m2": 76.0,
     "price_ils": 1179877,
@@ -258,6 +294,15 @@
     "area_m2": 89.0,
     "price_ils": 1408362,
     "price_per_m2": 15824,
+    "tier": "subsidized"
+  },
+  {
+    "building": 1,
+    "floor": 1,
+    "stack": 3,
+    "area_m2": 105.4,
+    "price_ils": 1697307,
+    "price_per_m2": 16103,
     "tier": "subsidized"
   },
   {
@@ -433,6 +478,15 @@
   },
   {
     "building": 2,
+    "floor": 4,
+    "stack": 5,
+    "area_m2": 105.4,
+    "price_ils": 1697307,
+    "price_per_m2": 16103,
+    "tier": "subsidized"
+  },
+  {
+    "building": 2,
     "floor": 3,
     "stack": 1,
     "area_m2": 89.0,
@@ -469,6 +523,15 @@
   },
   {
     "building": 2,
+    "floor": 3,
+    "stack": 5,
+    "area_m2": 105.4,
+    "price_ils": 1697307,
+    "price_per_m2": 16103,
+    "tier": "subsidized"
+  },
+  {
+    "building": 2,
     "floor": 2,
     "stack": 1,
     "area_m2": 89.0,
@@ -505,6 +568,15 @@
   },
   {
     "building": 2,
+    "floor": 2,
+    "stack": 5,
+    "area_m2": 105.4,
+    "price_ils": 1697307,
+    "price_per_m2": 16103,
+    "tier": "subsidized"
+  },
+  {
+    "building": 2,
     "floor": 1,
     "stack": 1,
     "area_m2": 89.0,
@@ -537,6 +609,15 @@
     "area_m2": 76.0,
     "price_ils": 1179877,
     "price_per_m2": 15525,
+    "tier": "subsidized"
+  },
+  {
+    "building": 2,
+    "floor": 1,
+    "stack": 5,
+    "area_m2": 105.4,
+    "price_ils": 1697307,
+    "price_per_m2": 16103,
     "tier": "subsidized"
   },
   {
@@ -649,6 +730,15 @@
   },
   {
     "building": 3,
+    "floor": 5,
+    "stack": 5,
+    "area_m2": 105.4,
+    "price_ils": 1697307,
+    "price_per_m2": 16103,
+    "tier": "subsidized"
+  },
+  {
+    "building": 3,
     "floor": 4,
     "stack": 1,
     "area_m2": 110.5,
@@ -681,6 +771,15 @@
     "area_m2": 76.0,
     "price_ils": 1179877,
     "price_per_m2": 15525,
+    "tier": "subsidized"
+  },
+  {
+    "building": 3,
+    "floor": 4,
+    "stack": 5,
+    "area_m2": 105.4,
+    "price_ils": 1697307,
+    "price_per_m2": 16103,
     "tier": "subsidized"
   },
   {
@@ -721,6 +820,15 @@
   },
   {
     "building": 3,
+    "floor": 3,
+    "stack": 5,
+    "area_m2": 105.4,
+    "price_ils": 1697307,
+    "price_per_m2": 16103,
+    "tier": "subsidized"
+  },
+  {
+    "building": 3,
     "floor": 2,
     "stack": 1,
     "area_m2": 110.5,
@@ -757,6 +865,15 @@
   },
   {
     "building": 3,
+    "floor": 2,
+    "stack": 5,
+    "area_m2": 105.4,
+    "price_ils": 1697307,
+    "price_per_m2": 16103,
+    "tier": "subsidized"
+  },
+  {
+    "building": 3,
     "floor": 1,
     "stack": 1,
     "area_m2": 110.5,
@@ -789,6 +906,15 @@
     "area_m2": 76.0,
     "price_ils": 1179877,
     "price_per_m2": 15525,
+    "tier": "subsidized"
+  },
+  {
+    "building": 3,
+    "floor": 1,
+    "stack": 5,
+    "area_m2": 105.4,
+    "price_ils": 1697307,
+    "price_per_m2": 16103,
     "tier": "subsidized"
   },
   {
