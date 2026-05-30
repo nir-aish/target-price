@@ -1,8 +1,20 @@
 # Surroundings & exposure — plot 201 (our project)
 
-Source: the project map on dira.moch.gov.il (buyer screenshots). **Our project = מגרש
-201** — מחיר מטרה, יזם **רם אדרת**, **105 דירות**, 8 floors. (105 matches our parsed
-catalog exactly: 84 subsidized + 21 free-market ✅.)
+Source: the project map on dira.moch.gov.il (buyer screenshots), validated against web
+sources (Aug 2025). **Our project = מגרש 201** — מחיר מטרה, יזם **רם אדרת + רובי קפיטל
+(ספיר)**, **105 דירות** (**84 מחיר מטרה + 21 שוק חופשי** ✅ matches our catalog), **3
+buildings**. Land payment ₪32.3M + development ₪11.5M; won the tender in **early 2023**.
+
+**Floor count — validated, with a caveat.** The official dira listing and the local
+coverage say **"שלושה בניינים בני 8 קומות בצמוד לפארק"** (3 buildings, **8 floors**,
+**adjacent to a park**). The developer's own site says **"9 קומות"**, and our drawings run
+to floor "9" + roof. Most likely reconciliation: **8 residential floors above ground**
+(ground + 1…8 = 9 sellable levels), basements = parking. Confirm with the sales office.
+
+> **Web finding that strengthens the east-aspect thesis:** the developer markets the
+> project literally as **"בצמוד לפארק"** (adjacent to a park) and the marketing showcases
+> the **NE/SE** facades — independent confirmation that the desirable side opens onto the
+> eastern green/open space (see "Combined desirability" below).
 
 ## Immediate neighbours (north-up map)
 
@@ -45,18 +57,39 @@ school and the rental building) are the weakest regardless of floor.
 
 ## Open questions (confirm before finalising)
 
-- **Eastern green — RESOLVED (partially):** מגרש 110 to the east is a future **8-floor
-  public institution** (school/מוסדות ציבור) set back beyond a **green buffer**, not a
-  permanent open park. East units keep a green foreground and a low-key, setback,
-  landscaped institution in the middle distance — still the best aspect, just not pristine
-  open. (A school also brings daytime activity/noise but quiet evenings & weekends.)
+- **Eastern green / מגרש 110 — area-zoning confirmed, plot-level still by screenshot.**
+  The statutory plan **410-0671826 "סירקין מזרח"** (deposited 2020, approved 2021) confirms
+  the quarter mixes **residential + public buildings & educational institutions (מבני
+  ציבור/מוסדות חינוך) + parks/open space**, with **graduated heights**: up to 24 floors on
+  the central transit axis, **stepping down to 4–8 floors at the edges** toward the park/
+  Nahal Shilo and Kfar Sirkin — and **our plot sits in that low-rise park-edge band** (8
+  floors, "בצמוד לפארק"). This is fully consistent with our model that מגרש 110 to the east
+  is a **setback ~8-floor public institution beyond a green buffer**, not a high-rise.
+  ⚠️ The *specific* plot-110 designation/floors/setback still rests on the buyer's
+  project-map screenshot — the public תקנון PDF and tab"a viewers are not machine-readable,
+  so this exact plot was not independently re-verified. The east aspect remains the best
+  regardless (green foreground + low-key setback institution + the developer's "park" framing).
 - **Floor count:** project page says 8 floors; our drawings showed plans to "9" + roof —
   reconcile the numbering (affects which floor is the true top).
 - **Per-apartment facing** is still the missing key to apply this per unit — see below.
 
 ## What's needed to apply this to each of the 84 units
 
-We have the *direction → desirability* map; we still need **which apartment number sits
-on which corner**. Best source: the **מפרט מכר / brochure** (usually lists each unit's
-כיוונים) — fetchable now that web access is on. Then `exposure_score(facing)` in
-`tools/rank.py` plugs straight into the ranking.
+We have the *direction → desirability* map, and **`exposure_score(facing)` is now wired
+into `market_ppm()`** in `tools/rank.py` (multipliers SE 1.10 … NW 0.92). It is gated on a
+`STACK_FACING` map keyed by `(building, stack)` that is **currently empty → neutral ×1.0**
+for all 84 units, so it does not yet move the ranking.
+
+To activate it we still need **which (building, stack) sits on which corner**. Status of
+sources tried (web now on):
+- **מפרט מכר / brochure** — *not publicly retrievable.* The dira project page is a JS SPA
+  (returns an empty shell); its API is locked (HTTP 473); the developer's project page
+  lists no כיוונים/חניה/מחסן and no spec PDF.
+- **CAD plans** — the unit-plan drawings *do* carry apartment numbers as vector text
+  (**101 / 102 / 105 / 108**, 4 per floor-plate), but (a) the price list has **5 stacks**
+  per building vs **4 corners + 1 mid-facade** on the plate, and (b) those numbers don't key
+  to price-list stacks 1–5. So a *reliable* stack→corner map can't be derived from the CAD alone.
+
+⇒ **Remaining input:** the buyer's own contract/brochure כיוונים table, **or** a guided
+plan-read (we zoom the plate together, you confirm which stack/number is on the green-facing
+NE/SE corner). One edit to `STACK_FACING` then flows straight into every score.

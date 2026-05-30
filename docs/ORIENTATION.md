@@ -58,6 +58,10 @@ Each corner apartment has **two exterior facades** (good cross-ventilation — "
 2. **Guided mapping** — read each building's 4–5 apartment numbers off the plan
    together (we zoom in, you confirm the digits), then attach the quadrant facing.
 
-Until then, orientation is **not** injected into the ranking (no per-apartment data),
-to avoid fabricated precision. The north constant and quadrant logic are ready to wire
-in as soon as the stack→corner mapping exists.
+**Wiring status (updated):** `exposure_score(facing)` is now **wired into `market_ppm()`**
+in `tools/rank.py` and combines the sun + open-view (eastern green/park) logic. It reads a
+`STACK_FACING` map keyed by `(building, stack)`. That map is **deliberately empty** → every
+unit gets a **neutral ×1.0**, so no fabricated precision enters the ranking. The moment the
+per-apartment כיוונים are known (brochure/מפרט or a guided plan-read — the dira מפרט is not
+publicly retrievable; see `docs/SURROUNDINGS.md`), populating `STACK_FACING` activates the
+premium/discount for the green-facing (NE/SE) vs building-facing (SW/NW) corners automatically.

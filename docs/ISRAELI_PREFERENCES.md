@@ -4,8 +4,20 @@ Basis for the pros/cons and weighting in `tools/rank.py`. Since the goal is **re
 for profit**, these are the attributes that drive demand and price in the Israeli
 second-hand market (Gush Dan / center, where Sirkin/Petah-Tikva sits).
 
-> Note: compiled from market knowledge (external web access is blocked in this
-> environment). Treat as a sensible default to refine with a local agent's input.
+> Note: compiled from market knowledge and **validated against current web sources
+> (May 2026)** — the ranking drivers below (cross-ventilation, sun/open-view, 3–4-room
+> liquidity, floor, parking/storage) are all corroborated by current Israeli market
+> commentary and Petah-Tikva pricing data. Still worth a final sanity-check with a local agent.
+
+## Validated against Petah-Tikva data (2025)
+
+- **Price level / appreciation:** PT citywide average **~29,064 ₪/m²**, **+6% YoY** — a
+  rising market, supporting resale upside by the ~2030 sale window (see `RANKING_MODEL.md`).
+- **New-build premium is real:** a new 3-room flat (~₪2.53M) vs second-hand (~₪2.18M) ≈
+  **+15–20%** — our subsidized units resell as nearly-new stock, so they sit at the upper
+  half of the local range.
+- **Room mix:** by-room ₪/m² (2nd-hand) is 4-rm ~23.6k / 5-rm ~24.8k / 6+ ~23.2k — larger
+  units do **not** command a higher ₪/m², consistent with our liquidity penalty on big flats.
 
 ## What Israeli buyers pay a premium for (high → low impact)
 
@@ -36,9 +48,10 @@ second-hand market (Gush Dan / center, where Sirkin/Petah-Tikva sits).
 | 3–4 rooms most liquid | ✅ `liquidity` + pros | price-list area |
 | Higher floor premium | ✅ `FLOOR_FACTOR` + pros | price-list floor |
 | Low entry ₪/m² | ✅ pros | price list |
-| Cross-ventilation (corner) | ⏳ framework ready | drawings (4 corners/bldg) |
-| Sun orientation (S/SE) | ⏳ framework ready (`docs/ORIENTATION.md`) | north arrow + renders |
+| Cross-ventilation (corner) | ✅ pros (all corner units) | drawings (4 corners/bldg) |
+| Sun orientation (S/SE) + open-view | 🔌 **wired but neutral** (`exposure_score`) | north arrow + renders |
 | Parking / storage / view | ❌ no per-unit data | needs brochure / מפרט |
 
-⏳ = logic exists, waiting on the per-apartment stack→corner mapping (brochure or a
-guided pass) before injecting into the score, to avoid fabricated precision.
+🔌 = `exposure_score()` is wired into `market_ppm()` but reads an **empty** per-unit facing
+map (neutral ×1.0), so it does not yet move scores — awaiting the brochure/מפרט כיוונים (the
+dira מפרט is not publicly retrievable) or a guided plan-read. See `docs/SURROUNDINGS.md`.

@@ -40,10 +40,28 @@ python3 tools/build_app.py                                             # refresh
 - `docs/ISRAELI_PREFERENCES.md` — resale-value drivers behind the pros/cons
 - `docs/ORIENTATION.md` — north = ~26° W of up; building facings (validated)
 
+## Validated from the web (May 2026) — see `docs/` for details & sources
+
+- **Project = מגרש 201**, יזם **רם אדרת + רובי קפיטל (ספיר)**, 105 דירות (84 מטרה + 21 שוק
+  חופשי), 3 buildings, **8 floors "בצמוד לפארק"**, tender won early 2023.
+- **Resale lock-in (firm):** market resale only from the **earlier** of *5y after טופס 4*
+  or *7y after the tender win* → **~2030** for us. Breach penalty ~₪450k.
+- **Cost model corrected:** the price list already embeds the מחיר מטרה discount (the
+  −133,230 term); an earlier model double-subtracted a 20%/300k cut. Fixed → top-unit
+  profit ~79% (was an inflated ~124%). VAT updated 17→18%.
+- **Indexation:** kept ×1.06 central, now documented via the real mechanism — index ~5%/yr,
+  but חוק המכר Amendment 9 caps the indexed portion at 40% and a בג"ץ compromise splits the
+  differential in thirds; accrues only from full היתר בנייה (none yet). Effective ≈ ×1.04–1.10.
+- **Market anchor validated:** PT 2025 ≈29,064 ₪/m² (+6% YoY); our 27k base is central/
+  mildly conservative for a new eastern quarter — unchanged.
+
 ## Known open items (for next iteration)
 
-- **Orientation per apartment** — framework ready; needs the brochure/מפרט or a guided
-  pass to map each unit (stack) to its corner/facing.
-- **Indexation** — using ×1.06 estimate to 1 Jul 2026; firm up with the tender base index.
-- **Discount** — modelled as 20% capped at 300k; confirm interpretation.
-- **Floor numbering** — list (ground→8) vs drawings (1→9); confirm with sales office.
+- **Orientation per apartment** — `exposure_score()` is now **wired** into the ranking but
+  **neutral** (empty facing map): the dira מפרט is not publicly retrievable and the CAD
+  numbers don't key to price-list stacks. Needs the brochure כיוונים or a guided plan-read.
+- **Embedded discount %** — the −133,230 benefit (~8–12%) is smaller than the headline
+  14–19%-off-appraisal; confirm the constant against the contract.
+- **Floor numbering** — list (ground→8) vs marketing/drawings ("9 קומות"); confirm with sales office.
+- **מגרש 110 zoning** — area plan confirms a low-rise park-edge public/institutional band;
+  exact plot-110 designation still by buyer screenshot (statutory PDF not machine-readable).
