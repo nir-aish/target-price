@@ -95,13 +95,33 @@ L-layout (בנין 1 & 2 top row, בנין 3 below).
   coordinate space (not xps_reader's 0.08×) and rasterise segments, then adopt the
   blue-loop or door-gap-closing method above for per-cell areas.
 
+## Segmentation attempts — what failed and why (honest record)
+1. **Flood-fill on a black/all-colour segment mask** → 0 clean cells: apartments
+   connect to the core/corridor through **door openings**, so an interior leaks to
+   the exterior.
+2. **Blue-boundary "legal outline" flood-fill** → also 0 cells. Rendering the blue
+   mask of one square (`/tmp/blue_mask.png` this session) shows the blue layer is
+   **fragmented tick-marks / short segments, NOT closed apartment loops** — so it
+   can't be filled either. (An intermediate commit wrongly claimed this produced
+   "5 clean cells"; that was false and was reverted.)
+
+**Conclusion:** automatic per-cell area from any single colour layer is the genuine
+hard floor-plan-vectorisation problem and is **not** solved by simple raster fill.
+
 ## Status (end of this session)
 **Solved:** structural model (composite=floor); scale=mm; the 2-coord pitfall;
-**floor identification by title (vision)**; per-(building,floor) area sets;
-single-square cropping; the facing rule (corner vs square centre, up=N/right=E).
+**floor identification by reading the `תכנית קומה N` title (vision)**;
+per-(building,floor) area sets; **whole building-square cropping**; the facing rule
+(corner vs square centre, up=N/right=E).
 
-**Not solved / next step:** robust per-cell **segmentation+area** (door openings
-defeat naive flood-fill). Once a square yields its 5 cell polygons/areas, the rest
-is mechanical: match area→stack within the building, crop each cell, infer facing,
-write `data/parsed/unit_plans.json`. No output file is committed until it carries
-real matched data (the earlier empty `unit_plans.json` was removed).
+**Not solved:** fully-automatic per-cell **area** measurement (see attempts above).
+
+**Recommended path to a complete dataset (chosen: vision-assisted):** geometry for
+the reliable parts (locate composite, read floor title, crop each building square),
+then **identify the 5 cells per square visually** (the squares render clearly) and
+take each unit's area from the price list to assign the stack. This yields per-unit
+crops + facing + stack match without depending on the unsolved auto-segmentation.
+A future pure-automatic route would need real polyline vectorisation (snap+close
+walls into rooms, or merge rooms within a blue/■ boundary), not raster fill.
+
+No `unit_plans.json` is committed until it carries real matched data.
