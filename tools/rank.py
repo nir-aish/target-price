@@ -47,6 +47,21 @@ def liquidity(area):
     if 95 < area <= 112:  return 0.95
     return 0.88
 
+# --- Exposure model for plot 201 (sun + surroundings). See docs/SURROUNDINGS.md. ---
+# Neighbours: East = open green (good); South=bldg 200, West=school 101, North=bldg 104.
+# All neighbours ~8 floors (same height) → facing a building is blocked at every floor.
+# Combines Israeli sun preference (S best, N worst) with open-view (east green).
+EXPOSURE = {            # facade facing -> desirability multiplier (1.0 = neutral)
+    "SE": 1.10, "E": 1.08, "NE": 1.06,     # toward the eastern green / sun — best
+    "S": 1.00,                              # great sun but faces bldg 200
+    "SW": 0.96, "W": 0.94, "NW": 0.92,      # face school/rental, weaker sun
+    "N": 0.93,
+}
+def exposure_score(facing):
+    """Multiplier for a unit's facade direction. Returns 1.0 if facing unknown.
+    NOT YET wired into the score — needs per-apartment facing (brochure/מפרט)."""
+    return EXPOSURE.get(facing, 1.0)
+
 def market_ppm(area, floor):
     return MARKET_BASE_PPM * FLOOR_FACTOR.get(floor, 1.0) * size_factor(area)
 
