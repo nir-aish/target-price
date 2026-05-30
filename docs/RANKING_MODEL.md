@@ -121,6 +121,11 @@ to the 27k anchor**; the in-project free-market units remain the cleanest comp.
   Flipping just that ambiguity reshuffles the **entire top-10 (0/10 overlap)** and changes #1.
   We refuse to let an unverified guess decide the pick. **Re-activate** (set `INCLUDE_EXPOSURE
   = True`) once facings are confirmed against the מפרט מכר / brochure. See `docs/ORIENTATION.md`.
+  - **Ties.** A direct consequence of excluding facing: units that match on every measured
+    factor (same floor + size, different building) are genuinely interchangeable, so they
+    **share one rank** (standard competition ranking — 1,1,1,4,…) and carry a `tie_count`.
+    Here **39 of 84** apartments fall in such ties. The app marks them (`=` badge / "שוויון")
+    so it never implies one beats an identical sibling. Confirmed facing would break them.
 
 ## Sensitivity / confidence (what the ranking actually rests on)
 

@@ -37,6 +37,8 @@
   tbody tr:hover{background:#222c3d}
   tbody tr.sel{background:#1d3a5f}
   .rank{color:var(--mut)}
+  .tiebadge{display:inline-block;margin-inline-start:4px;padding:0 5px;border-radius:8px;
+        background:#26313f;border:1px solid var(--line);color:var(--mut);font-size:10.5px}
   .pos{color:var(--good);font-weight:600}
   .pct{font-weight:700}
   .pin{cursor:pointer;color:#43506a;font-size:15px;user-select:none}
@@ -168,7 +170,7 @@ function render(){
   stats(list);
   rows.innerHTML = list.map(a=>`<tr data-r="${a.rank}" class="${selected===a.rank?'sel':''}">
     <td><span class="pin ${pinned.has(a.rank)?'on':''}" data-pin="${a.rank}" title="הוספה להשוואה">${pinned.has(a.rank)?'★':'☆'}</span></td>
-    <td class="rank">${a.rank}</td><td>${a.building}</td><td>${a.floor}</td>
+    <td class="rank">${a.rank}${a.tie_count>1?`<span class="tiebadge" title="שוויון: ${a.tie_count} דירות זהות (אותה קומה/גודל, בניינים שונים) — הדירוג בלי כיוון">=</span>`:''}</td><td>${a.building}</td><td>${a.floor}</td>
     <td>${a.area_m2}</td><td>${a.rooms}</td>
     <td>${ils(a.purchase_price)}</td><td>${ils(a.est_market_value)}</td>
     <td class="pos">${ils(a.est_profit_ils)}</td>
@@ -193,7 +195,7 @@ function showDetail(rank){
   render();
   document.getElementById("detail").innerHTML = `
     <h2>בניין ${a.building} · קומה ${a.floor} · ${a.area_m2} מ"ר</h2>
-    <div class="muted">דירוג #${a.rank} מתוך ${A.length} · ~${a.rooms} חדרים · קוטג' ${a.stack}</div>
+    <div class="muted">דירוג #${a.rank} מתוך ${A.length}${a.tie_count>1?` · ⚖️ שוויון עם ${a.tie_count-1} ${a.tie_count-1==1?'דירה זהה':'דירות זהות'} (אותה קומה/גודל בבניינים אחרים — נבדלות רק בכיוון, שלא שולב)`:''} · ~${a.rooms} חדרים · קוטג' ${a.stack}</div>
     <div class="kv"><span>מחיר מוצג (15,022 ₪/מ"ר + מע"מ)</span><b>${ils(a.gross_price)}</b></div>
     <div class="kv"><span>הנחת דירה בהנחה (20% / עד 300 אלף)${a.discount_capped?' — תקרה':''}</span><b>−${ils(a.target_discount)}</b></div>
     <div class="kv"><span>מחיר חוזה (במעמד החתימה)</span><b>${ils(a.net_contract_price)}</b></div>

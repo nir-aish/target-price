@@ -13,6 +13,7 @@ All model assumptions are explicit constants below and documented in
 docs/RANKING_MODEL.md. Outputs are decision-support ESTIMATES, not appraisals.
 """
 import argparse, csv, json, statistics as st
+from collections import Counter
 from pathlib import Path
 
 # --- Purchase-cost model (דירה בהנחה / מחיר מטרה) --------------------------------
@@ -217,8 +218,20 @@ def rank(apartments):
         rec["pros"], rec["cons"] = pros_cons(a, facing if INCLUDE_EXPOSURE else None)
         out.append(rec)
     out.sort(key=lambda r: (-r["resale_score"], -r["est_profit_ils"]))
+    # Standard competition ranking: units that are EQUIVALENT on every measured factor
+    # (same score AND same absolute profit — e.g. same floor+size in different buildings)
+    # share one rank number, and the next distinct value skips ahead (1,1,1,4,…). They are
+    # genuinely interchangeable here because exposure/facing is excluded; flagged as ties so
+    # the app doesn't imply one beats the other. (Re-enabling facing would break these.)
+    prev_key, rk = None, 0
     for i, r in enumerate(out, 1):
-        r["rank"] = i
+        key = (r["resale_score"], r["est_profit_ils"])
+        if key != prev_key:
+            rk, prev_key = i, key
+        r["rank"] = rk
+    counts = Counter(r["rank"] for r in out)
+    for r in out:
+        r["tie_count"] = counts[r["rank"]]   # how many apartments share this exact rank
     return out
 
 
