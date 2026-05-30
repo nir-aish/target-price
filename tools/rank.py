@@ -51,19 +51,32 @@ def market_ppm(area, floor):
     return MARKET_BASE_PPM * FLOOR_FACTOR.get(floor, 1.0) * size_factor(area)
 
 
+def rooms_est(area):
+    """Approx. room count from area (מחיר למשתכן typical sizing)."""
+    if area <= 82:  return "3"
+    if area <= 100: return "4"
+    return "4–5"
+
 def pros_cons(apt):
+    """Pros/cons reflecting Israeli resale preferences (see docs/ISRAELI_PREFERENCES.md)."""
     pros, cons = [], []
     f, ar, ppm = apt["floor"], apt["area_m2"], apt["price_per_m2"]
-    # floor
-    if f >= 6:   pros.append("גבוהה (קומה 6+): אור, נוף, שקט מהרחוב")
-    elif f >= 3: pros.append(f"קומה אמצעית ({f}): ביקוש יציב")
-    if f == 0:   cons.append("קומת קרקע: פחות אטרקטיבית למכירה, פחות אור/נוף")
-    elif f <= 2: cons.append(f"קומה נמוכה ({f}): פרמיית קומה נמוכה")
-    # size / liquidity
-    if 76 <= ar <= 95: pros.append("גודל 3–4 חד': הנזיל והמבוקש ביותר למכירה חוזרת")
-    if ar >= 109:      cons.append("דירה גדולה: מחיר גבוה → קהל קונים קטן יותר")
-    # entry price
-    if ppm <= 15700: pros.append("מחיר כניסה נמוך מאוד למ\"ר")
+    rooms = rooms_est(ar)
+    # floor — higher = light/air/quiet/view (with elevator); ground = weakest
+    if f >= 6:   pros.append(f"קומה גבוהה ({f}): אור, אוויר, נוף ושקט — מבוקש")
+    elif f >= 3: pros.append(f"קומה אמצעית ({f}): ביקוש רחב ויציב")
+    if f == 0:   cons.append("קומת קרקע: פחות אטרקטיבית (פרטיות/אור/נוף)")
+    elif f <= 2: cons.append(f"קומה נמוכה ({f}): קרובה לרחוב, פרמיה נמוכה")
+    # rooms / liquidity — 3–4 rooms = largest buyer pool, fastest resale
+    if rooms in ("3", "4"):
+        pros.append(f"~{rooms} חד': הקהל הרחב ביותר — נזיל למכירה חוזרת")
+    else:
+        cons.append("דירה גדולה/יקרה יחסית: קהל קונים מצומצם יותר")
+    # entry price — built-in מחיר למשתכן discount
+    if ppm <= 15700:
+        pros.append("מחיר כניסה נמוך במיוחד למ\"ר")
+    # cross-ventilation — building is 4 corner-units/floor (2 כיווני אוויר)
+    pros.append("דירת פינה צפויה (2 כיווני אוויר): אוורור ואור — מבוקש בישראל")
     return pros, cons
 
 

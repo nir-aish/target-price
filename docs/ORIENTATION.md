@@ -3,13 +3,19 @@
 Orientation strongly affects resale value (sun = premium). Here's what we can and
 cannot extract from the DWFx.
 
-## North direction — ROBUST ✅
+## North direction — ROBUST ✅ (independently validated)
 
 Every floor sheet carries a north arrow (`N`, 10 of them). Parsing the XPS Canvas
 transforms gives a **consistent rotation of −26.2°** on all of them, and a render of
 the arrow confirms it points **up-and-to-the-left**. Therefore:
 
 - **True north ≈ 26° west of "page up".**
+
+**Independent cross-check:** the project's marketing 3D renders are captioned
+**"מבט מכוון צפון מזרח" (view facing NE)** and **"מבט מכוון דרום מזרח" (view facing SE)**.
+A building whose showcase facades are NE and SE matches the −26.2° derivation exactly
+(a square rotated ~26°, with facades toward NE/SE/SW/NW). Two independent sources agree.
+
 - Cardinal mapping on the plans (bearing of each page direction):
 
 | Page direction | Compass bearing | ≈ |
@@ -25,14 +31,15 @@ Each floor sheet shows **all 3 buildings** (`בנין 1/2/3`). Each building is 
 **square footprint with 4 apartments — one per corner — around a central stair/lift
 core**, and each apartment's **balcony sits at the building's outer corner**.
 
-Quadrant → facing (sun premium in **bold**):
+Each corner apartment has **two exterior facades** (good cross-ventilation — "דירת
+2 כיוונים", valued in Israel). Corner → overall facing (sun premium in **bold**):
 
-| Corner on plan | Faces | Resale |
-|---|---|---|
-| bottom-right | **SE → S** | **best (sun + likely view)** |
-| bottom-left  | **SW**     | **good (afternoon sun)** |
-| top-right    | NE → E     | ok (morning sun) |
-| top-left     | N → NW     | weakest (least sun) |
+| Corner on plan | Two facades | Overall | Resale |
+|---|---|---|---|
+| bottom-right | ESE + SSW | **SSE ≈ South** | **best (sun + showcase SE facade)** |
+| bottom-left  | SSW + WNW | **WSW**         | **good (afternoon sun)** |
+| top-right    | NNE + ESE | ENE             | ok (morning sun; showcase NE facade) |
+| top-left     | WNW + NNE | NNW             | weakest (least sun) |
 
 ## What we CANNOT reliably extract ⚠️
 
