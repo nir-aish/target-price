@@ -1,11 +1,19 @@
 # Area-measurement review — are we reading the plans correctly?
 
-The buyer asked us to verify our parsing follows Israeli apartment-measurement
-conventions. NOTE: the two reference documents provided could not be opened from
-this environment (outbound web is firewalled). This review is therefore based on
-the standard rules (תקנות התכנון והבנייה — חישוב שטחים) and on what is actually
-printed in the DWFx. **Re-verify against the source docs** — easiest path: upload
-the PDF into the repo (`docs/refs/`) and we'll check against it directly.
+The buyer asked us to verify our parsing follows Israeli plan-reading conventions.
+The two reference documents were provided and **have now been read in full**:
+- "איך קוראים תוכניות בנייה" (building.org.il) — general plan-reading guide.
+- "קריאה והבנת תכניות בנייה" (מצגת 109) — 67-slide course deck.
+
+Verified against them (all ✅ consistent with our parsing): scale **1:100** (1 cm = 1 m),
+dimensions in **centimeters**, **internal vs external** dimension chains, **north arrow**
+near the legend (→ orientation derivable), **floor-level marks** relative to ground `±0.00`.
+Neither document defines שטח עיקרי/שירות — that comes from the area-calc regulation
+(תקנות חישוב שטחים), so that section below rests on the regulation, not these decks.
+
+**Bug found via the cm-dimension rule:** apartment-number detection (`^1\d{2}$`) collides
+with cm wall dimensions like 142/160/180/190. Fix: classify text by font size
+(`em≈13` = area label; `em≈4–5` = dimension / apartment number).
 
 ## How these plans encode areas (confirmed from the file)
 
