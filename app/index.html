@@ -194,9 +194,11 @@ function showDetail(rank){
   document.getElementById("detail").innerHTML = `
     <h2>בניין ${a.building} · קומה ${a.floor} · ${a.area_m2} מ"ר</h2>
     <div class="muted">דירוג #${a.rank} מתוך ${A.length} · ~${a.rooms} חדרים · קוטג' ${a.stack}</div>
-    <div class="kv"><span>מחיר מוצג (15,022 ₪/מ"ר + מע"מ + הצמדה)</span><b>${ils(a.gross_price)}</b></div>
+    <div class="kv"><span>מחיר מוצג (15,022 ₪/מ"ר + מע"מ)</span><b>${ils(a.gross_price)}</b></div>
     <div class="kv"><span>הנחת דירה בהנחה (20% / עד 300 אלף)${a.discount_capped?' — תקרה':''}</span><b>−${ils(a.target_discount)}</b></div>
-    <div class="kv"><span>מחיר קנייה נטו</span><b>${ils(a.purchase_price)}</b></div>
+    <div class="kv"><span>מחיר חוזה (במעמד החתימה)</span><b>${ils(a.net_contract_price)}</b></div>
+    <div class="kv"><span>תוספת הצמדה (לפי לוח התשלומים)</span><b>+${ils(a.index_addition)}</b></div>
+    <div class="kv"><span>מחיר קנייה סופי</span><b>${ils(a.purchase_price)}</b></div>
     <div class="kv"><span>שווי שוק מוערך</span><b>${ils(a.est_market_value)}</b></div>
     <div class="kv"><span>רווח מוערך</span><b class="pos">${ils(a.est_profit_ils)} (+${a.est_profit_pct}%)</b></div>
     <div class="kv"><span>ציון מכירה חוזרת</span><b>${a.resale_score}</b></div>

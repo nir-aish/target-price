@@ -46,12 +46,13 @@ python3 tools/build_app.py                                             # refresh
   חופשי), 3 buildings, **8 floors "בצמוד לפארק"**, tender won early 2023.
 - **Resale lock-in (firm):** market resale only from the **earlier** of *5y after טופס 4*
   or *7y after the tender win* → **~2030** for us. Breach penalty ~₪450k.
-- **Cost model corrected:** the price list already embeds the מחיר מטרה discount (the
-  −133,230 term); an earlier model double-subtracted a 20%/300k cut. Fixed → top-unit
-  profit ~79% (was an inflated ~124%). VAT updated 17→18%.
-- **Indexation:** kept ×1.06 central, now documented via the real mechanism — index ~5%/yr,
-  but חוק המכר Amendment 9 caps the indexed portion at 40% and a בג"ץ compromise splits the
-  differential in thirds; accrues only from full היתר בנייה (none yet). Effective ≈ ×1.04–1.10.
+- **Cost model:** `displayed (מחיר מוצג) = 15,022 ₪/m² × area + VAT(18%)`; subsidy =
+  `min(20% × displayed, ₪300,000)` (דירה בהנחה; the ₪300k cap binds from ~89 m² up);
+  `net = displayed − subsidy`; then index-linked over the payment schedule.
+- **Indexation = schedule-derived ≈ ×1.040** (not a blanket factor). Linkage runs only
+  **forward from signing**, and per חוק המכר **Amendment 9** the first 20% is unindexed and
+  ≤50% of each later payment is linked. At a 4.5%/yr forward index it adds **+4.0%** on the
+  net price (sensitivity 3–6%/yr → +2.6–5.4%). Ranking order is ~invariant to it.
 - **Market anchor validated:** PT 2025 ≈29,064 ₪/m² (+6% YoY); our 27k base is central/
   mildly conservative for a new eastern quarter — unchanged.
 

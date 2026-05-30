@@ -16,39 +16,67 @@ import argparse, csv, json, statistics as st
 from pathlib import Path
 
 # --- Purchase-cost model (דירה בהנחה / מחיר מטרה) --------------------------------
-# The buyer's price is built in three steps:
-#   1. displayed price (מחיר מוצג) = base 15,022 ₪/m² × area, + VAT, indexed to payment.
-#   2. subsidy discount = the LOWER of 20% of the displayed (incl-VAT) price OR ₪300,000.
-#   3. purchase price the buyer pays = displayed − discount.
+# The buyer's price is built in four steps:
+#   1. displayed price (מחיר מוצג) = 15,022 ₪/m² × area + VAT   (nominal, at signing).
+#   2. subsidy discount = the LOWER of 20% of displayed OR ₪300,000.
+#   3. net contract price = displayed − discount.
+#   4. the net price is paid in installments that are index-linked to מדד תשומות הבנייה;
+#      INDEXATION (computed from the payment schedule below) is applied to the net price.
 # Base rate 15,022 ₪/m² (pre-VAT) is the מחיר מטרה rate for this plot (user-confirmed).
-# NOTE: this supersedes the earlier reverse-engineered "(15022×area − 133,230)×VAT"
-# formula — the fixed −133,230 term is dropped in favour of the explicit 20%/300k subsidy.
+import datetime as _dt
 OFFICIAL_BASE_PPM = 15022        # ₪/m² before VAT (מחיר מטרה base rate for the plot)
 VAT               = 0.18         # current Israeli VAT (since 1 Jan 2025)
 DISCOUNT_RATE     = 0.20         # subsidy = 20% of the displayed (incl-VAT) price …
 DISCOUNT_CAP      = 300000       # … capped at ₪300,000 (the lower of the two applies)
-INDEXATION        = 1.06         # מדד תשומות הבנייה, tender base → payment. VALIDATED (web, May-2026):
-                                 #  • Raw index from the early-2023 tender base: ≈ +13% to today
-                                 #    (2024 +2.9%, 2025 +5.1%, ~6% trailing), ≈ +23% to delivery (~2028).
-                                 #  • Amendment 9 to חוק המכר (דירות), in force 7 Jul 2022, LIMITS linkage:
-                                 #    the first 20% (paid at signing) is NOT indexed, and at most 50% of
-                                 #    each later payment may be linked ⇒ at most 40% OF THE PRICE is indexed,
-                                 #    and only up to the delivery date (no index for delivery delays).
-                                 #  • State↔contractors settlement: buyer's extra cost ≈ ₪4,043–8,206.
-                                 #  ⇒ Effective = 1 + 0.40×(raw): ≈ ×1.05 (to today) … ×1.09 (to delivery).
-                                 #    1.06 is a central estimate. Ranking order is ~invariant (9–10/10 top-10
-                                 #    stable for 1.00–1.10). Set to 1.0 for un-indexed contract terms.
+
+# Indexation, computed from the actual payment schedule (example: signing 1 Jul 2026 →
+# delivery 28 Mar 2030). Amendment 9 to חוק המכר (in force 7 Jul 2022): the first 20% of the
+# price is NOT index-linked, and at most 50% of each later payment is — so we link 50% of every
+# payment beyond the first 20%, accruing the construction index only from signing to each
+# payment's date. Only forward linkage matters (the price is set at signing); the historical
+# 2023→2026 rise is already in the 15,022 base.
+_SIGNING = _dt.date(2026, 7, 1)
+PAYMENT_SCHEDULE = [             # (date, fraction of price) — example schedule
+    (_dt.date(2026, 7,  1), 0.07),   # חתימת חוזה
+    (_dt.date(2026, 8, 15), 0.13),   # תשלום שני
+    (_dt.date(2027, 1, 15), 0.10),
+    (_dt.date(2027, 7,  1), 0.10),
+    (_dt.date(2027, 12,15), 0.10),
+    (_dt.date(2028, 6,  1), 0.10),
+    (_dt.date(2028, 11,15), 0.10),
+    (_dt.date(2029, 5,  1), 0.10),
+    (_dt.date(2029, 10,15), 0.10),
+    (_dt.date(2030, 3, 28), 0.10),   # מסירת הדירה
+]
+ANNUAL_INDEX_RATE = 0.045        # מדד תשומות הבנייה forward est. (2024 +2.9%, 2025 +5.1%; ~4–6%/yr)
+FIRST_20_EXEMPT   = 0.20         # Amendment 9: first 20% of the price is not linked
+LINK_SHARE        = 0.50         # Amendment 9: at most 50% of each later payment is linked
+
+def compute_indexation(schedule=PAYMENT_SCHEDULE, annual=ANNUAL_INDEX_RATE):
+    """Effective price multiplier from index-linking the payment schedule (per Amendment 9)."""
+    cum, extra = 0.0, 0.0
+    for date, pct in schedule:
+        exempt = max(0.0, min(pct, FIRST_20_EXEMPT - cum))   # portion inside the first 20%
+        linked = LINK_SHARE * (pct - exempt)                  # linked share of the total price
+        t = (date - _SIGNING).days / 365.25
+        extra += linked * ((1 + annual) ** t - 1)
+        cum += pct
+    return 1 + extra
+
+INDEXATION = compute_indexation()   # ≈ ×1.04 for the example schedule at 4.5%/yr
 
 def purchase_cost(area):
-    """Returns (displayed_price, subsidy_discount, net_purchase_price) at current terms.
+    """Returns (displayed_price, subsidy_discount, net_contract_price, purchase_price).
 
-    displayed = 15,022 ₪/m² × area × (1+VAT) × INDEXATION   (מחיר מוצג, incl VAT, indexed)
-    discount  = min(20% × displayed, ₪300,000)              (דירה בהנחה subsidy)
-    net       = displayed − discount                        (what the buyer pays)
+    displayed = 15,022 ₪/m² × area × (1+VAT)         (מחיר מוצג, nominal at signing)
+    discount  = min(20% × displayed, ₪300,000)        (דירה בהנחה subsidy)
+    net       = displayed − discount                  (contract price at signing)
+    purchase  = net × INDEXATION                      (after index-linking the installments)
     """
-    displayed = OFFICIAL_BASE_PPM * area * (1 + VAT) * INDEXATION
+    displayed = OFFICIAL_BASE_PPM * area * (1 + VAT)
     discount  = min(DISCOUNT_RATE * displayed, DISCOUNT_CAP)
-    return round(displayed), round(discount), round(displayed - discount)
+    net       = displayed - discount
+    return round(displayed), round(discount), round(net), round(net * INDEXATION)
 
 # --- Market model, calibrated to this project's free-market residential units -----
 # Observed in-project free-market ₪/m² by floor (large units): f5≈26.2k, f6≈26.3k,
@@ -162,16 +190,18 @@ def rank(apartments):
     out = []
     for a in sub:
         facing = facing_of(a)
-        displayed, discount, net_cost = purchase_cost(a["area_m2"])
+        displayed, discount, net_contract, net_cost = purchase_cost(a["area_m2"])
         ppm = market_ppm(a["area_m2"], a["floor"], facing)
         mkt = round(ppm * a["area_m2"])
         profit = mkt - net_cost
         rec = dict(a)
         rec["sheet_price_ref"] = a["price_ils"]          # original price-list figure (17% VAT, base idx)
-        rec["gross_price"] = displayed                    # מחיר מוצג: 15,022 ₪/m² × area × VAT × idx
+        rec["gross_price"] = displayed                    # מחיר מוצג: 15,022 ₪/m² × area × VAT (nominal)
         rec["target_discount"] = discount                 # דירה בהנחה subsidy: min(20%×displayed, ₪300k)
         rec["discount_capped"] = discount >= DISCOUNT_CAP  # True when the ₪300k cap binds
-        rec["purchase_price"] = net_cost                  # what you actually pay (displayed − discount)
+        rec["net_contract_price"] = net_contract          # displayed − discount (at signing)
+        rec["index_addition"] = net_cost - net_contract   # index-linking over the payment schedule
+        rec["purchase_price"] = net_cost                  # what you actually pay (net × indexation)
         rec["facing"] = facing or "—"                     # per-unit facade (inferred; informational)
         rec["facing_inferred"] = bool(facing) and FACING_INFERRED
         rec["exposure_applied"] = INCLUDE_EXPOSURE          # is facing factored into the score?
@@ -214,8 +244,11 @@ if __name__ == "__main__":
                         r["purchase_price"], r["est_market_value"], r["est_profit_ils"],
                         r["est_profit_pct"], r["liquidity"], r["resale_score"]])
     print(f"ranked {len(ranked)} subsidized apartments -> {a.out} (+ .csv)")
-    print(f"cost model: displayed = {OFFICIAL_BASE_PPM} ₪/m² × area × VAT {1+VAT} × idx {INDEXATION}; "
-          f"discount = min({DISCOUNT_RATE:.0%} × displayed, ₪{DISCOUNT_CAP:,}); buyer pays displayed − discount")
+    print(f"cost model: displayed = {OFFICIAL_BASE_PPM} ₪/m² × area × VAT {1+VAT}; "
+          f"discount = min({DISCOUNT_RATE:.0%} × displayed, ₪{DISCOUNT_CAP:,}); "
+          f"net × indexation ×{INDEXATION:.4f}")
+    print(f"indexation: schedule-derived (Amendment 9, {ANNUAL_INDEX_RATE:.1%}/yr fwd) = ×{INDEXATION:.4f} "
+          f"(= +{(INDEXATION-1)*100:.2f}% on the net price)")
     known = sum(1 for r in ranked if r["facing"] != "—")
     print(f"per-unit facing inferred: {known}/{len(ranked)} — "
           f"{'EXPOSURE IN SCORE' if INCLUDE_EXPOSURE else 'EXCLUDED from score (unverified; informational only)'}")

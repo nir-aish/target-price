@@ -11,12 +11,13 @@ resale_score = profit_% × liquidity      (rewards quick-selling, in-demand size
 
 ## Purchase-cost model (דירה בהנחה / מחיר מטרה)
 
-The buyer's price is built explicitly in three steps:
+The buyer's price is built explicitly in four steps:
 
 ```
-displayed (מחיר מוצג) = 15,022 × area × (1 + VAT) × INDEXATION   # incl VAT, indexed to payment
+displayed (מחיר מוצג) = 15,022 × area × (1 + VAT)               # incl VAT, nominal at signing
 discount              = min(20% × displayed, ₪300,000)          # דירה בהנחה subsidy, lower of the two
-purchase_price        = displayed − discount                    # what the buyer pays
+net_contract          = displayed − discount                    # contract price at signing
+purchase_price        = net_contract × INDEXATION               # after index-linking the installments
 ```
 
 - **Base rate = 15,022 ₪/m²** (pre-VAT) — the מחיר מטרה rate for this plot.
@@ -35,19 +36,22 @@ purchase_price        = displayed − discount                    # what the buy
   מחיר מוצג (and the −133,230 should stay). Resolve against the contract / מפרט מכר. The one
   ground-floor garden unit (sheet ₪1,290,604) is also priced from area only, understating its
   cost by ~₪148k.
-- **INDEXATION = 1.06 — VALIDATED (web, May 2026).** מדד תשומות הבנייה (residential
-  construction-inputs index), tender base → payment:
-  - **Raw index** from the early-2023 tender base ≈ **+13% to today** (2024 +2.9%, 2025
-    +5.1%, ~6% trailing in early 2025), and ≈ **+23% projected to delivery (~2028)**.
-  - **Amendment 9 to חוק המכר (דירות)** (in force **7 Jul 2022**) limits linkage: the first
-    **20%** of the price (paid at signing) is **not** indexed, and at most **50%** of each
-    later payment may be linked ⇒ **at most 40% of the price is indexed**, and only **up to
-    the delivery date** (buyers don't pay index differences for delivery delays). The reform
-    has saved the public ~₪700M to date.
-  - A **state↔contractors settlement** leaves the individual buyer an extra **≈ ₪4,043–8,206**.
-  - ⇒ Effective `= 1 + 0.40 × raw` ≈ **×1.05 (to today) … ×1.09 (to delivery)**; **1.06** is a
-    central estimate. **Ranking order is ~invariant** to it (9–10/10 of the top-10 stable across
-    ×1.00–1.10; the ₪300k discount cap adds slight non-linearity at the extremes). — bounded estimate of מדד תשומות הבנייה, tender base → payment.
+- **INDEXATION ≈ ×1.040 — computed from the payment schedule** (not a blanket factor). The
+  net contract price is paid in installments, each index-linked to מדד תשומות הבנייה. The
+  linkage is computed per `compute_indexation()` over `PAYMENT_SCHEDULE` (example: signing
+  **1 Jul 2026** → delivery **28 Mar 2030**):
+  - **Only forward linkage counts.** The price is set at signing, so the +13% the index rose
+    2023→2026 is *already in the 15,022 base* — the buyer only pays the index that accrues
+    **from signing to each payment date**.
+  - **Amendment 9 to חוק המכר (דירות)** (in force **7 Jul 2022**): the first **20%** of the
+    price is **not** indexed (here = payments 1+2), and at most **50%** of each later payment is
+    linked. Early installments accrue almost no index; only the 2028–2030 payments carry weight.
+  - **Forward index assumption `ANNUAL_INDEX_RATE = 4.5%/yr`** (validated: 2024 +2.9%, 2025
+    +5.1%, ~6% trailing). ⇒ schedule-derived **×1.040 (+4.0% on the net price)**.
+  - **Sensitivity:** 3%/yr → ×1.026, 5%/yr → ×1.045, 6%/yr → ×1.054. **Ranking order is
+    ~invariant** to it (9–10/10 of the top-10 stable across ×1.00–1.10).
+  - A **state↔contractors settlement** (the בג"ץ linkage compromise) leaves the individual
+    buyer an extra **≈ ₪4,043–8,206**, not separately modelled. — bounded estimate of מדד תשומות הבנייה, tender base → payment.
   Validated mechanism (replaces the old "≈Jul-2026" hand-wave):
   - The index rises ~5%/yr (**2023 +2.0%, 2024 +2.9%, 2025 +5.1%**, 2026 forecast +5–7%).
   - **Amendment 9 to חוק המכר (in force Jul 2022)** caps the index-linked portion at **40%
@@ -60,8 +64,9 @@ purchase_price        = displayed − discount                    # what the buy
     ~±10 pts across ×1.00–1.12 but the **ranking order is invariant**.
 
 Output fields per apartment: `gross_price` (displayed/מחיר מוצג), `target_discount` (the
-20%/300k subsidy), `discount_capped` (is the ₪300k cap binding?), `purchase_price` (net),
-plus `sheet_price_ref` (original price-list figure), `facing` and `exposure_factor`.
+20%/300k subsidy), `discount_capped` (is the ₪300k cap binding?), `net_contract_price`
+(displayed − discount, at signing), `index_addition` (index-linking over the schedule),
+`purchase_price` (final), plus `sheet_price_ref`, `facing` and `exposure_factor`.
 
 Tools: `tools/rank.py` → `data/parsed/ranking.json` + `ranking.csv`.
 
