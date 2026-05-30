@@ -10,12 +10,13 @@ apartments = json.loads((ROOT / "data/parsed/apartments.json").read_text())
 free = [a for a in apartments if a.get("tier") == "free_market"]
 payload = {
     "generated": datetime.date.today().isoformat(),
-    "project": "סירקין (Sirkin) — מחיר למשתכן",
+    "project": "מגרש 201 — סירקין, פתח תקווה — מחיר מטרה (רם אדרת + רובי קפיטל)",
     "ranked": ranking,                         # 84 subsidized, ranked
     "free_market_count": len(free),
     "meta": {
         "base_ppm": 15022, "vat": 0.18, "indexation": 1.06,
-        "discount": "20% עד 300,000 ₪",
+        "discount": "מובנית בחוזה (≈8–12% של מחיר הבסיס; הטבת מחיר מטרה)",
+        "lockin": "מכירה חופשית מ~2030 (המוקדם מבין: 7 שנים מהזכייה / 5 שנים מטופס 4)",
     },
 }
 out = ROOT / "app/data.js"
