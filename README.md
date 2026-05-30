@@ -57,9 +57,10 @@ python3 tools/build_app.py                                             # refresh
 
 ## Known open items (for next iteration)
 
-- **Orientation per apartment** — `exposure_score()` is now **wired** into the ranking but
-  **neutral** (empty facing map): the dira מפרט is not publicly retrievable and the CAD
-  numbers don't key to price-list stacks. Needs the brochure כיוונים or a guided plan-read.
+- **Orientation per apartment** — `exposure_score()` is now **active**, with per-unit facing
+  **inferred from the rendered plans** (best-effort; east/west high-confidence, left↔right
+  within a side flagged ⚠ in the app). Each unit shows its building floor-plate. Verify the
+  SE/NE picks against the מפרט מכר before acting; see `docs/ORIENTATION.md`.
 - **Embedded discount %** — the −133,230 benefit (~8–12%) is smaller than the headline
   14–19%-off-appraisal; confirm the constant against the contract.
 - **Floor numbering** — list (ground→8) vs marketing/drawings ("9 קומות"); confirm with sales office.

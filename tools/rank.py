@@ -81,16 +81,27 @@ def exposure_score(facing):
     """Multiplier for a unit's facade direction. Returns 1.0 if facing unknown."""
     return EXPOSURE.get(facing, 1.0)
 
-# Per-unit facade direction, keyed by (building, stack). The exposure multiplier flows
-# straight into market value as soon as this map is populated.
-# POPULATING IT NEEDS the brochure / מפרט מכר (which lists each unit's כיוונים) or a
-# guided plan-read: the price list has 5 stacks per building, but the floor plates show
-# 4 corners + 1 mid-facade unit, and the plan's apartment numbers (101/102/105/108) do
-# not key to price-list stacks 1–5. Left EMPTY → neutral (1.0) for every unit, so the
-# ranking is not distorted by guesses. See docs/ORIENTATION.md / docs/SURROUNDINGS.md.
+# Per-unit facade direction, keyed by (building, stack). INFERRED from the rendered plans
+# (best-effort — NOT from the מפרט). Confidence is moderate; flagged in the app/docs for
+# review. Inference rules (see docs/ORIENTATION.md "Inferred facing"):
+#   • Plate geometry + north (~26° up-left): top-left=NW, top-right=NE, bottom-left=SW,
+#     bottom-right=SE, bottom-middle=S. Page-right = east = the green/park (premium).
+#   • The plates show two large units across the top (→ NE/NW) and three smaller along the
+#     bottom; the middle of those three is the mid-facade unit (→ S).
+#   • The developer reserved stacks 4 & 5 for free-market sale (top-floor penthouses,
+#     126–185 m²) in ALL buildings → those are the premium corners. The larger penthouse
+#     stack (5) = the best corner SE; stack 4 = SW. (So a subsidized buyer on stack 5 gets
+#     the SE/green corner — the pick.)
+#   • Among stacks 1–3, the two largest take the top corners (larger → east/NE), the
+#     smallest is the mid-facade (S).
+# Genuinely uncertain links (left/right within a side): NE↔NW between the two large top
+# units, and SE↔SW between stacks 5/4. Resolve against the מפרט מכר when available.
 STACK_FACING = {
-    # (building, stack): "NE" | "SE" | "SW" | "NW" | "N" | "S" | "E" | "W"
+    (1, 1): "NE", (1, 2): "S",  (1, 3): "NW", (1, 4): "SW", (1, 5): "SE",
+    (2, 1): "NW", (2, 2): "NE", (2, 3): "S",  (2, 4): "SW", (2, 5): "SE",
+    (3, 1): "NE", (3, 2): "NW", (3, 3): "S",  (3, 4): "SW", (3, 5): "SE",
 }
+FACING_INFERRED = True   # surfaced in the app so the mapping is reviewed, not trusted blindly
 def facing_of(apt):
     return STACK_FACING.get((apt["building"], apt["stack"]))
 
@@ -147,7 +158,8 @@ def rank(apartments):
         rec["gross_price"] = full                         # full price before the מטרה benefit (18% VAT + idx)
         rec["target_discount"] = benefit                  # embedded מחיר מטרה benefit (the −133,230 term)
         rec["purchase_price"] = net_cost                  # what you actually pay
-        rec["facing"] = facing or "—"                     # per-unit facade (— = pending brochure)
+        rec["facing"] = facing or "—"                     # per-unit facade (inferred from plans)
+        rec["facing_inferred"] = bool(facing) and FACING_INFERRED
         rec["exposure_factor"] = round(exposure_score(facing), 3)
         rec["plan_img"] = f"plans/building{a['building']}.png"  # typical-floor plate for this building
         rec["est_market_ppm"] = round(ppm)

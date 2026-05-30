@@ -97,10 +97,11 @@ to the 27k anchor**; the in-project free-market units remain the cleanest comp.
   larger = 0.88 — reflects how fast/easily a unit resells.
 - **Exposure** `exposure_score(facing)`: SE 1.10 / E 1.08 / NE 1.06 (toward the eastern
   green/park) … SW 0.96 / W 0.94 / NW 0.92 / N 0.93 (face neighbouring buildings). **Now
-  wired into `market_ppm`**, gated on a per-unit `STACK_FACING` map. That map is **empty**
-  (neutral ×1.0 for all 84 units) until the brochure/מפרט מכר supplies each unit's כיוונים
-  — so exposure does not yet move the ranking, but activates with one edit. See
-  `docs/SURROUNDINGS.md` / `docs/ORIENTATION.md`.
+  wired into `market_ppm` AND active**: `STACK_FACING` is populated by **inference from the
+  rendered plans** (best-effort, not the מפרט). This re-orders the top of the list toward the
+  **SE-facing small/liquid units** (e.g. building-1 stack-5 79 m²). The east/west split is
+  high-confidence; left↔right within a side (NE↔NW, SE↔SW) is flagged ⚠ for review. Full
+  rules, the map, and confidence: `docs/ORIENTATION.md`.
 
 ## Important caveats — read before acting
 

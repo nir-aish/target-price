@@ -153,9 +153,9 @@ function showDetail(rank){
     <div class="kv"><span>שווי שוק מוערך</span><b>${ils(a.est_market_value)}</b></div>
     <div class="kv"><span>רווח מוערך</span><b class="pos">${ils(a.est_profit_ils)} (+${a.est_profit_pct}%)</b></div>
     <div class="kv"><span>ציון מכירה חוזרת</span><b>${a.resale_score}</b></div>
-    <div class="kv"><span>כיוון חזית</span><b>${a.facing&&a.facing!=="—"?a.facing:'טרם מופה לדירה — ראו תכנית'}</b></div>
+    <div class="kv"><span>כיוון חזית${a.facing_inferred?' (משוער מהתכנית)':''}</span><b>${a.facing&&a.facing!=="—"?a.facing+(a.facing_inferred?' ⚠':''):'—'}</b> <span class="muted">×${a.exposure_factor} חשיפה</span></div>
     <h3>תכנית הקומה (בניין ${a.building})</h3>
-    <div class="muted" style="margin-bottom:4px">צפון ↖ (שמאל-מעלה, ~26°) · <b>הפארק/הירוק במזרח = הצד הימני בתכנית</b> — דירות בצד ימין נהנות מנוף פתוח ושמש. עמודת הקוטג' (stack ${a.stack}) בקטלוג; המיפוי המדויק פינה←דירה ממתין למפרט המכר.</div>
+    <div class="muted" style="margin-bottom:4px">צפון ↖ (שמאל-מעלה, ~26°) · <b>הפארק/הירוק במזרח = הצד הימני בתכנית</b> — דירות בצד ימין (SE/NE) נהנות מנוף פתוח ושמש. הכיוון לעיל <b>משוער מהתכנית</b> (קוטג' ${a.stack}) ומשוקלל בציון; לאימות מול מפרט המכר.</div>
     <img src="${a.plan_img}" alt="תכנית בניין ${a.building}" style="width:100%;border:1px solid #ccc;border-radius:6px" loading="lazy">
     <h3>יתרונות</h3>${(a.pros||[]).map(p=>`<span class="tag p">✔ ${p}</span>`).join("")||'<span class="muted">—</span>'}
     <h3>חסרונות</h3>${(a.cons||[]).map(c=>`<span class="tag c">✘ ${c}</span>`).join("")||'<span class="muted">—</span>'}

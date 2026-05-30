@@ -20,11 +20,36 @@ Rendered the plans (`tools/render.py`, sheet 2) and read them directly. Confirms
 **reviewable visually**. Per-building plate is the right granularity — typical floors repeat,
 so every unit in a stack shares the layout.
 
-**Still pending for per-unit facing in the *score*:** the exact **stack → corner** link. The
-plate's apartment-number tags (101/102/105/108 — only 4, in circles) don't key to price-list
-stacks 1–5, and which of the 5 stacks is the mid-facade unit can't be read unambiguously from
-the CAD. So `STACK_FACING` stays empty (exposure neutral) until the מפרט מכר כיוונים table —
-or a quick guided confirmation off these now-embedded plate images — resolves it.
+### Inferred facing — now APPLIED to the score (best-effort, review-flagged)
+
+`STACK_FACING` is now populated by **inference from the rendered plans** (not the מפרט), and
+`exposure_score()` is **live in the ranking**. Inference rules:
+
+1. **Plate geometry + north (~26° up-left):** top-left = **NW**, top-right = **NE**,
+   bottom-left = **SW**, bottom-right = **SE**, bottom-middle = **S**. Page-right = east =
+   the green/park ⇒ **SE/NE are the premium (green-facing) corners**.
+2. **Plates show** two large units across the top (→ NE/NW) and three smaller along the
+   bottom; the middle of those three is the **mid-facade unit (→ S)**.
+3. **Free-market signal:** the developer reserved **stacks 4 & 5** for free-market sale
+   (top-floor penthouses, 126–185 m²) in **all three buildings** → those are the **premium
+   corners**. The larger penthouse stack (**5**) = best corner **SE**; stack **4** = **SW**.
+4. Among stacks 1–3, the **two largest** take the top corners (larger → east/**NE**), the
+   **smallest** is the **mid-facade (S)**.
+
+Resulting map (building, stack → facing):
+
+| Bld | s1 | s2 | s3 | s4 | s5 |
+|----|----|----|----|----|----|
+| 1 | NE | S | NW | SW | **SE** |
+| 2 | NW | NE | S | SW | **SE** |
+| 3 | NE | NW | S | SW | **SE** |
+
+**Confidence & known soft spots (flagged in the app with ⚠):** the **east/west split is the
+high-confidence part**; the genuinely uncertain links are **left↔right within a side** — NE↔NW
+between the two large top units, and SE↔SW between stacks 5/4 (areas 76↔79 are visually
+indistinguishable). These flip a unit between premium (~1.10) and weak (~0.92), so **verify
+against the מפרט מכר** before treating the top SE picks as final. Each unit's app panel shows
+its plate + the inferred direction so the mapping is reviewed, not trusted blindly.
 
 ## North direction — ROBUST ✅ (independently validated)
 
