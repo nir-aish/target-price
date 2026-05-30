@@ -1,0 +1,50 @@
+{
+  "note": "ONE representative apartment (the only text-labelled unit on the sheet; repeated ~11x across floors). Other apartments have geometry only. Kitchen has no label (open-plan into 'living').",
+  "orientation": "page-up=North, larger-x=East, larger-y=South",
+  "rooms": [
+    {
+      "label_he": "מרפסת",
+      "label_en": "balcony",
+      "rel_to_living": "NE"
+    },
+    {
+      "label_he": "מרפסת",
+      "label_en": "balcony",
+      "rel_to_living": "NW"
+    },
+    {
+      "label_he": "מגורים",
+      "label_en": "living (open-plan, incl. kitchen)",
+      "rel_to_living": "center"
+    },
+    {
+      "label_he": "הורים",
+      "label_en": "master bedroom",
+      "rel_to_living": "W"
+    },
+    {
+      "label_he": "ממ",
+      "label_en": "safe room (mamad)",
+      "rel_to_living": "SW"
+    },
+    {
+      "label_he": "רחצה",
+      "label_en": "bathroom",
+      "rel_to_living": "SW"
+    },
+    {
+      "label_he": "שירות",
+      "label_en": "WC / service",
+      "rel_to_living": "SW"
+    }
+  ],
+  "living_area_m2": 43.4,
+  "areas_m2_on_unit_unassigned": [
+    43.4,
+    12.3,
+    10.1,
+    8.2,
+    5.1
+  ],
+  "area_mapping_caveat": "Only the living area is reliably keyed (largest, central). The remaining m2 values cannot be reliably paired to specific rooms from the plot's text positions alone."
+}
