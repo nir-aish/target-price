@@ -20,5 +20,15 @@ payload = {
 }
 out = ROOT / "app/data.js"
 out.parent.mkdir(exist_ok=True)
-out.write_text("window.APP_DATA = " + json.dumps(payload, ensure_ascii=False) + ";\n")
+data_js = "window.APP_DATA = " + json.dumps(payload, ensure_ascii=False) + ";\n"
+out.write_text(data_js)
 print(f"wrote {out} ({len(ranking)} ranked apartments)")
+
+# Also emit a fully self-contained single file (data inlined) for easy hosting/sharing:
+# works via file://, GitHub Pages, githack, etc. with no second request.
+index = (ROOT / "app/index.html").read_text()
+standalone = index.replace('<script src="data.js"></script>',
+                           "<script>" + data_js + "</script>")
+(ROOT / "app/standalone.html").write_text(standalone)
+print(f"wrote {ROOT/'app/standalone.html'} (single self-contained file)")
+
